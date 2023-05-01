@@ -16,6 +16,48 @@ local plugins = {
       require "custom.configs.lspconfig"
     end
   },
+  -- lsp navigation
+  {
+    "SmiteshP/nvim-navic",
+    lazy = false,
+    dependencies = {
+      "neovim/nvim-lspconfig"
+    },
+    config = function()
+      require("nvim-navic").setup({
+        lsp = {
+          auto_attach = true,
+          preference = {"rust-analyzer"}
+        }
+      })
+    end
+  },
+  {
+    "SmiteshP/nvim-navbuddy",
+    lazy = false,
+    dependencies = {
+        "neovim/nvim-lspconfig",
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+        "numToStr/Comment.nvim",        -- Optional
+        "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+      require("nvim-navbuddy").setup({
+        lsp = {
+          auto_attach = true,
+          preference = {"rust-analyzer"}
+        }
+      })
+    end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy=false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    }
+  },
   -- rust specific stuff
   {
     "rust-lang/rust.vim",
