@@ -7,7 +7,7 @@ ENV PATH=$PATH:/usr/local/bin
 ENV LANG="en_US.UTF8"
 ENV TERM=xterm-256color
 
-ARG DEPS="build-essential pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev"
+ARG DEPS="build-essential pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGET=stable
@@ -36,6 +36,8 @@ RUN go install github.com/jesseduffield/lazygit@latest
 
 # now everything as user
 RUN useradd -ms /bin/zsh dev
+RUN usermod -aG sudo dev
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
 
 ENV PATH=$PATH:/home/dev/.cargo/bin
@@ -44,10 +46,25 @@ ENV PATH=$PATH:/home/dev/.cargo/bin
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && \
     $HOME/.fzf/install --all
 
+# python
+RUN pipx install poetry
+
 # rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN rustup component add rust-src
 RUN rustup component add rust-analyzer
+# rust wasm
+RUN rustup toolchain install nightly
+RUN rustup target add wasm32-unknown-unknown --toolchain nightly
+# rust leptos
+RUN cargo install leptos-language-server --git https://github.com/bram209/leptos-language-server
+RUN /home/dev/.cargo/bin/rustup component add rustfmt
+# gws2
+RUN git clone --recurse-submodules https://github.com/emlun/gws2.git /tmp/gws2 && \
+  cd /tmp/gws2 && \
+  cargo install --path . && \
+  cd / && \
+  rm -rf /tmp/gws2
 
 # install helix
 RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
@@ -58,7 +75,7 @@ RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
   mv runtime $HOME/.config/helix && \
   rm /tmp/helix -rf
 
-# install rust tools
+# install cli tools with cargo
 RUN cargo install starship zoxide
 
 # copy config
@@ -85,6 +102,64 @@ RUN cd /home/dev/.fonts && fc-cache -f -v
 
 # run neovim and install dependencies
 RUN nvim +q --headless
+RUN nvim --headless -c "TSInstall all" -c "qall"
+RUN nvim --headless -c "Mason Install\
+  yaml-language-server\
+  yamlfmt\
+  typescript-language-server\
+  taplo\
+  tailwindcss-language-server\
+  stylua\
+  shellcheck\
+  pyright\
+  pydocstyle\
+  prettierd\
+  prettier\
+  ltex-ls\
+  nginx-language-server\
+  misspell\
+  markdown-toc\
+  marksman\
+  markdownlint\
+  latexindent\
+  jq\
+  js-debug-adapter\
+  jq-lsp\
+  graphql-language-service-cli\
+  gopls\
+  golangci-lint-langserver\
+  golangci-lint\
+  gofumpt\
+  go-debug-adapter\
+  goimports\
+  elm-language-server\
+  elm-format\
+  dockerfile-language-server\
+  docker-compose-language-service\
+  cucumber-language-server\
+  debugpy\
+  cpptools\
+  dart-debug-adapter\
+  cpplint\
+  codespell\
+  cmake-language-server\
+  bash-language-server\
+  codelldb\
+  ansible-lint\
+  awk-language-server\
+  black\
+  css-lsp\
+  cssmodules-language-server\
+  eslint-lsp\
+  eslint_d\
+  html-lsp\
+  htmlbeautifier\
+  lua-language-server\
+  rust-analyzer\
+  rustfmt\
+  rustywind\
+  unocss-language-server" -c "qall"
+  "
 
 # same with tmux
 RUN tmux start-server && \
