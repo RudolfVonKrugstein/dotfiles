@@ -12,7 +12,6 @@ M.dap = {
     ["<leader>so"] = {":lua require'dap'.step_over()<CR>", "Debug step over"},
     ["<leader>si"] = {":lua require'dap'.step_into()<CR>", "Debug step into"},
     ["<leader>st"] = {":lua require'dap'.step_out()<CR>", "Debug step out"},
-    ["<leader>od"] = {":lua require'diaglist'.open_all_diagnostics()<CR>", "Open global quickfix"},
 
     ["<leader>tt"] = {":lua require'trouble'.open({mode=\"workspace_diagnostics\"})<CR>"},
     ["<C-l>"] = {":lua require(\"tmux\").move_right()<CR>"},
@@ -23,6 +22,21 @@ M.dap = {
     ["<A-h>"] = {":lua require(\"tmux\").resize_left()<CR>"},
     ["<A-j>"] = {":lua require(\"tmux\").resize_bottom()<CR>"},
     ["<A-k>"] = {":lua require(\"tmux\").resize_top()<CR>"},
+
+    ["gh"] = {":Lspsaga lsp_finder<CR>", "LSP Finder"},
+    ["<leader>ca"] = {":Lspsaga code_action<CR>", "Code Action"},
+    ["gr"] = {":Lspsaga rename< ++project<CR>", "Rename symbol"},
+    ["gp"] = {":Lspsaga peek_definition<CR>", "Peek definition"},
+    ["gd"] = {":Lspsaga goto_definition<CR>", "Goto definition"},
+    ["gtp"] = {":Lspsaga peek_type_definition<CR>", "Peek definition"},
+    ["gtd"] = {":Lspsaga goto_type_definition<CR>", "Goto definition"},
+    ["<leader>sl"] = {":Lspsaga show_line_diagnostics<CR>"},
+    ["<leader>sw"] = {":Lspsaga show_workspace_diagnostics<CR>"},
+    ["<leader>sc"] = {":Lspsaga show_cursor_diagnostics<CR>"},
+    ["<leader>ol"] = {":Lspsaga outline<CR>"},
+    ["K"] = {":Lspsaga hover_doc ++keep<CR>"},
+    ["[e"] = {":Lspsaga diagnostic_jump_prev<CR>"},
+    ["]e"] = {":Lspsaga diagnostic_jump_next<CR>"},
   }
 }
 

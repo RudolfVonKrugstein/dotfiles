@@ -16,6 +16,16 @@ local plugins = {
       require "custom.configs.lspconfig"
     end
   },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    config = function ()
+      require("lspsaga").setup({})
+    end,
+    dependencies = {
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  },
   -- lsp navigation
   {
     "SmiteshP/nvim-navic",
