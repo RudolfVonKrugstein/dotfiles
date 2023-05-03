@@ -84,3 +84,8 @@ export GIT_WORKSPACE="~/projects"
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # ~/.config/tmux/plugins
 export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
+# fzf
+if [ -d ~/.fzf/bin ]; then
+  export PATH=$PATH:~/.fzf/bin
+fi
