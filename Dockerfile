@@ -103,8 +103,7 @@ RUN cd /home/dev/.fonts && fc-cache -f -v
 # run neovim and install dependencies
 RUN nvim +q --headless
 RUN nvim --headless -c "TSInstall all" -c "qall"
-RUN nvim --headless -c "Mason Install\
-  yaml-language-server\
+RUN nvim --headless -c "MasonInstall yaml-language-server\
   yamlfmt\
   typescript-language-server\
   taplo\
@@ -116,7 +115,6 @@ RUN nvim --headless -c "Mason Install\
   prettierd\
   prettier\
   ltex-ls\
-  nginx-language-server\
   misspell\
   markdown-toc\
   marksman\
@@ -159,7 +157,6 @@ RUN nvim --headless -c "Mason Install\
   rustfmt\
   rustywind\
   unocss-language-server" -c "qall"
-  "
 
 # same with tmux
 RUN tmux start-server && \
