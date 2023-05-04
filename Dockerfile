@@ -41,7 +41,6 @@ RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
 # now everything as user
 RUN usermod -l ubuntu dev
-RUN usermod -s /bin/zsh dev
 RUN usermod -aG sudo dev
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
@@ -92,6 +91,7 @@ RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
 # install cli tools with cargo
 RUN cargo install starship zoxide fd-find && \
   rm -rf ~/.cargo/registry
+RUN echo "eval \"\$(starship init bash)\"" >> ~/.bashrc
 
 
 # copy config
