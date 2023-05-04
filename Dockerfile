@@ -7,7 +7,7 @@ ENV PATH=$PATH:/usr/local/bin
 ENV LANG="en_US.UTF8"
 ENV TERM=xterm-256color
 
-ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release htop"
+ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release htop locales"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGET=stable
@@ -16,6 +16,10 @@ ARG TARGET=stable
 RUN apt update && apt upgrade -y && \
   apt install -y ${DEPS} && \
   rm -rf /var/lib/apt/lists/*
+
+# locale
+RUN locale-gen en_US.UTF-8
+RUN update-locale LANG=en_US.UTF-8
 
 #install terraform
 RUN mkdir /tmp/terraform && \
@@ -40,7 +44,8 @@ RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
 
 # now everything as user
-RUN usermod -l ubuntu dev
+RUN usermod -l dev ubuntu
+RUN usermod -md dev /home/dev
 RUN usermod -aG sudo dev
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
