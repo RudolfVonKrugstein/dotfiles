@@ -59,6 +59,8 @@ RUN go install github.com/jesseduffield/lazygit@latest
 # fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && \
     $HOME/.fzf/install --all
+RUN echo "# fzf\n\
+export PATH=$HOME/.fzf/bin:\$PATH\n" >> ~/.bashrc
 
 # python
 RUN pipx install poetry
@@ -105,8 +107,6 @@ RUN mkdir -p ~/.config/tmux
 RUN mkdir -p ~/.config/nvim
 
 COPY --chown=dev starship.toml /home/dev/.config/starship.toml
-
-COPY --chown=dev zshrc /home/dev/.zshrc
 
 COPY --chown=dev tmux.conf /home/dev/.config/tmux/tmux.conf
 
@@ -187,6 +187,12 @@ RUN tmux start-server && \
   tmux new-session -d && \
   ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
   tmux kill-server
+
+RUN echo "# tmux session manager\n\
+# ~/.tmux/plugins\n\
+export PATH=\$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:\$PATH\n\
+# ~/.config/tmux/plugins\n\
+export PATH=\$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:\$PATH\n" >> ~/.bashrc
 
 ENTRYPOINT ["/usr/bin/tmux"]
 
