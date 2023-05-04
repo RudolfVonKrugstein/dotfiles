@@ -45,7 +45,7 @@ RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
 # now everything as user
 RUN usermod -l dev ubuntu
-RUN usermod -md dev /home/dev
+RUN usermod -md /home/dev dev
 RUN usermod -aG sudo dev
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
