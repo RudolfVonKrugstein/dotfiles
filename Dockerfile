@@ -7,7 +7,7 @@ ENV PATH=$PATH:/usr/local/bin
 ENV LANG="en_US.UTF8"
 ENV TERM=xterm-256color
 
-ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release fd-find htop"
+ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release htop"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGET=stable
@@ -40,7 +40,8 @@ RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
 
 # now everything as user
-RUN useradd -ms /bin/zsh dev
+RUN usermod -l ubuntu dev
+RUN usermod -s /bin/zsh dev
 RUN usermod -aG sudo dev
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
@@ -66,14 +67,17 @@ RUN rustup component add rust-analyzer
 RUN rustup toolchain install nightly
 RUN rustup target add wasm32-unknown-unknown --toolchain nightly
 # rust leptos
-RUN cargo install leptos-language-server --git https://github.com/bram209/leptos-language-server
+RUN cargo install leptos-language-server --git https://github.com/bram209/leptos-language-server && \
+  rm -rf ~/.cargo/registry
 RUN /home/dev/.cargo/bin/rustup component add rustfmt
 # gws2
 RUN git clone --recurse-submodules https://github.com/emlun/gws2.git /tmp/gws2 && \
   cd /tmp/gws2 && \
   cargo install --path . && \
   cd / && \
-  rm -rf /tmp/gws2
+  rm -rf /tmp/gws2 && \
+  rm -rf ~/.cargo/registry
+
 
 # install helix
 RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
@@ -82,10 +86,13 @@ RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
   strip $HOME/.cargo/bin/hx && \
   mkdir -p $HOME/.config/helix && \
   mv runtime $HOME/.config/helix && \
-  rm /tmp/helix -rf
+  rm /tmp/helix -rf && \
+  rm -rf ~/.cargo/registry
 
 # install cli tools with cargo
-RUN cargo install starship zoxide
+RUN cargo install starship zoxide fd-find && \
+  rm -rf ~/.cargo/registry
+
 
 # copy config
 RUN mkdir -p ~/.config
