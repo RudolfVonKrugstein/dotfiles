@@ -96,9 +96,9 @@ RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
   rm -rf ~/.cargo/registry
 
 # install cli tools with cargo
-RUN cargo install starship zoxide fd-find && \
+RUN cargo install starship zoxide fd-find nu && \
   rm -rf ~/.cargo/registry
-RUN echo "eval \"\$(starship init bash)\"" >> ~/.bashrc
+#RUN echo "eval \"\$(starship init bash)\"" >> ~/.bashrc
 
 
 # copy config
@@ -194,6 +194,7 @@ export PATH=\$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:\$PATH\n\
 # ~/.config/tmux/plugins\n\
 export PATH=\$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:\$PATH\n" >> ~/.bashrc
 
-ENTRYPOINT ["/usr/bin/tmux"]
+ENTRYPOINT ["/bin/bash"]
+CMD ["-c","tmux"]
 
 WORKDIR "/home/dev"
