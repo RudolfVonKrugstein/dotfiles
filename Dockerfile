@@ -112,6 +112,7 @@ RUN cd /home/dev/.fonts && fc-cache -f -v
 RUN nvim +q --headless
 RUN nvim --headless -c "TSInstall all" -c "qall"
 RUN nvim --headless -c "MasonInstall yaml-language-server\
+  actionlint\
   yamlfmt\
   typescript-language-server\
   taplo\
