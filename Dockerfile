@@ -38,9 +38,6 @@ RUN git clone https://github.com/neovim/neovim.git /tmp/neovim && \
 # antibody
 RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
-# lazygit
-ENV PATH=$PATH:/home/dev/go/bin
-RUN go install github.com/jesseduffield/lazygit@latest
 
 # now everything as user
 RUN useradd -ms /bin/zsh dev
@@ -49,6 +46,10 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
 
 ENV PATH=$PATH:/home/dev/.cargo/bin
+
+# lazygit
+ENV PATH=$PATH:/home/dev/go/bin
+RUN go install github.com/jesseduffield/lazygit@latest
 
 # fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && \
