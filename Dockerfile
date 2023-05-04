@@ -7,7 +7,7 @@ ENV PATH=$PATH:/usr/local/bin
 ENV LANG="en_US.UTF8"
 ENV TERM=xterm-256color
 
-ARG DEPS="build-essential pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev"
+ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGET=stable
@@ -16,6 +16,14 @@ ARG TARGET=stable
 RUN apt update && apt upgrade -y && \
   apt install -y ${DEPS} && \
   rm -rf /var/lib/apt/lists/*
+
+#install terraform
+RUN mkdir /tmp/terraform && \
+  cd /tmp/terraform && \
+  wget https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip && \
+  unzip terraform_1.4.6_linux_amd64.zip && \
+  mv terraform /usr/local/bin && \
+  rm -rf /tmp/terraform
 
 # neovim
 RUN git clone https://github.com/neovim/neovim.git /tmp/neovim && \
@@ -156,6 +164,8 @@ RUN nvim --headless -c "MasonInstall yaml-language-server\
   rust-analyzer\
   rustfmt\
   rustywind\
+  tflint\
+  terraform-ls\
   unocss-language-server" -c "qall"
 
 # same with tmux

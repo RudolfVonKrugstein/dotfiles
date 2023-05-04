@@ -201,6 +201,11 @@ local plugins = {
       return require("tmux").setup()
     end
   },
+  -- terraform
+  {
+    "hashivim/vim-terraform",
+    lazy=false
+  },
  -- {
  --    "Lilja/zellij.nvim",
  --    lazy =false,
