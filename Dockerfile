@@ -1,3 +1,55 @@
+######################################
+# RUST BUILDER
+######################################
+
+FROM docker.io/rust as rust-builder
+
+# insall dependencies
+ARG DEPS="build-essential cmake git"
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG TARGET=stable
+
+# install deps
+RUN apt update && apt upgrade -y && \
+  apt install -y ${DEPS} && \
+  rm -rf /var/lib/apt/lists/*
+
+# rust leptos
+RUN cargo install leptos-language-server --git https://github.com/bram209/leptos-language-server
+
+# gws2
+RUN git clone --recurse-submodules https://github.com/emlun/gws2.git /tmp/gws2 && \
+  cd /tmp/gws2 && \
+  cargo install --path . && \
+  cd / && \
+  rm -rf /tmp/gws2
+
+# helix
+RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
+  cd /tmp/helix && \
+  cargo install --path helix-term && \
+  strip /usr/local/cargo/bin/hx && \
+  mkdir -p /opt/helix && \
+  mv runtime /opt/helix && \
+  rm -rf /tmp/helix
+
+# install cli tools with cargo
+RUN cargo install starship zoxide fd-find nu
+
+######################################
+# golang builder
+######################################
+
+FROM docker.io/golang as golang-builder
+
+# lazygit
+RUN go install github.com/jesseduffield/lazygit@latest
+
+######################################
+# MAIN IMAGE
+######################################
+
 FROM ubuntu:23.04
 
 LABEL maintainer="Nathan Hüsken"
@@ -6,6 +58,21 @@ ENV PATH=$PATH:/usr/local/bin
 
 ENV LANG="en_US.UTF8"
 ENV TERM=xterm-256color
+
+# copy rust tools
+COPY --from=rust-builder /usr/local/cargo/bin/leptos-language-server /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/gws                    /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/starship               /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/zoxide                 /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/fd                     /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/nu                     /usr/local/bin/
+COPY --from=rust-builder /usr/local/cargo/bin/hx                     /usr/local/bin/
+rUN mkdir -p /opt/helix
+COPY --from=rust-builder /opt/helix/runtime             /opt/helix/
+ENV HELIX_RUNTIME /opt/helix/runtime
+
+# copy go tools
+COPY --from=golang-builder /go/bin/lazygit                  /usr/local/bin
 
 ARG DEPS="build-essential software-properties-common pkg-config lld ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git binutils wget tmux ripgrep curl wget zsh golang gpg python3 fontconfig zip cmake gnupg gnupg2 ca-certificates libfreetype-dev libexpat-dev libbz2-dev libfontconfig-dev xclip libxcursor-dev sudo jq nodejs npm pipx ruby libssl-dev libhunspell-dev lsb-release htop locales pcscd scdaemon"
 
@@ -42,7 +109,6 @@ RUN git clone https://github.com/neovim/neovim.git /tmp/neovim && \
 # antibody
 RUN curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
-
 # now everything as user
 RUN usermod -l dev ubuntu
 RUN usermod -md /home/dev dev
@@ -51,10 +117,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER dev
 
 ENV PATH=$PATH:/home/dev/.cargo/bin
-
-# lazygit
-ENV PATH=$PATH:/home/dev/go/bin
-RUN go install github.com/jesseduffield/lazygit@latest
 
 # fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && \
@@ -69,35 +131,6 @@ RUN pipx install poetry
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN rustup component add rust-src
 RUN rustup component add rust-analyzer
-# rust wasm
-RUN rustup toolchain install nightly
-RUN rustup target add wasm32-unknown-unknown --toolchain nightly
-# rust leptos
-RUN cargo install leptos-language-server --git https://github.com/bram209/leptos-language-server && \
-  rm -rf ~/.cargo/registry
-RUN /home/dev/.cargo/bin/rustup component add rustfmt
-# gws2
-RUN git clone --recurse-submodules https://github.com/emlun/gws2.git /tmp/gws2 && \
-  cd /tmp/gws2 && \
-  cargo install --path . && \
-  cd / && \
-  rm -rf /tmp/gws2 && \
-  rm -rf ~/.cargo/registry
-
-
-# install helix
-RUN git clone https://github.com/helix-editor/helix.git /tmp/helix && \
-  cd /tmp/helix && \
-  cargo install --path helix-term && \
-  strip $HOME/.cargo/bin/hx && \
-  mkdir -p $HOME/.config/helix && \
-  mv runtime $HOME/.config/helix && \
-  rm /tmp/helix -rf && \
-  rm -rf ~/.cargo/registry
-
-# install cli tools with cargo
-RUN cargo install starship zoxide fd-find nu && \
-  rm -rf ~/.cargo/registry
 #RUN echo "eval \"\$(starship init bash)\"" >> ~/.bashrc
 
 
