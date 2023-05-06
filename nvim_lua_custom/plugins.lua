@@ -206,6 +206,11 @@ local plugins = {
     "hashivim/vim-terraform",
     lazy=false
   },
+  -- file manager
+  {
+    "rafaqz/ranger.vim",
+    lazy=false
+  }
  -- {
  --    "Lilja/zellij.nvim",
  --    lazy =false,

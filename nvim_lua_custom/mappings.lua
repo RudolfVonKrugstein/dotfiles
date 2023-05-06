@@ -37,6 +37,16 @@ M.dap = {
     ["K"] = {":Lspsaga hover_doc ++keep<CR>"},
     ["[e"] = {":Lspsaga diagnostic_jump_prev<CR>"},
     ["]e"] = {":Lspsaga diagnostic_jump_next<CR>"},
+
+    -- ranger
+    ["rr"] = {":RangerEdit<CR>"},
+    ["rv"] = {":RangerVSplit<CR>"},
+    ["rs"] = {":RangerSplit<CR>"},
+    ["ri"] = {":RangerInsert<CR>"},
+    ["ra"] = {":RangerAppend<CR>"},
+    ["rc"] = {":set operatorfunc=RangerChangeOperator<CR>g@"},
+    ["rd"] = {":RangerCD<CR>"},
+    ["rld"] = {":RangerLCD<CR>"}
   }
 }
 
