@@ -39,14 +39,14 @@ M.dap = {
     ["]e"] = {":Lspsaga diagnostic_jump_next<CR>"},
 
     -- ranger
-    ["rr"] = {":RangerEdit<CR>"},
-    ["rv"] = {":RangerVSplit<CR>"},
-    ["rs"] = {":RangerSplit<CR>"},
-    ["ri"] = {":RangerInsert<CR>"},
-    ["ra"] = {":RangerAppend<CR>"},
-    ["rc"] = {":set operatorfunc=RangerChangeOperator<CR>g@"},
-    ["rd"] = {":RangerCD<CR>"},
-    ["rld"] = {":RangerLCD<CR>"}
+    ["<leader>rr"] = {":RangerEdit<CR>"},
+    ["<leader>rv"] = {":RangerVSplit<CR>"},
+    ["<leader>rs"] = {":RangerSplit<CR>"},
+    ["<leader>ri"] = {":RangerInsert<CR>"},
+    ["<leader>ra"] = {":RangerAppend<CR>"},
+    ["<leader>rc"] = {":set operatorfunc=RangerChangeOperator<CR>g@"},
+    ["<leader>rd"] = {":RangerCD<CR>"},
+    ["<leader>rld"] = {":RangerLCD<CR>"},
   }
 }
 
