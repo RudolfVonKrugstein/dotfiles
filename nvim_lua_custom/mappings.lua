@@ -47,6 +47,9 @@ M.dap = {
     ["<leader>rc"] = {":set operatorfunc=RangerChangeOperator<CR>g@"},
     ["<leader>rd"] = {":RangerCD<CR>"},
     ["<leader>rld"] = {":RangerLCD<CR>"},
+
+    -- undotree
+    ["<leader>u"] = {":UndotreeToggle<CR>"}
   }
 }
 

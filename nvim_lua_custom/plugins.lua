@@ -210,6 +210,14 @@ local plugins = {
   {
     "rafaqz/ranger.vim",
     lazy=false
+  },
+  -- undotree
+  {
+    "mbbill/undotree",
+    lazy=false,
+    config = function()
+      require("undotree").setup({})
+    end
   }
  -- {
  --    "Lilja/zellij.nvim",
