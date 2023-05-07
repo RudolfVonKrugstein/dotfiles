@@ -1,0 +1,33 @@
+theme = "onedark"
+
+[editor]
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+gutters = ["diagnostics", "line-numbers", "diff"]
+auto-save = true
+completion-replace = true
+bufferline = "always"
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "separator", "version-control", "separator", "spinner"]
+center = ["file-name", "file-modification-indicator", "diagnostics"]
+right = ["workspace-diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+charafter = "⸽"
