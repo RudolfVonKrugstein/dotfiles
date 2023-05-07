@@ -2,8 +2,10 @@ local set = vim.opt
 
 set.spelllang = 'en,de,cjk'
 set.guifont = 'JetBrainsMono NF:h14'
+set.relativenumber = true
+set.cursorline = true
+set.cursorcolumn = true
 
--- leptos cusotm lsp
 vim.api.nvim_create_autocmd({"BufRead"},{
   pattern = {"*.rs"},
   callback = function()
