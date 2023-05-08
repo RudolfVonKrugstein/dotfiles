@@ -213,10 +213,13 @@ local plugins = {
   },
   -- undotree
   {
-    "mbbill/undotree",
+    "jiaoshijie/undotree",
     lazy=false,
     config = function()
-      require("undotree").setup({})
+      require("undotree").setup({
+        float_diff = false,
+        layout = "left_bottom"
+      })
     end
   }
  -- {

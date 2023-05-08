@@ -49,7 +49,7 @@ M.dap = {
     ["<leader>rld"] = {":RangerLCD<CR>"},
 
     -- undotree
-    ["<leader>u"] = {":UndotreeToggle<CR>"}
+    ["<leader>u"] = {":lua require('undotree').toggle()<CR>"}
   }
 }
 
