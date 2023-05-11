@@ -30,13 +30,13 @@ local sources = {
   lint.ansiblelint,
   lint.chktex,
   leptos_fmt_source,
-  code_actions.gitsigns.with({
-    config = {
-        filter_actions = function(title)
-            return title:lower():match("blame") == nil -- filter out blame actions
-        end,
-    },
-  })
+  -- code_actions.gitsigns.with({
+  --   config = {
+  --       filter_actions = function(title)
+  --           return title:lower():match("blame") == nil -- filter out blame actions
+  --       end,
+  --   },
+  -- })
   --  code_actions.gitsigns
 }
 
