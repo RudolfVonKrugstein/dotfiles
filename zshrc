@@ -89,3 +89,5 @@ export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 if [ -d ~/.fzf/bin ]; then
   export PATH=$PATH:~/.fzf/bin
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
