@@ -13,6 +13,16 @@ M.dap = {
     ["<F7>"] = {":lua require'dap'.step_into()<CR>", "Debug step into"},
     ["<S-F8>"] = {":lua require'dap'.step_out()<CR>", "Debug step out"},
 
+    -- marks
+    ["gm"] = {":Telescope marks<CR>"},
+    ["m,"] = {":lua require('marks').set_next()<CR>"},
+    ["m;"] = {":lua require('marks').toggle()<CR>"},
+    ["dm-"] = {":lua require('marks').delete_line()<CR>"},
+    ["dm<space>"] = {":lua require('marks').delete_buf()<CR>"},
+    ["m]"] = {":lua require('marks').next()<CR>"},
+    ["m["] = {":lua require('marks').prev()<CR>"},
+    ["m:"] = {":lua require('marks').preview()<CR>"},
+
     ["<leader>tt"] = {":lua require'trouble'.open({mode=\"workspace_diagnostics\"})<CR>"},
     ["<C-l>"] = {":lua require(\"tmux\").move_right()<CR>"},
     ["<C-h>"] = {":lua require(\"tmux\").move_left()<CR>"},
