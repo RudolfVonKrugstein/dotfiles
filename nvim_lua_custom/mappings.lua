@@ -23,6 +23,9 @@ M.dap = {
     ["m["] = {":lua require('marks').prev()<CR>"},
     ["m:"] = {":lua require('marks').preview()<CR>"},
 
+    -- jumplist
+    ["gj"] = {":Telescope jumplist<CR>"},
+
     ["<leader>tt"] = {":lua require'trouble'.open({mode=\"workspace_diagnostics\"})<CR>"},
     ["<C-l>"] = {":lua require(\"tmux\").move_right()<CR>"},
     ["<C-h>"] = {":lua require(\"tmux\").move_left()<CR>"},
