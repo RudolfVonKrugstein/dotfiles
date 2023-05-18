@@ -43,5 +43,10 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+export FZF_TMUX_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
+export FZF_CTRL_T_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
+export FZF_CTRL_R_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
+export FZF_ALT_C_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
