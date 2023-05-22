@@ -6,8 +6,6 @@ keybinds {
         // unbind "Ctrl g"
     }
     locked {
-        unbind "Ctrl g"
-        bind "Ctrl a" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
