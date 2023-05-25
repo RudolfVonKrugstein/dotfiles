@@ -1,0 +1,12 @@
+[commit]
+	gpgsign = true
+[user]
+	signingkey = 2048C392E425717174BC6996984AA729EC7604F6
+	name = Nathan Hüsken
+	email = nathan@wintercloud.de
+[tag]
+	forceSignAnnotated = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
