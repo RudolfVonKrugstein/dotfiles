@@ -1,0 +1,22 @@
+[[language]]
+name = "rust"
+auto-format = true
+
+[[language]]
+name = "python"
+roots = ["pyporject.toml'"]
+formatter = { command = "flake8", args = [""]}
+language-servers = ["pyright"]
+auto-format = true
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "typescript"
+auto-format = true
+
+[[language]]
+name = "typescript"
+auto-format = true
