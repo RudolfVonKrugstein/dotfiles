@@ -70,6 +70,7 @@ keybinds {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
+        bind "p" { NewTab; SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }
     }
     scroll {
         bind "Ctrl s" { SwitchToMode "Normal"; }
