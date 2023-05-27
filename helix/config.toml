@@ -18,7 +18,14 @@ select = "underline"
 [editor.statusline]
 left = ["mode", "separator", "version-control", "separator", "spinner"]
 center = ["file-name", "file-modification-indicator", "diagnostics"]
-right = ["workspace-diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = [
+  "workspace-diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
 separator = "│"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
