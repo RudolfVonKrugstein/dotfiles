@@ -4,14 +4,15 @@ auto-format = true
 
 [[language]]
 name = "python"
-roots = ["pyporject.toml'"]
+roots = ["pyproject.toml"]
 formatter = { command = "flake8", args = [""] }
-language-servers = [{ name = "pyright" }, { name = "ruf-lsp" }]
+language-servers = [{ name = "pyright" }, { name = "ruff-lsp" }]
 auto-format = true
 
 [language-server.pyright]
 command = "pyright-langserver"
 args = ["--stdio"]
+config = {}
 
 [language-server.ruff-lsp]
 command = "ruff-lsp"
