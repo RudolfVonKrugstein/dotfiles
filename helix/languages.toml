@@ -5,14 +5,19 @@ auto-format = true
 [[language]]
 name = "python"
 roots = ["pyproject.toml"]
-formatter = { command = "flake8", args = [""] }
-language-servers = [{ name = "pyright" }, { name = "ruff-lsp" }]
+formatter = { command = "black", args = ["-"] }
 auto-format = true
 
-[language-server.pyright]
-command = "pyright-langserver"
-args = ["--stdio"]
-config = {}
+[language-server.pylsp.config.plugins]
+flake8 = { enabled = false }
+autopep8 = { enabled = false }
+mccabe = { enabled = false }
+pycodestyle = { enabled = false }
+pyflakes = { enabled = false }
+pylint = { enabled = false }
+yapf = { enabled = false }
+ruff = { enabled = true }
+
 
 [language-server.ruff-lsp]
 command = "ruff-lsp"
