@@ -33,3 +33,8 @@ auto-format = true
 [[language]]
 name = "toml"
 auto-format = true
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "mdformat", args = ["-"] }
