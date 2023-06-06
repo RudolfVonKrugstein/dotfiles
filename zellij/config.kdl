@@ -39,7 +39,7 @@ keybinds {
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
         bind "g" {
           Run "lazygit_zellij_close_pane.sh" {
-            diPection "Down"
+            Direction "Down"
           }; SwitchToMode "Normal"; ToggleFocusFullscreen
         }
         bind "P" { SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }

@@ -327,8 +327,8 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: zellij
+# shell:
+#   program: zellij
 #  args:
 #    - -l
 #    - ~/.config/zellij/my-layout.kdl
