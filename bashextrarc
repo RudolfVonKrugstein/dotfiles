@@ -1,3 +1,6 @@
+# set the editor to helix
+export EDITOR="hx"
+
 # enable startship
 eval "$(starship init bash)"
 
