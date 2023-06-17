@@ -10,6 +10,7 @@ M.init = function()
       'help',
       'lazy',
       'lazyterm',
+      "undotree",
       'lspsagafinder',
       'lspsagaoutline',
       'mason',

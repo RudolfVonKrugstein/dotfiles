@@ -163,6 +163,16 @@ require("lazy").setup(
         crates.setup(opts)
         crates.show()
       end
-    }
+    },
+    {
+      "jiaoshijie/undotree",
+      lazy = false,
+      config = function()
+        require("undotree").setup({
+          float_diff = false,
+          layout = "left_bottom",
+        })
+      end,
+    },
   }
   , opts)

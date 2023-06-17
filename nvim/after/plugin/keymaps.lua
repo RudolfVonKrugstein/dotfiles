@@ -33,6 +33,7 @@ keymap('n', '<leader>D', "<cmd>Lspsaga show_workspace_diagnostics<CR>", {})
 keymap('n', '<leader>d', "<cmd>Lspsaga show_buf_diagnostics<CR>", {})
 keymap('n', '<leader>k', "<cmd>Lspsaga hover_doc ++keep<CR>", {})
 keymap('n', '<leader>o', "<cmd>Lspsaga outline<CR>", {})
+keymap('n', '<leader>u', function() require('undotree').toggle() end, {})
 
 -- g menu
 keymap('n', 'gl', "<cmd>Lspsaga lsp_finder<CR>", {})
