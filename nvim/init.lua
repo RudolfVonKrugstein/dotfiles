@@ -18,6 +18,15 @@ require("lazy").setup(
     { 'kyazdani42/nvim-web-devicons' },
     { 'nvim-lua/plenary.nvim' },
     {
+      'folke/which-key.nvim',
+      event = "VeryLazy",
+      config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup()
+      end,
+    },
+    {
       'folke/tokyonight.nvim',
       lazy = false,
       priority = 1000,
