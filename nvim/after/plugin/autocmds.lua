@@ -13,3 +13,4 @@ api.nvim_exec(
 
 -- format on save
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+

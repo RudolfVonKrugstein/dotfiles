@@ -1,7 +1,7 @@
-local cmp = require'cmp'
-local luasnip = require'luasnip'
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
 
-vim.opt.completeopt= "menu,menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect"
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -114,6 +114,15 @@ require('lspconfig')['tflint'].setup {
 require('lspconfig')['tailwindcss'].setup {
   capabilities = capabilities
 }
+require('lspconfig')['pyright'].setup {
+  capabilities = capabilities
+}
 require('lspconfig')['pylsp'].setup {
   capabilities = capabilities
 }
+require('lspconfig')['taplo'].setup {
+  capabilities = capabilities
+}
+-- require('lspconfig')['rust_analyzer'].setup {
+--   capabilities = capabilities
+-- }
