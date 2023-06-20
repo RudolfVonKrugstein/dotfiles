@@ -117,7 +117,7 @@ require('lspconfig')['tailwindcss'].setup {
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities
 }
-require('lspconfig')['pylsp'].setup {
+require('lspconfig')['ruff_lsp'].setup {
   capabilities = capabilities
 }
 require('lspconfig')['taplo'].setup {
