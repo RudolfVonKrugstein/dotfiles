@@ -124,7 +124,7 @@ require("lazy").setup(
         -- require('mini.hipatterns').setup({})
         -- require('mini.hues').setup({})
         require('config.mini.indentscope').config(_, opts)
-        --  require('mini.jump').setup({})
+        require('mini.jump').setup({})
         -- require('mini.jump2d').setup({})
         require('mini.map').setup({})
         require('mini.misc').setup({})
