@@ -133,7 +133,7 @@ require("lazy").setup(
         -- require('mini.sessions').setup({})
         require('mini.splitjoin').setup({})
         require('mini.starter').setup({})
-        require('mini.statusline').setup({})
+        -- require('mini.statusline').setup({})
         require('mini.surround').setup({})
         require('mini.tabline').setup({})
         -- require('mini.test').setup({})
@@ -200,6 +200,12 @@ require("lazy").setup(
     },
     {
       "tpope/vim-fugitive"
+    },
+    {
+      "nvim-lualine/lualine.nvim",
+      config = function()
+        require("lualine").setup()
+      end
     }
   }
   , opts)
