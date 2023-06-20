@@ -21,3 +21,6 @@ opt.cursorcolumn = true
 opt.timeout = false
 opt.ttimeout = false
 vim.cmd('colorscheme tokyonight-night')
+vim.cmd('highlight GitSignsAdd guifg=GREEN')
+vim.cmd('highlight GitSignsChange guifg=YELLOW')
+vim.cmd('highlight GitSignsDelete guifg=RED')
