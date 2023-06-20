@@ -62,7 +62,7 @@ end, { desc = "jump to next lsp error" })
 vim.diagnostic.config({
   underline = true,
   signs = true,
-  virtual_text = false,
+  virtual_text = true,
   float = {
     show_header = true,
     source = 'always',

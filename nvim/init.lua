@@ -112,16 +112,16 @@ require("lazy").setup(
         require('mini.ai').setup({})
         require("mini.basics").setup({ options = { extra_ui = true } })
         require('mini.align').setup({})
-        require('mini.animate').setup({})
-        require("config.mini.base16")
+        -- require('mini.animate').setup({})
+        -- require("config.mini.base16")
         require('mini.bracketed').setup({})
         require('mini.bufremove').setup({})
-        require('mini.colors').setup({})
+        -- require('mini.colors').setup({})
         require('mini.comment').setup({})
         require('mini.cursorword').setup({})
         -- require('mini.doc').setup({})
         require('mini.fuzzy').setup({})
-        require('mini.hipatterns').setup({})
+        -- require('mini.hipatterns').setup({})
         -- require('mini.hues').setup({})
         require('config.mini.indentscope').config(_, opts)
         --  require('mini.jump').setup({})
@@ -182,6 +182,6 @@ require("lazy").setup(
           layout = "left_bottom",
         })
       end,
-    },
+    }
   }
   , opts)

@@ -20,4 +20,4 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.timeout = false
 opt.ttimeout = false
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme tokyonight-night')
