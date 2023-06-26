@@ -206,6 +206,33 @@ require("lazy").setup(
       config = function()
         require("lualine").setup()
       end
+    },
+    {
+      "nvim-neotest/neotest-python",
+    },
+    {
+      "rouge8/neotest-rust",
+    },
+    {
+      "nvim-neotest/neotest",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "rouge8/neotest-rust",
+        "nvim-neotest/neotest-python",
+      },
+      config = function()
+        require("neotest").setup({
+          signs = true,
+          virtual_text = true,
+          adapters = {
+            require("neotest-python")({
+              runner = "pytest",
+            }),
+            require("neotest-rust")({})
+          }
+        })
+      end
     }
   }
   , opts)
