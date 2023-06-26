@@ -12,7 +12,15 @@ api.nvim_exec(
 )
 
 -- format on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+api.nvim_exec(
+  [[
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost * FormatWrite
+  augroup end
+  ]],
+  false
+)
 
 -- close certain windows with q
 local group = vim.api.nvim_create_augroup("NeotestConfig", {})
