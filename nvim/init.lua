@@ -15,10 +15,10 @@ vim.opt.rtp:prepend(lazypath)
 -- install plugins
 require("lazy").setup(
   {
-    { 'kyazdani42/nvim-web-devicons' },
-    { 'nvim-lua/plenary.nvim' },
+    { "kyazdani42/nvim-web-devicons" },
+    { "nvim-lua/plenary.nvim" },
     {
-      'folke/which-key.nvim',
+      "folke/which-key.nvim",
       event = "VeryLazy",
       config = function()
         vim.o.timeout = true
@@ -27,7 +27,7 @@ require("lazy").setup(
       end,
     },
     {
-      'folke/tokyonight.nvim',
+      "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
       opts = {},
@@ -39,7 +39,7 @@ require("lazy").setup(
       build = ":MasonUpdate",
       config = function()
         require("mason").setup()
-      end
+      end,
     },
     {
       "williamboman/mason-lspconfig.nvim",
@@ -47,38 +47,38 @@ require("lazy").setup(
       config = function()
         require("mason-lspconfig").setup()
       end,
-      requires = { { "williamboman/mason.nvim" } }
+      requires = { { "williamboman/mason.nvim" } },
     },
     {
       "neovim/nvim-lspconfig",
       lazy = false,
-      requires = { { "williamboman/mason.nvim" }, { "williamboman/mason-lspconfig" } }
+      requires = { { "williamboman/mason.nvim" }, { "williamboman/mason-lspconfig" } },
     },
     {
-      "hrsh7th/cmp-nvim-lsp"
+      "hrsh7th/cmp-nvim-lsp",
     },
     {
-      "hrsh7th/cmp-buffer"
+      "hrsh7th/cmp-buffer",
     },
     {
-      "hrsh7th/cmp-path"
+      "hrsh7th/cmp-path",
     },
     {
-      "hrsh7th/cmp-cmdline"
+      "hrsh7th/cmp-cmdline",
     },
     {
       "hrsh7th/nvim-cmp",
       config = function()
         require("config.nvim-cmp")
-      end
+      end,
     },
     {
       "lvimuser/lsp-inlayhints.nvim",
       config = function()
         require("lsp-inlayhints").setup({
           inlay_hints = {
-            highlight = "Comment"
-          }
+            highlight = "Comment",
+          },
         })
         vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -93,49 +93,49 @@ require("lazy").setup(
             require("lsp-inlayhints").on_attach(client, bufnr)
           end,
         })
-      end
+      end,
     },
     {
       "folke/trouble.nvim",
       config = function()
         require("trouble").setup()
-      end
+      end,
     },
     {
-      'echasnovski/mini.nvim',
-      version = '*',
+      "echasnovski/mini.nvim",
+      version = "*",
       init = function()
         require("config.mini.indentscope").init()
       end,
       config = function(_, opts)
         -- setup nvim plugins
-        require('mini.ai').setup({})
+        require("mini.ai").setup({})
         require("mini.basics").setup({ options = { extra_ui = true } })
-        require('mini.align').setup({})
+        require("mini.align").setup({})
         -- require('mini.animate').setup({})
         -- require("config.mini.base16")
-        require('mini.bracketed').setup({})
-        require('mini.bufremove').setup({})
+        require("mini.bracketed").setup({})
+        require("mini.bufremove").setup({})
         -- require('mini.colors').setup({})
-        require('mini.comment').setup({})
-        require('mini.cursorword').setup({})
+        require("mini.comment").setup({})
+        require("mini.cursorword").setup({})
         -- require('mini.doc').setup({})
-        require('mini.fuzzy').setup({})
+        require("mini.fuzzy").setup({})
         -- require('mini.hipatterns').setup({})
         -- require('mini.hues').setup({})
-        require('config.mini.indentscope').config(_, opts)
-        require('mini.jump').setup({})
+        require("config.mini.indentscope").config(_, opts)
+        require("mini.jump").setup({})
         -- require('mini.jump2d').setup({})
-        require('mini.map').setup({})
-        require('mini.misc').setup({})
-        require('mini.move').setup({})
-        require('mini.pairs').setup({})
+        require("mini.map").setup({})
+        require("mini.misc").setup({})
+        require("mini.move").setup({})
+        require("mini.pairs").setup({})
         -- require('mini.sessions').setup({})
-        require('mini.splitjoin').setup({})
-        require('mini.starter').setup({})
+        require("mini.splitjoin").setup({})
+        require("mini.starter").setup({})
         -- require('mini.statusline').setup({})
-        require('mini.surround').setup({})
-        require('mini.tabline').setup({})
+        require("mini.surround").setup({})
+        require("mini.tabline").setup({})
         -- require('mini.test').setup({})
         -- require('mini.trailspace').setup({})
       end,
@@ -148,13 +148,13 @@ require("lazy").setup(
       config = function()
         require("lspsaga").setup({
           lightbulb = {
-            enable = true
-          }
+            enable = true,
+          },
         })
       end,
       dependencies = {
-        { "nvim-treesitter/nvim-treesitter" }
-      }
+        { "nvim-treesitter/nvim-treesitter" },
+      },
     },
     -- rust
     {
@@ -162,7 +162,7 @@ require("lazy").setup(
       dependencies = "neovim/nvim-lspconfig",
       config = function()
         require("config.rust-tools")
-      end
+      end,
     },
     {
       "saecki/crates.nvim",
@@ -171,7 +171,7 @@ require("lazy").setup(
         local crates = require("crates")
         crates.setup(opts)
         crates.show()
-      end
+      end,
     },
     {
       "jiaoshijie/undotree",
@@ -186,26 +186,26 @@ require("lazy").setup(
     {
       "lewis6991/gitsigns.nvim",
       config = function()
-        require('gitsigns').setup {
+        require("gitsigns").setup({
           signs = {
-            add          = { text = '+' },
-            change       = { text = '~' },
-            delete       = { text = '-' },
-            topdelete    = { text = '‾' },
-            changedelete = { text = '~' },
-            untracked    = { text = '?' },
+            add = { text = "+" },
+            change = { text = "~" },
+            delete = { text = "-" },
+            topdelete = { text = "‾" },
+            changedelete = { text = "~" },
+            untracked = { text = "?" },
           },
-        }
-      end
+        })
+      end,
     },
     {
-      "tpope/vim-fugitive"
+      "tpope/vim-fugitive",
     },
     {
       "nvim-lualine/lualine.nvim",
       config = function()
         require("lualine").setup()
-      end
+      end,
     },
     {
       "nvim-neotest/neotest-python",
@@ -229,16 +229,52 @@ require("lazy").setup(
             require("neotest-python")({
               runner = "pytest",
             }),
-            require("neotest-rust")({})
-          }
+            require("neotest-rust")({}),
+          },
         })
-      end
+      end,
     },
     {
       "mhartington/formatter.nvim",
       config = function()
-        require "config.formatter"
-      end
+        require("config.formatter")
+      end,
+    },
+    -- dap
+    {
+      "mfussenegger/nvim-dap",
+      lazy = false,
+      dependencies = {
+        {
+          "jay-babu/mason-nvim-dap.nvim",
+          dependencies = { "nvim-dap" },
+          cmd = { "DapInstall", "DapUninstall" },
+          opts = { handlers = {} },
+        },
+      },
+    },
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      dependencies = { "nvim-dap" },
+      config = function()
+        require("nvim-dap-virtual-text").setup({})
+      end,
+    },
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = { "nvim-dap" },
+      config = function()
+        require("config.dap-ui")
+      end,
+    },
+    -- python specific stuff
+    {
+      "mfussenegger/nvim-dap-python",
+      dependencies = { "nvim-dap" },
+      config = function()
+        require("dap-python").setup("./.venv/bin/python")
+      end,
     }
-  }
-  , opts)
+  },
+  opts
+  )
