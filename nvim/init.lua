@@ -110,7 +110,7 @@ require("lazy").setup(
       config = function(_, opts)
         -- setup nvim plugins
         require("mini.ai").setup({})
-        require("mini.basics").setup({ options = { extra_ui = true } })
+        -- require("mini.basics").setup({ options = { extra_ui = true } }) -- makes trouble with neotest
         require("mini.align").setup({})
         -- require('mini.animate').setup({})
         -- require("config.mini.base16")
@@ -231,6 +231,9 @@ require("lazy").setup(
             }),
             require("neotest-rust")({}),
           },
+          quickfix = {
+            open = false
+          }
         })
       end,
     },
