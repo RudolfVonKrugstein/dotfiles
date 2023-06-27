@@ -18,5 +18,17 @@ require("formatter").setup({
 		lua = {
 			require("formatter.filetypes.lua").default,
 		},
+		yaml = {
+			require("formatter.filetypes.yaml").default,
+		},
+		javascript = {
+			require("formatter.filetypes.javascript").default,
+		},
+		json = {
+			require("formatter.filetypes.json").default,
+		},
+		toml = {
+			require("formatter.filetypes.toml").default,
+		},
 	},
 })
