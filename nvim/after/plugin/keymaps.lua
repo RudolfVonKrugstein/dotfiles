@@ -29,6 +29,9 @@ keymap('n', '<leader>s', function() require('telescope.builtin').lsp_document_sy
   { desc = "symbols (buffer)" })
 keymap('n', '<leader>j', function() require('telescope.builtin').jumplist {} end, { desc = "jumplist" })
 
+-- files
+keymap('n', '<leader>e', function() MiniFiles.open() end, {desc="Open file explorer"})
+
 -- more leader
 keymap('n', '<leader>r', "<cmd>Lspsaga rename ++project<CR>", { desc = "rename symbole" })
 keymap('n', '<leader>D', "<cmd>Lspsaga show_workspace_diagnostics<CR>", { desc = "diagnostics (workspace)" })

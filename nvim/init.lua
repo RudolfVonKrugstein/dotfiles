@@ -140,6 +140,13 @@ require("lazy").setup(
         -- require('mini.trailspace').setup({})
       end,
     },
+    {
+      'echasnovski/mini.files',
+      version = false,
+      config = function()
+        require("mini.files").setup({})
+      end
+    },
     { "nvim-telescope/telescope.nvim" },
     { "nvim-telescope/telescope-ui-select.nvim" },
     {
