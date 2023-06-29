@@ -250,6 +250,12 @@ require("lazy").setup(
         require("config.formatter")
       end,
     },
+    {
+      "mfussenegger/nvim-lint",
+      config = function()
+        require("config.linter")
+      end,
+    },
     -- dap
     {
       "mfussenegger/nvim-dap",
