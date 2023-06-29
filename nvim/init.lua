@@ -277,6 +277,15 @@ require("lazy").setup(
         require("config.dap-ui")
       end,
     },
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
+      config = function()
+        require("mason-nvim-dap").setup({
+            automatic_installation = true
+        })
+      end
+    },
     -- python specific stuff
     {
       "mfussenegger/nvim-dap-python",
