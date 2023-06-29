@@ -82,7 +82,7 @@ end, { desc = "show line diagnostics" })
 
 -- neotest
 keymap('n', '<leader>t', function()
-    require("noetest").summary.toggle()
+    require("neotest").summary.toggle()
   end, { desc = "Toggle test summary" })
 
 vim.api.nvim_create_user_command(
