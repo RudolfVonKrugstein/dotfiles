@@ -1,6 +1,7 @@
 vim.lsp.buf.format()
 local g = vim.g
 local keymap = vim.keymap.set
+local api = vim.api
 
 -- Space as leader key
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -78,3 +79,85 @@ vim.diagnostic.config({
 keymap('n', '<leader>?', function()
   vim.diagnostic.open_float()
 end, { desc = "show line diagnostics" })
+
+-- neotest
+keymap('n', '<leader>t', function()
+    require("noetest").summary.toggle()
+  end, { desc = "Toggle test summary" })
+
+vim.api.nvim_add_user_command(
+  "NeotestRun",
+  function()
+    require("neotest").run.run()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestRunFile",
+  function()
+    require("neotest").run.run(vim.fn.expand("%"))
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestDebug",
+  function()
+    require("neotest").run.run({strategy = "dap"})
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestStop",
+  function()
+    require("neotest").run.stop()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestAttach",
+  function()
+    require("neotest").run.attach()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestSummaryToggle",
+  function()
+    require("neotest").suammary.toggle()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestSummaryOpen",
+  function()
+    require("neotest").suammary.open()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestSummaryClose",
+  function()
+    require("neotest").suammary.close()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestOutputToggle",
+  function()
+    require("neotest").output.toggle()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestOutputOpen",
+  function()
+    require("neotest").output.open()
+  end
+)
+
+vim.api.nvim_add_user_command(
+  "NeotestOutputClose",
+  function()
+    require("neotest").output.close()
+  end
+)
