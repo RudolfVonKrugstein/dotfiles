@@ -22,6 +22,13 @@ api.nvim_exec(
   false
 )
 
+-- lint on save
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
 -- close certain windows with q
 local group = vim.api.nvim_create_augroup("NeotestConfig", {})
 vim.api.nvim_create_autocmd("FileType", {
