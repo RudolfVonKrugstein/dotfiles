@@ -293,20 +293,6 @@ require("lazy").setup(
       config = function()
         require("dap-python").setup("./.venv/bin/python")
       end,
-    },
-    -- formatters/linters
-    {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      -- "jose-elias-alvarez/null-ls.nvim", -- we do not use null-ls, we use this plugin just to auto-install formatters and linters
-    },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = { "stylua", "jq", "fixjson", "black", "shfmt", "latexindent", "taplo", "yamlfmt", "prettierd" }
-      })
-      end,
     }
   },
   opts
