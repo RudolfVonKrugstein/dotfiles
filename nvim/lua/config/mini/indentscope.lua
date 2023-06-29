@@ -19,6 +19,7 @@ M.init = function()
       'notify',
       'NvimTree',
       'qf',
+      'neotest-summary',
       'starter', -- mini.starter
       'toggleterm',
       'Trouble',
