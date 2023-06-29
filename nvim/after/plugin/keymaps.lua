@@ -89,75 +89,86 @@ vim.api.nvim_create_user_command(
   "NeotestRun",
   function()
     require("neotest").run.run()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestRunFile",
   function()
     require("neotest").run.run(vim.fn.expand("%"))
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestDebug",
   function()
     require("neotest").run.run({strategy = "dap"})
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestStop",
   function()
     require("neotest").run.stop()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestAttach",
   function()
     require("neotest").run.attach()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestSummaryToggle",
   function()
     require("neotest").suammary.toggle()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestSummaryOpen",
   function()
     require("neotest").suammary.open()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestSummaryClose",
   function()
     require("neotest").suammary.close()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestOutputToggle",
   function()
     require("neotest").output.toggle()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestOutputOpen",
   function()
     require("neotest").output.open()
-  end
+  end,
+  { nargs = 0}
 )
 
 api.nvim_create_user_command(
   "NeotestOutputClose",
   function()
     require("neotest").output.close()
-  end
+  end,
+  { nargs = 0}
 )
