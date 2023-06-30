@@ -1,14 +1,13 @@
 # ~/.config/starship.toml
 
 [aws]
-symbol = "  "
+# keep the default
 
 [conda]
 symbol = " "
 
 [dart]
-symbol = " "
-format = "via [$symbol]($style)"
+# keep the default
 
 [directory]
 read_only = " "
@@ -28,8 +27,7 @@ symbol = " "
 symbol = " "
 
 [golang]
-symbol = " "
-format = 'via [$symbol]($style)'
+# keep the default
 
 [hg_branch]
 symbol = " "
@@ -51,8 +49,7 @@ symbol = " "
 symbol = " "
 
 [nodejs]
-symbol = " "
-format = 'via [$symbol]($style)'
+# keep the default
 
 [package]
 symbol = " "
@@ -64,14 +61,13 @@ symbol = " "
 symbol = " "
 
 [python]
-symbol = " "
-format = 'via [$symbol]($style)'
+# keep the defaults!
 
 [ruby]
 symbol = " "
 
 [rust]
-format = 'via [$symbol]($style)'
+# keep the defaults
 
 [scala]
 symbol = " "
