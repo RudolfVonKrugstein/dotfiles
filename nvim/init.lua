@@ -209,9 +209,17 @@ require("lazy").setup(
       "tpope/vim-fugitive",
     },
     {
+      "j-hui/fidget.nvim",
+      config = function()
+        require("fidget").setup()
+      end,
+      tag = "legacy",
+      requires = { "neovim/nvim-lspconfig" }
+    },
+    {
       "nvim-lualine/lualine.nvim",
       config = function()
-        require("lualine").setup()
+        require("config.lualine")
       end,
     },
     {
