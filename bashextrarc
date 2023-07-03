@@ -1,5 +1,5 @@
 # set the editor to helix
-export EDITOR="hx"
+# export EDITOR="hx"
 
 # enable startship
 eval "$(starship init bash)"
@@ -70,3 +70,6 @@ if [[ -z "$ZELLIJ" ]]; then
         exit
     fi
 fi
+
+# doom emacs
+[ -d ~/.config/emacs/bin ] && export PATH="$PATH:$HOME/.config/emacs/bin"
