@@ -20,7 +20,7 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
           ln -s $GITHUB_WORKSPACE/doom ~/.config/doom
-          ~/.config/emacs/bin/doom install
+          ~/.config/emacs/bin/doom install --no-env --no-fonts
       - name: ZIP the config
         run: |
           zip -r doomemacsconfig.zip ~/.config/emacs
