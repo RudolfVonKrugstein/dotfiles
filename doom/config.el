@@ -74,6 +74,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(dap-python-setup)
+;;
+;; dap setup
 (setq dap-python-debugger 'debugpy)
 (setq dap-auto-configure-mode t)
