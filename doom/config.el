@@ -79,3 +79,8 @@
 (setq dap-python-debugger 'debugpy)
 (setq dap-auto-configure-mode t)
 
+;; company comletion
+(with-eval-after-load 'company
+  (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
+  (setq company-idle-delay nil)
+)
