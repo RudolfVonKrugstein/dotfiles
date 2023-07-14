@@ -81,6 +81,21 @@
 
 ;; company comletion
 (with-eval-after-load 'company
-  (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
+  (define-key company-mode-map [remap indent-for-tab-command] #'counsel-company)
   (setq company-idle-delay nil)
 )
+
+;; yas snippets
+(eval-after-load 'yasnippet
+  `(progn
+     (define-key yas-minor-mode-map (kbd "<tab>") nil)
+     (define-key yas-minor-mode-map (kbd "TAB") nil)
+  )
+)
+
+(defvar yas-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<tab>") 'nil)
+    (define-key map (kbd "TAB") 'nil)
+    map))
+
