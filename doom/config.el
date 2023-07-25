@@ -81,21 +81,82 @@
 
 ;; company comletion
 (with-eval-after-load 'company
-  (define-key company-mode-map [remap indent-for-tab-command] #'counsel-company)
+  ;;(define-key company-mode-map [remap indent-for-tab-command] #'counsel-company)
   (setq company-idle-delay nil)
 )
 
-;; yas snippets
-(eval-after-load 'yasnippet
-  `(progn
-     (define-key yas-minor-mode-map (kbd "<tab>") nil)
-     (define-key yas-minor-mode-map (kbd "TAB") nil)
-  )
+;; Smart tab, these will only work in GUI Emacs
+(map! :i [tab] (cmds! (and (bound-and-true-p company-mode)
+                           (modulep! :completion company))
+                      #'company-indent-or-complete-common)
+      :i [C-return]  (cmds! (and (modulep! :editor snippets)
+                              (yas-maybe-expand-abbrev-key-filter 'yas-expand))
+                         #'yas-expand)
+      )
+
+(with-eval-after-load 'snippets
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
 )
+(define-key yas-keymap [(tab)] nil)
+(define-key yas-keymap (kbd "TAB") nil)
+(define-key yas-keymap [(C-return)] (yas-filtered-definition 'yas-next-field-or-maybe-expand))
+(define-key yas-keymap [(S-return)] (yas-filtered-definition 'yas-prev-field))
 
-(defvar yas-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "<tab>") 'nil)
-    (define-key map (kbd "TAB") 'nil)
-    map))
+(with-eval-after-load 'dired
+  (map! :map dired-mode-map
+        :n [backspace] 'dired-up-directory
+        )
+  )
 
+;; (hercules-def
+;;  :show-funs #'dired-mode
+;;  :hide-funs '(+dired/quit-all)
+;;  :keymap 'dired-mode-map)
+
+;; (with-eval-after-load 'dired
+;;   (defhydra hydra-dired (:hint nil :color pink)
+;;     "dired"
+;;     ("\\" dired-do-ispell "flyspell")
+;;     ("(" dired-hide-details-mode "details")
+;;     (")" dired-omit-mode "omit-mode")
+;;     ("+" dired-create-directory "mkdir")
+;;     ("=" diredp-ediff "pdiff")         ;; smart diff
+;;     ("?" dired-summary "summay")
+;;     ("$" diredp-hide-subdir-nomove "hide-subdir")
+;;     ("A" dired-do-find-regexp "find regexp")
+;;     ("C" dired-do-copy "Copy")        ;; Copy all marked files
+;;     ("D" dired-do-delete "Delete")
+;;     ("E" dired-mark-extension "Extension mark")
+;;     ("e" dired-ediff-files "ediff")
+;;     ("F" dired-do-find-marked-files "find marked")
+;;     ("G" dired-do-chgrp "chgrp")
+;;     ("g" revert-buffer "revert buf")        ;; read all directories again (refresh)
+;;     ("i" dired-maybe-insert-subdir "insert subdir")
+;;     ("l" dired-do-redisplay "redisplay")   ;; relist the marked or singel directory
+;;     ("M" dired-do-chmod "chmod")
+;;     ("m" dired-mark "mark")
+;;     ("O" dired-display-file "view other")
+;;     ("o" dired-find-file-other-window "open other")
+;;     ("Q" dired-do-find-regexp-and-replace "replace regex")
+;;     ("R" dired-do-rename "rename")
+;;     ("r" dired-do-rsynch "rsync")
+;;     ("S" dired-do-symlink "symlink")
+;;     ("s" dired-sort-toggle-or-edit "sort")
+;;     ("t" dired-toggle-marks "toggle marks")
+;;     ("U" dired-unmark-all-marks "unmark all")
+;;     ("u" dired-unmark "unmark")
+;;     ("v" dired-view-file "view")      ;; q to exit, s to search, = gets line #
+;;     ("w" dired-kill-subdir "kill subdir")
+;;     ("Y" dired-do-relsymlink "rel symlink")
+;;     ("z" diredp-compress-this-file "compress files")
+;;     ("Z" dired-do-compress "compress")
+;;     ("^" dired-up-directory "up directory")
+;;     ("<backspace>" dired-up-directory)
+;;     ("q" +dired/quit-all "quit" :color blue)
+;;     ("." nil "toggle hydra" :color blue))
+;;   (map! :map dired-mode-map
+;;         :n "." 'hydra-dired/body
+;;         :n [backspace] 'dired-up-directory
+;;         )
+;;   )
