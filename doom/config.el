@@ -129,6 +129,10 @@
 (map!
       :n "U" 'evil-redo
 )
+
+;; projectile
+(setq projectile-project-search-path '(("~/projects/" . 10)))
+
 ;; (hercules-def
 ;;  :show-funs #'dired-mode
 ;;  :hide-funs '(+dired/quit-all)
