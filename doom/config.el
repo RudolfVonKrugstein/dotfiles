@@ -33,6 +33,13 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-oceanic-next)
+(custom-set-faces
+  '(mode-line ((t (:background "RoyalBlue4"))))
+  '(mode-line-active ((t (:background "RoyalBlue4"))))
+  '(mode-line-inactive ((t (:background "midnight blue")))))
+(setq evil-normal-state-cursor '(box "DeepPink")
+      evil-insert-state-cursor '(bar "DeepPink")
+      evil-visual-state-cursor '(hollow "DeepPink"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
