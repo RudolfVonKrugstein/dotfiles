@@ -126,6 +126,9 @@
         )
   )
 
+(map!
+      :n "U" 'evil-redo
+)
 ;; (hercules-def
 ;;  :show-funs #'dired-mode
 ;;  :hide-funs '(+dired/quit-all)
