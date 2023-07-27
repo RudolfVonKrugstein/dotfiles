@@ -47,7 +47,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/projects/org/")
 
  (defun center-cargo-test-error ()
       "Center the error in the error window"
