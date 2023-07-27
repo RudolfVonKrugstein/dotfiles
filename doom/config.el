@@ -49,6 +49,16 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+ (defun center-cargo-test-error ()
+      "Center the error in the error window"
+      (interactive)
+      (when-let ((buffer (get-buffer "*cargo-test*")))
+        (with-selected-window (get-buffer-window buffer)
+          (recenter-top-bottom 0))))
+(add-hook 'next-error-hook 'center-cargo-test-error)
+
+;; Make _ part of words
+(modify-syntax-entry ?_ "w")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
