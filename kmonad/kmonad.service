@@ -1,0 +1,13 @@
+[Unit]
+Description=KMonad Keyboard Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/nathan/.local/bin/kmonand /home/nathan/dotfiles/kmonad/config.kbd
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
