@@ -119,6 +119,8 @@
   (define-key yas-keymap [(C-return)] (yas-filtered-definition 'yas-next-field-or-maybe-expand))
   (define-key yas-keymap [(S-return)] (yas-filtered-definition 'yas-prev-field))
 )
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-mobile-inbox-for-pull "~/Dropbox/Apps/MobileOrg/mobileorg.org")
 
 (with-eval-after-load 'dired
   (map! :map dired-mode-map
