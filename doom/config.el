@@ -114,11 +114,11 @@
 (with-eval-after-load 'snippets
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-keymap [(tab)] nil)
+  (define-key yas-keymap (kbd "TAB") nil)
+  (define-key yas-keymap [(C-return)] (yas-filtered-definition 'yas-next-field-or-maybe-expand))
+  (define-key yas-keymap [(S-return)] (yas-filtered-definition 'yas-prev-field))
 )
-(define-key yas-keymap [(tab)] nil)
-(define-key yas-keymap (kbd "TAB") nil)
-(define-key yas-keymap [(C-return)] (yas-filtered-definition 'yas-next-field-or-maybe-expand))
-(define-key yas-keymap [(S-return)] (yas-filtered-definition 'yas-prev-field))
 
 (with-eval-after-load 'dired
   (map! :map dired-mode-map
