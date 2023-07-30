@@ -27,7 +27,7 @@
 
   sft_j (tap-hold-next-release 200 j rsft)
   ctl_k (tap-hold-next-release 200 k rctl)
-  alt_l (tap-hold-next-release 200 l lalt)
+  alt_l (tap-hold-next-release 200 l ralt)
   met_; (tap-hold-next-release 200 ; rmet)
   )
 
