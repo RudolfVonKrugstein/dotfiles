@@ -47,7 +47,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/projects/org/")
+(setq org-directory "~/projects/private/org/")
 
  (defun center-cargo-test-error ()
       "Center the error in the error window"
@@ -186,3 +186,7 @@
 ;;         :n [backspace] 'dired-up-directory
 ;;         )
 ;;   )
+
+;; neede for debugging in rust
+(with-eval-after-load 'lsp-rust
+  (require 'dap-cpptools))
