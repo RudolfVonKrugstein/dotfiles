@@ -187,6 +187,46 @@
 ;;         )
 ;;   )
 
-;; neede for debugging in rust
+;; needed for debugging in rust
 (with-eval-after-load 'lsp-rust
   (require 'dap-cpptools))
+;; hydra in dap!
+(add-hook 'dap-stopped-hook
+          (lambda (arg) (call-interactively #'dap-hydra)))
+;; rust config
+(dap-register-debug-template
+  "GDB::Run rust"
+  (list :type "gdb"
+        :request "launch"
+        :name "GDB::Run"
+        :gdbpath "rust-gdb"
+        :target nil
+        :dap-compilation "cargo build"
+        :dap-compilation-dir "${workspaceFolder}"
+        :cwd "${workspaceFolder}"
+        :environment []
+        :console "external"
+        ))
+
+
+;; window management hydra
+(defhydra hydra-windows-nav (:color red)
+    ("s" shrink-window-horizontally "shrink horizontally" :column "Sizing")
+    ("e" enlarge-window-horizontally "enlarge horizontally")
+    ("b" balance-windows "balance window height")
+    ("m" maximize-window "maximize current window")
+    ("M" minimize-window "minimize current window")
+
+    ("h" split-window-below "split horizontally" :column "Split management")
+    ("v" split-window-right "split vertically")
+    ("d" delete-window "delete current window")
+    ("x" delete-other-windows "delete-other-windows")
+
+
+    ("z" ace-window "ace window" :color blue :column "Navigation")
+    ("h" windmove-left "← window")
+    ("j" windmove-down "↓ window")
+    ("k" windmove-up "↑ window")
+    ("l" windmove-right "→ window")
+    ("r" toggle-window-split "rotate windows") ; Located in utility functions
+    ("q" nil "quit menu" :color blue :column nil))
