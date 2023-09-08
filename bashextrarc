@@ -24,6 +24,16 @@ if [ -f ~/.github_token ]; then
     export GITHUB_TOKEN=$(cat ~/.github_token)
 fi
 
+# flutter
+if [ -d ~/development/flutter/bin ]; then
+    export PATH=$PATH:$HOME/development/flutter/bin
+fi
+
+# chrome deptool
+if [ -d ~/development/depot_tools ]; then
+    export PATH=$PATH:$HOME/development/depot_tools
+fi
+
 export GIT_WORKSPACE="~/projects"
 
 # tmux session manager
@@ -73,3 +83,6 @@ fi
 
 # doom emacs
 [ -d ~/.config/emacs/bin ] && export PATH="$PATH:$HOME/.config/emacs/bin"
+
+# ocaml
+eval $(opam env)
