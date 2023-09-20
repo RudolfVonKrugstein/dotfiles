@@ -313,7 +313,7 @@ require("lazy").setup({
       require("dap-python").setup("./.venv/bin/python")
     end,
   },
-}, opts)
+}, {})
 
 --merlin (opam/ocaml
 opamshare = vim.api.nvim_eval("substitute(system('opam var share'),'\n$','','''')")
