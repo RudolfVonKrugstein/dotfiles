@@ -29,6 +29,17 @@ if [ -d ~/development/flutter/bin ]; then
     export PATH=$PATH:$HOME/development/flutter/bin
 fi
 
+# android sdk
+if [ -d ~/development/AndroidSDK/cmdline-tools/latest/bin ]; then
+    export PATH=$PATH:$HOME/development/AndroidSDK/cmdline-tools/latest/bin
+fi
+if [ -d ~/development/AndroidSDK/emulator ]; then
+    export PATH=$PATH:$HOME/development/AndroidSDK/emulator
+fi
+if [ -d ~/development/AndroidSDK/platform-tools ]; then
+    export PATH=$PATH:$HOME/development/AndroidSDK/platform-tools
+fi
+
 # chrome deptool
 if [ -d ~/development/depot_tools ]; then
     export PATH=$PATH:$HOME/development/depot_tools
