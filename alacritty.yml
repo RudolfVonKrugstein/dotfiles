@@ -10,7 +10,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-    TERM: xterm-256color
+  TERM: xterm-256color
 
 window:
   opacity: 1.0
@@ -187,8 +187,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xFFFFFF'
+    background: "0x000000"
+    foreground: "0xFFFFFF"
 
     # Bright and dim foreground colors
     #
@@ -212,8 +212,8 @@ colors:
   # background is unset, selection color will be the inverse of the cell colors.
   # If only text is unset the cell text color will remain the same.
   selection:
-    text: '0xf8f8f2'
-    background: '0x8ab4f2'
+    text: "0xf8f8f2"
+    background: "0x8ab4f2"
 
   # Normal colors
   # normal:
@@ -294,26 +294,26 @@ colors:
 #background_opacity: 1.0
 
 #selection:
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
 
 #cursor:
-  # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  #style: Block
+# Cursor style
+#
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+#style: Block
 
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+#unfocused_hollow: true
 
 # Live config reload (changes require restart)
 #live_config_reload: true
@@ -327,8 +327,8 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-# shell:
-#   program: zellij
+shell:
+  program: zellij
 #  args:
 #    - -l
 #    - ~/.config/zellij/my-layout.kdl
@@ -353,62 +353,62 @@ colors:
 #alt_send_esc: true
 
 #debug:
-  # Display the time it takes to redraw each frame.
-  #render_timer: false
+# Display the time it takes to redraw each frame.
+#render_timer: false
 
-  # Keep the log file after quitting Alacritty.
-  #persistent_logging: false
+# Keep the log file after quitting Alacritty.
+#persistent_logging: false
 
-  # Log level
-  #
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  #log_level: Warn
+# Log level
+#
+# Values for `log_level`:
+#   - None
+#   - Error
+#   - Warn
+#   - Info
+#   - Debug
+#   - Trace
+#log_level: Warn
 
-  # Print all received window events.
-  #print_events: false
+# Print all received window events.
+#print_events: false
 
-  # Record all characters and escape sequences as test data.
-  #ref_test: false
+# Record all characters and escape sequences as test data.
+#ref_test: false
 
 #mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
-  #double_click: { threshold: 300 }
-  #triple_click: { threshold: 300 }
+# Click settings
+#
+# The `double_click` and `triple_click` settings control the time
+# alacritty should wait for accepting multiple clicks as one double
+# or triple click.
+#double_click: { threshold: 300 }
+#triple_click: { threshold: 300 }
 
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+# If this is `true`, the cursor is temporarily hidden when typing.
+#hide_when_typing: false
 
-  #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
+#url:
+# URL launcher
+#
+# This program is executed when clicking on a text which is recognized as a URL.
+# The URL is always added to the command as the last parameter.
+#
+# When set to `None`, URL launching will be disabled completely.
+#
+# Default:
+#   - (macOS) open
+#   - (Linux/BSD) xdg-open
+#   - (Windows) explorer
+#launcher:
+#  program: xdg-open
+#  args: []
 
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
+# URL modifiers
+#
+# These are the modifiers that need to be held down for opening URLs when clicking
+# on them. The available modifiers are documented in the key binding section.
+#modifiers: None
 
 # Mouse bindings
 #
@@ -533,39 +533,39 @@ colors:
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
 #key_bindings:
-  # (Windows, Linux, and BSD only)
-  #- { key: V,        mods: Control|Shift, action: Paste            }
-  #- { key: C,        mods: Control|Shift, action: Copy             }
-  #- { key: Insert,   mods: Shift,         action: PasteSelection   }
-  #- { key: Key0,     mods: Control,       action: ResetFontSize    }
-  #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
-  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+# (Windows, Linux, and BSD only)
+#- { key: V,        mods: Control|Shift, action: Paste            }
+#- { key: C,        mods: Control|Shift, action: Copy             }
+#- { key: Insert,   mods: Shift,         action: PasteSelection   }
+#- { key: Key0,     mods: Control,       action: ResetFontSize    }
+#- { key: Equals,   mods: Control,       action: IncreaseFontSize }
+#- { key: Add,      mods: Control,       action: IncreaseFontSize }
+#- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+#- { key: Minus,    mods: Control,       action: DecreaseFontSize }
 
-  # (Windows only)
-  #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
+# (Windows only)
+#- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
-  # (macOS only)
-  #- { key: Key0,   mods: Command,         action: ResetFontSize    }
-  #- { key: Equals, mods: Command,         action: IncreaseFontSize }
-  #- { key: Add,    mods: Command,         action: IncreaseFontSize }
-  #- { key: Minus,  mods: Command,         action: DecreaseFontSize }
-  #- { key: K,      mods: Command,         action: ClearHistory     }
-  #- { key: K,      mods: Command,         chars: "\x0c"            }
-  #- { key: V,      mods: Command,         action: Paste            }
-  #- { key: C,      mods: Command,         action: Copy             }
-  #- { key: H,      mods: Command,         action: Hide             }
-  #- { key: M,      mods: Command,         action: Minimize         }
-  #- { key: Q,      mods: Command,         action: Quit             }
-  #- { key: W,      mods: Command,         action: Quit             }
-  #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
+# (macOS only)
+#- { key: Key0,   mods: Command,         action: ResetFontSize    }
+#- { key: Equals, mods: Command,         action: IncreaseFontSize }
+#- { key: Add,    mods: Command,         action: IncreaseFontSize }
+#- { key: Minus,  mods: Command,         action: DecreaseFontSize }
+#- { key: K,      mods: Command,         action: ClearHistory     }
+#- { key: K,      mods: Command,         chars: "\x0c"            }
+#- { key: V,      mods: Command,         action: Paste            }
+#- { key: C,      mods: Command,         action: Copy             }
+#- { key: H,      mods: Command,         action: Hide             }
+#- { key: M,      mods: Command,         action: Minimize         }
+#- { key: Q,      mods: Command,         action: Quit             }
+#- { key: W,      mods: Command,         action: Quit             }
+#- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
-  #- { key: Paste,                    action: Paste                            }
-  #- { key: Copy,                     action: Copy                             }
-  #- { key: L,         mods: Control, action: ClearLogNotice                   }
-  #- { key: L,         mods: Control, chars: "\x0c"                            }
-  #- { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  #- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+#- { key: Paste,                    action: Paste                            }
+#- { key: Copy,                     action: Copy                             }
+#- { key: L,         mods: Control, action: ClearLogNotice                   }
+#- { key: L,         mods: Control, chars: "\x0c"                            }
+#- { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+#- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+#- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+#- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
