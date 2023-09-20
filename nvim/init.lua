@@ -316,5 +316,5 @@ require("lazy").setup({
 }, {})
 
 --merlin (opam/ocaml
-opamshare = vim.api.nvim_eval("substitute(system('opam var share'),'\n$','','''')")
+local opamshare = vim.api.nvim_eval("substitute(system('opam var share'),'\n$','','''')")
 vim.opt.runtimepath:append(opamshare .. "$opamshare/merlin/vim")
