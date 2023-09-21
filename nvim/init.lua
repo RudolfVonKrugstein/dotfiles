@@ -107,6 +107,14 @@ require("lazy").setup({
     end,
   },
   {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
+  {
     "echasnovski/mini.nvim",
     version = "*",
     init = function()
@@ -139,7 +147,7 @@ require("lazy").setup({
       require("mini.splitjoin").setup({})
       require("mini.starter").setup({})
       -- require('mini.statusline').setup({})
-      require("mini.surround").setup({})
+      --require("mini.surround").setup({})
       require("mini.tabline").setup({})
       -- require('mini.test').setup({})
       -- require('mini.trailspace').setup({})
@@ -160,7 +168,7 @@ require("lazy").setup({
     config = function()
       require("lspsaga").setup({
         lightbulb = {
-          enable = true,
+          enable = false,
         },
       })
     end,
@@ -305,12 +313,15 @@ require("lazy").setup({
       })
     end,
   },
+  -- repl
+  { "tpope/vim-repeat" },
+  { "pappasam/nvim-repl" },
   -- python specific stuff
   {
     "mfussenegger/nvim-dap-python",
     dependencies = { "nvim-dap" },
     config = function()
-      require("dap-python").setup("./.venv/bin/python")
+      require("dap-python").setup()
     end,
   },
 }, {})

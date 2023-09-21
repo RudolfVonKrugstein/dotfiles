@@ -132,7 +132,18 @@ require("lspconfig")["taplo"].setup({
 })
 require("lspconfig")["ocamllsp"].setup({
   capabilities = capabilities,
-  on_attach = require("virtualtypes").on_attach,
+  on_attach = function(client, bufnr)
+    if client.resolved_capabilities.code_lens then
+      local codelens = vim.api.nvim_create_autogroup("LSPCodeLens", { clear = true })
+      vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
+        group = codelens,
+        callback = function()
+          vim.lsp.codelens.refresh()
+        end,
+        buffer = buffnr,
+      })
+    end
+  end,
 })
 -- require('lspconfig')['rust_analyzer'].setup {
 --   capabilities = capabilities

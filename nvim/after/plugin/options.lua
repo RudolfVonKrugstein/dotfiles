@@ -13,16 +13,17 @@ opt.updatetime = 250
 opt.signcolumn = "yes"
 opt.termguicolors = true
 opt.expandtab = true
-opt.spelllang = 'en,de,cjk'
+opt.spelllang = "en,de,cjk"
 opt.spell = true
-opt.guifont = 'JetBrainsMono NF:h14'
+opt.guifont = "JetBrainsMono NF:h14"
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.timeout = false
 opt.ttimeout = false
-vim.cmd('colorscheme tokyonight-night')
-vim.cmd('highlight GitSignsAdd guifg=GREEN')
-vim.cmd('highlight GitSignsChange guifg=YELLOW')
-vim.cmd('highlight GitSignsDelete guifg=RED')
-vim.cmd(':set pumblend=0')
-vim.cmd(':set winblend=0')
+vim.cmd("colorscheme tokyonight-night")
+vim.cmd("highlight GitSignsAdd guifg=GREEN")
+vim.cmd("highlight GitSignsChange guifg=YELLOW")
+vim.cmd("highlight GitSignsDelete guifg=RED")
+vim.cmd(":set pumblend=0")
+vim.cmd(":set winblend=0")
+opt.clipboard = "unnamed"
