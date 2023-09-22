@@ -149,7 +149,7 @@ require("lazy").setup({
       require("mini.starter").setup({})
       -- require('mini.statusline').setup({})
       --require("mini.surround").setup({})
-      require("mini.tabline").setup({})
+      --require("mini.tabline").setup({})
       -- require('mini.test').setup({})
       -- require('mini.trailspace').setup({})
     end,
@@ -323,6 +323,16 @@ require("lazy").setup({
     dependencies = { "nvim-dap" },
     config = function()
       require("dap-python").setup()
+    end,
+  },
+  -- tabbar
+  { "romgrk/barbar.nvim", opts = {} },
+  -- hydra
+  {
+    "anuvyklack/hydra.nvim",
+    dependencies = { "sindrets/winshift.nvim", "mrjones2014/smart-splits.nvim", "romgrk/barbar.nvim" },
+    config = function()
+      require("config.hydra.windows")
     end,
   },
 }, {})

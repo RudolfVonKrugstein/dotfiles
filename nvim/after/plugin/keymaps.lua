@@ -62,7 +62,7 @@ wk.register({
       "Find files",
     },
     r = {
-      builtin.recent_files,
+      builtin.oldfiles,
       "recent files",
     },
     e = {
