@@ -13,7 +13,6 @@ g.maplocalleader = " "
 
 -- setup which keys
 wk.register({
-  { prefix = "<leader>" },
   -- cade related stuff
   c = {
     name = "code",
@@ -39,7 +38,7 @@ wk.register({
       "<cmd>Lspsaga outline<CR>",
       "toggle outline",
     },
-    {
+    h = {
       "<cmd>Lspsaga hover_doc ++keep<CR>",
       "open doc window",
     },
@@ -164,20 +163,35 @@ wk.register({
     end,
     "Undotree toggle",
   },
-})
+  ["?"] = {
+    function()
+      vim.diagnostic.open_float()
+    end,
+    "show line diagnostics",
+  },
+  -- neotest
+  t = {
+    function()
+      require("neotest").summary.toggle()
+    end,
+    "Toggle test summary",
+  },
+  -- searching
+  ["/"] = { builtin.live_grep, "Search in pwd" },
+  ["*"] = { builtin.grep_string, "Search for word under cursor in workspace" },
+  b = { builtin.buffers, "Find buffer" },
+  h = { builtin.help_tags, "Show help tags" },
+  j = {
+    function()
+      builtin.jumplist({})
+    end,
+    "Jump List",
+  },
+}, { prefix = "<leader>" })
 
 -- Word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-
--- telescope
-keymap("n", "<leader>/", builtin.live_grep, { desc = "Search in pwd" })
-keymap("n", "<leader>*", builtin.grep_string, { desc = "Search for word under cursor in workspace" })
-keymap("n", "<leader>b", builtin.buffers, { desc = "Find buffer" })
-keymap("n", "<leader>h", builtin.help_tags, { desc = "Show help tags" })
-keymap("n", "<leader>j", function()
-  require("telescope.builtin").jumplist({})
-end, { desc = "jumplist" })
 
 -- g menu (goto)
 keymap("n", "gl", "<cmd>Lspsaga lsp_finder<CR>", { desc = "traverse symbols usage" })
@@ -218,14 +232,6 @@ vim.diagnostic.config({
   update_in_insert = false, -- default to false
   severity_sort = false, -- default to false
 })
-keymap("n", "<leader>?", function()
-  vim.diagnostic.open_float()
-end, { desc = "show line diagnostics" })
-
--- neotest
-keymap("n", "<leader>t", function()
-  require("neotest").summary.toggle()
-end, { desc = "Toggle test summary" })
 
 -- neotest commands
 vim.api.nvim_create_user_command("NeotestRun", function()
