@@ -78,6 +78,25 @@ wk.register({
       "Open file explorer here",
     },
   },
+  -- other file
+  o = {
+    name = "Alt File",
+    o = {
+      "<cmd>Other<CR>",
+      "Open alternate file",
+      { noremap = true, silent = true },
+    },
+    s = {
+      "<cmd>OtherSplit<CR>",
+      "Open alternate file in split",
+      { noremap = true, silent = true },
+    },
+    v = {
+      "<cmd>OtherVSplit<CR>",
+      "Open alternate file in virtical split",
+      { noremap = true, silent = true },
+    },
+  },
   -- debug
   d = {
     name = "Debug",

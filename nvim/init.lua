@@ -161,6 +161,23 @@ require("lazy").setup({
       require("mini.files").setup({})
     end,
   },
+  {
+    "rgroli/other.nvim",
+    config = function()
+      require("other-nvim").setup({
+        mappings = {
+          {
+            pattern = "(.*).ml$",
+            target = "%1.mli",
+          },
+          {
+            pattern = "(.*).mli$",
+            target = "%1.ml",
+          },
+        },
+      })
+    end,
+  },
   { "nvim-telescope/telescope.nvim" },
   { "nvim-telescope/telescope-ui-select.nvim" },
   {
