@@ -26,4 +26,4 @@ vim.cmd("highlight GitSignsChange guifg=YELLOW")
 vim.cmd("highlight GitSignsDelete guifg=RED")
 vim.cmd(":set pumblend=0")
 vim.cmd(":set winblend=0")
-opt.clipboard = "unnamed"
+opt.clipboard = "unnamedplus"

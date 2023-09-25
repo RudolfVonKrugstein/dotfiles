@@ -96,7 +96,7 @@ require("lazy").setup({
     end,
   },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "https://github.com/RudolfVonKrugstein/lsp_lines.git",
     config = function()
       require("lsp_lines").setup()
     end,

@@ -54,6 +54,12 @@ wk.register({
       end,
       "symbols (buffer)",
     },
+    l = {
+      function()
+        require("lsp_lines").toggle()
+      end,
+      "Toggle LSP lines",
+    },
   },
   f = {
     name = "file",
@@ -242,6 +248,7 @@ vim.diagnostic.config({
   underline = true,
   signs = true,
   virtual_text = false,
+  virtual_lines = { only_current_line = true },
   float = {
     show_header = true,
     source = "always",
