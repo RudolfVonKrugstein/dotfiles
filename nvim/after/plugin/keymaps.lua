@@ -204,7 +204,11 @@ wk.register({
   -- searching
   ["/"] = { builtin.live_grep, "Search in pwd" },
   ["*"] = { builtin.grep_string, "Search for word under cursor in workspace" },
-  b = { builtin.buffers, "Find buffer" },
+  b = {
+    name = "buffer",
+    b = { builtin.buffers, "Find buffer" },
+    d = { "<cmd>bdelete<CR>", "Delete buffer" },
+  },
   h = { builtin.help_tags, "Show help tags" },
   j = {
     function()
