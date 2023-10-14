@@ -12,6 +12,7 @@ keybinds {
         unbind "Ctrl s"
         unbind "Ctrl o"
         unbind "Ctrl q"
+        unbind "Ctrl b"
     }
     locked {
         bind "Alt g" { SwitchToMode "Normal"; }
