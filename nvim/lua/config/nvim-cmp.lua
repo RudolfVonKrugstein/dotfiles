@@ -130,6 +130,21 @@ require("lspconfig")["ruff_lsp"].setup({
 require("lspconfig")["taplo"].setup({
   capabilities = capabilities,
 })
+require("lspconfig")["elixirls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false,
+      fetchDeps = false,
+    },
+  },
+})
+require("lspconfig")["efm"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "elixir" },
+})
 require("lspconfig")["ocamllsp"].setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
