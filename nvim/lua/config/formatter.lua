@@ -63,6 +63,14 @@ require("formatter").setup({
     terraform = {
       require("formatter.filetypes.terraform").terraformfmt,
     },
+    elixir = {
+      function()
+        return {
+          exe = "mix",
+          args = "format",
+        }
+      end,
+    },
     ocaml = {
       function()
         return {
