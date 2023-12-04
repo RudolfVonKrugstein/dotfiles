@@ -72,16 +72,8 @@ wk.register({
       "recent files",
     },
     e = {
-      function()
-        MiniFiles.open()
-      end,
+      "<CMD>Oil<CR>",
       "Open file explorer",
-    },
-    E = {
-      function()
-        MiniFiles.open(vim.api.nvim_buf_get_name(0))
-      end,
-      "Open file explorer here",
     },
   },
   -- other file

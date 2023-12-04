@@ -154,11 +154,21 @@ require("lazy").setup({
       -- require('mini.trailspace').setup({})
     end,
   },
+  -- {
+  --   "echasnovski/mini.files",
+  --   version = false,
+  --   config = function()
+  --     require("mini.files").setup({})
+  --   end,
+  -- },
   {
-    "echasnovski/mini.files",
-    version = false,
+    "stevearc/oil.nvim",
     config = function()
-      require("mini.files").setup({})
+      require("oil").setup({
+        keymaps = {
+          ["q"] = "actions.close",
+        },
+      })
     end,
   },
   {

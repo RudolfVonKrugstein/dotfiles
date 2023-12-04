@@ -145,6 +145,11 @@ require("lspconfig")["efm"].setup({
   on_attach = on_attach,
   filetypes = { "elixir" },
 })
+require("lspconfig")["astro"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "astro" },
+})
 require("lspconfig")["ocamllsp"].setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
