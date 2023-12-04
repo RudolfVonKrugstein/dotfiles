@@ -29,6 +29,11 @@ if [ -d ~/development/flutter/bin ]; then
     export PATH=$PATH:$HOME/development/flutter/bin
 fi
 
+# go
+if [ -d /usr/local/go/bin ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
+
 # android sdk
 if [ -d ~/development/AndroidSDK/cmdline-tools/latest/bin ]; then
     export PATH=$PATH:$HOME/development/AndroidSDK/cmdline-tools/latest/bin
