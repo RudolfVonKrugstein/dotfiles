@@ -1,9 +1,9 @@
 [commit]
 	gpgsign = true
 [user]
-	signingkey = 2048C392E425717174BC6996984AA729EC7604F6
+	signingkey = A7FB930FB8597407AEAB96236FEB23FCF209BDB0
 	name = Nathan Hüsken
-	email = nathan@wintercloud.de
+	email = nathan@huesken.org
 [tag]
 	forceSignAnnotated = true
 [init]
