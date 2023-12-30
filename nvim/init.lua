@@ -362,6 +362,25 @@ require("lazy").setup({
       require("config.hydra.windows")
     end,
   },
+  -- obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/projects/private/notes",
+        },
+      },
+    },
+  },
 }, {})
 
 --merlin (opam/ocaml
