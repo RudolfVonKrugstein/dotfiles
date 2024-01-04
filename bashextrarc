@@ -70,7 +70,13 @@ fi
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
 fi
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+if grep -qi microsoft /proc/version; then
+  echo "Not using gpg agent on WSL"
+else
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
+
 
 export FZF_TMUX_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
 export FZF_CTRL_T_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
