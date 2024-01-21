@@ -1,7 +1,11 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 vim.opt.completeopt = "menu,menuone,noselect"
+
+-- setup autopair with nvimcmo
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

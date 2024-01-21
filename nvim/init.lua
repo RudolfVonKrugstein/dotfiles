@@ -14,25 +14,42 @@ vim.opt.rtp:prepend(lazypath)
 
 -- install plugins
 require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  -- basics
   { "kyazdani42/nvim-web-devicons" },
   { "nvim-lua/plenary.nvim" },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup()
-    end,
-  },
+  -- color scheme
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
   },
+  -- syntax highlightin
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  -- show register contents when pressing "
+  {
+    "folke/which-key.nvim",
+    layz = false,
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end,
+  },
+  -- insert paired character for things like " and brackets
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    check_ts = true, -- use treesitter to check if pairs should be inserted
+    opts = {
+      check_ts = true, -- enalbe treesitter
+      ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+      map_c_w = true, -- delete a pair
+    },
+  },
   { "L3MON4D3/LuaSnip" },
+  -- basic lsp config
+  -- mason installs lsp servers and other tools
   {
     "williamboman/mason.nvim",
     lazy = false,
@@ -45,7 +62,25 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
     config = function()
-      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "ocmllsp",
+          "astro",
+          "efm",
+          "elexirls",
+          "taplo",
+          "ruff_lsp",
+          "pyright",
+          "tailwindcss",
+          "tflint",
+          "terraformls",
+          "tsserver",
+          "clangd",
+          "cssls",
+          "html",
+          "lua_ls",
+        },
+      })
     end,
     requires = { { "williamboman/mason.nvim" } },
   },
@@ -143,7 +178,6 @@ require("lazy").setup({
       require("mini.map").setup({})
       require("mini.misc").setup({})
       require("mini.move").setup({})
-      require("mini.pairs").setup({})
       -- require('mini.sessions').setup({})
       require("mini.splitjoin").setup({})
       require("mini.starter").setup({})
