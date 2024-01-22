@@ -1,5 +1,7 @@
 local wk = require("which-key")
 local builtin = require("telescope.builtin")
+local projects_extension = require("telescope").extensions.projects
+local file_browser_extension = require("telescope").extensions.file_browser
 
 vim.lsp.buf.format()
 local g = vim.g
@@ -65,10 +67,15 @@ wk.register({
     name = "file",
     f = {
       builtin.find_files,
-      "Find files",
+      "Find project files",
     },
     r = {
-      builtin.oldfiles,
+      projects_extension.recent_project_files,
+      "recent files",
+    },
+    b = { file_browser_extension.file_browser, "browser files" },
+    p = {
+      projects_extension.projects,
       "recent files",
     },
     e = {

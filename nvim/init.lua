@@ -39,6 +39,22 @@ require("lazy").setup({
   -- file opening and other stuff to do with fuzzy selection
   { "nvim-telescope/telescope.nvim" },
   { "nvim-telescope/telescope-ui-select.nvim" },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    init = function()
+      require("telescope").load_extension("file_browser")
+    end,
+  },
+  -- project management
+  {
+    "ahmedkhalf/project.nvim",
+    lazy = false,
+    config = function()
+      require("project_nvim").setup({ silent_chdir = false })
+      require("telescope").load_extension("projects")
+    end,
+  },
   -- insert paired character for things like " and brackets
   {
     "windwp/nvim-autopairs",
