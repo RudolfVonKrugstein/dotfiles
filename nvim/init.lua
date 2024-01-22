@@ -36,6 +36,9 @@ require("lazy").setup({
       require("which-key").setup()
     end,
   },
+  -- file opening and other stuff to do with fuzzy selection
+  { "nvim-telescope/telescope.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
   -- insert paired character for things like " and brackets
   {
     "windwp/nvim-autopairs",
@@ -46,6 +49,15 @@ require("lazy").setup({
       ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
       map_c_w = true, -- delete a pair
     },
+  },
+  -- surround objects with brackets and similar
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
   },
   { "L3MON4D3/LuaSnip" },
   -- basic lsp config
@@ -58,16 +70,18 @@ require("lazy").setup({
       require("mason").setup()
     end,
   },
+  -- help with configuring different lsp servers
+  -- the config is happening in context if nvim-cmp
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "ocmllsp",
+          "ocamllsp",
           "astro",
           "efm",
-          "elexirls",
+          "elixirls",
           "taplo",
           "ruff_lsp",
           "pyright",
@@ -89,6 +103,7 @@ require("lazy").setup({
     lazy = false,
     requires = { { "williamboman/mason.nvim" }, { "williamboman/mason-lspconfig" } },
   },
+  -- autocompletion
   {
     "hrsh7th/cmp-nvim-lsp",
   },
@@ -107,6 +122,7 @@ require("lazy").setup({
       require("config.nvim-cmp")
     end,
   },
+  -- show lsp hints as inlay text
   {
     "lvimuser/lsp-inlayhints.nvim",
     config = function()
@@ -130,71 +146,44 @@ require("lazy").setup({
       })
     end,
   },
+  -- show lsp hints below the line (can be toggled)
   {
     "https://github.com/RudolfVonKrugstein/lsp_lines.git",
     config = function()
       require("lsp_lines").setup()
     end,
   },
-  {
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup()
-    end,
-  },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({})
-    end,
-  },
+  -- {
+  --   "folke/trouble.nvim",
+  --   config = function()
+  --     require("trouble").setup()
+  --   end,
+  -- },
   {
     "echasnovski/mini.nvim",
     version = "*",
     init = function()
+      -- show the current idention
       require("config.mini.indentscope").init()
     end,
     config = function(_, opts)
       -- setup nvim plugins
+      -- allows for example replace inner function call via cif
       require("mini.ai").setup({})
-      -- require("mini.basics").setup({ options = { extra_ui = true } }) -- makes trouble with neotest
-      require("mini.align").setup({})
-      -- require('mini.animate').setup({})
-      -- require("config.mini.base16")
+      -- move between different signs using brackets
       require("mini.bracketed").setup({})
-      require("mini.bufremove").setup({})
-      -- require('mini.colors').setup({})
+      -- toggle comments
       require("mini.comment").setup({})
+      -- highlight the word under cursor
       require("mini.cursorword").setup({})
-      -- require('mini.doc').setup({})
-      require("mini.fuzzy").setup({})
-      -- require('mini.hipatterns').setup({})
-      -- require('mini.hues').setup({})
       require("config.mini.indentscope").config(_, opts)
+      -- better jumping via f
       require("mini.jump").setup({})
-      -- require('mini.jump2d').setup({})
-      require("mini.map").setup({})
-      require("mini.misc").setup({})
+      -- move selection. TODO: configure
       require("mini.move").setup({})
-      -- require('mini.sessions').setup({})
-      require("mini.splitjoin").setup({})
-      require("mini.starter").setup({})
-      -- require('mini.statusline').setup({})
-      --require("mini.surround").setup({})
-      --require("mini.tabline").setup({})
-      -- require('mini.test').setup({})
-      -- require('mini.trailspace').setup({})
     end,
   },
-  -- {
-  --   "echasnovski/mini.files",
-  --   version = false,
-  --   config = function()
-  --     require("mini.files").setup({})
-  --   end,
-  -- },
+  -- file manager
   {
     "stevearc/oil.nvim",
     config = function()
@@ -205,6 +194,7 @@ require("lazy").setup({
       })
     end,
   },
+  -- switch between header and main source
   {
     "rgroli/other.nvim",
     config = function()
@@ -222,22 +212,20 @@ require("lazy").setup({
       })
     end,
   },
-  { "nvim-telescope/telescope.nvim" },
-  { "nvim-telescope/telescope-ui-select.nvim" },
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({
-        lightbulb = {
-          enable = false,
-        },
-      })
-    end,
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-  },
+  -- {
+  --   "glepnir/lspsaga.nvim",
+  --   event = "LspAttach",
+  --   config = function()
+  --     require("lspsaga").setup({
+  --       lightbulb = {
+  --         enable = false,
+  --       },
+  --     })
+  --   end,
+  --   dependencies = {
+  --     { "nvim-treesitter/nvim-treesitter" },
+  --   },
+  -- },
   -- rust
   {
     "simrat39/rust-tools.nvim",
@@ -255,6 +243,7 @@ require("lazy").setup({
       crates.show()
     end,
   },
+  -- allow undoing stuff in a window
   {
     "jiaoshijie/undotree",
     lazy = false,
@@ -265,6 +254,7 @@ require("lazy").setup({
       })
     end,
   },
+  -- show git change status
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -280,9 +270,10 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "tpope/vim-fugitive",
-  },
+  -- {
+  --   "tpope/vim-fugitive",
+  -- },
+  -- show lsp messages on the lower left
   {
     "j-hui/fidget.nvim",
     config = function()
@@ -297,42 +288,45 @@ require("lazy").setup({
       require("config.lualine")
     end,
   },
+  -- status line
   {
     "nvim-neotest/neotest-python",
   },
-  {
-    "rouge8/neotest-rust",
-  },
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "rouge8/neotest-rust",
-      "nvim-neotest/neotest-python",
-    },
-    config = function()
-      require("neotest").setup({
-        signs = true,
-        virtual_text = true,
-        adapters = {
-          require("neotest-python")({
-            runner = "pytest",
-          }),
-          require("neotest-rust")({}),
-        },
-        quickfix = {
-          open = false,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "rouge8/neotest-rust",
+  -- },
+  -- {
+  --   "nvim-neotest/neotest",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "rouge8/neotest-rust",
+  --     "nvim-neotest/neotest-python",
+  --   },
+  --   config = function()
+  --     require("neotest").setup({
+  --       signs = true,
+  --       virtual_text = true,
+  --       adapters = {
+  --         require("neotest-python")({
+  --           runner = "pytest",
+  --         }),
+  --         require("neotest-rust")({}),
+  --       },
+  --       quickfix = {
+  --         open = false,
+  --       },
+  --     })
+  --   end,
+  -- },
+  -- auto format the code
   {
     "mhartington/formatter.nvim",
     config = function()
       require("config.formatter")
     end,
   },
+  -- auto show linting stuff, more than lsp
   {
     "mfussenegger/nvim-lint",
     config = function()
