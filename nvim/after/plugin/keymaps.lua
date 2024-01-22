@@ -18,32 +18,33 @@ wk.register({
   -- cade related stuff
   c = {
     name = "code",
-    a = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "code action",
-    },
-    r = {
-      "<cmd>Lspsaga rename ++project<CR>",
-      "rename symbol",
-    },
-    d = {
-      "<cmd>Lspsaga show_buf_diagnostics<CR>",
-      "diagnostics (buffer)",
-    },
-    D = {
-      "<cmd>Lspsaga show_workspace_diagnostics<CR>",
-      "diagnostics (buffer)",
-    },
-    o = {
-      "<cmd>Lspsaga outline<CR>",
-      "toggle outline",
-    },
-    h = {
-      "<cmd>Lspsaga hover_doc ++keep<CR>",
-      "open doc window",
-    },
+    f = { "<cmd>Format<CR>", "format code" },
+    -- a = {
+    --   function()
+    --     vim.lsp.buf.code_action()
+    --   end,
+    --   "code action",
+    -- },
+    -- r = {
+    --   "<cmd>Lspsaga rename ++project<CR>",
+    --   "rename symbol",
+    -- },
+    -- d = {
+    --   "<cmd>Lspsaga show_buf_diagnostics<CR>",
+    --   "diagnostics (buffer)",
+    -- },
+    -- D = {
+    --   "<cmd>Lspsaga show_workspace_diagnostics<CR>",
+    --   "diagnostics (buffer)",
+    -- },
+    -- o = {
+    --   "<cmd>Lspsaga outline<CR>",
+    --   "toggle outline",
+    -- },
+    -- h = {
+    --   "<cmd>Lspsaga hover_doc ++keep<CR>",
+    --   "open doc window",
+    -- },
     S = {
       function()
         builtin.lsp_workspace_symbols({})

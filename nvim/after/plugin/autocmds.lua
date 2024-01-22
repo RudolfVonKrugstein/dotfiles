@@ -12,15 +12,15 @@ api.nvim_exec(
 )
 
 -- format on save
-api.nvim_exec(
-  [[
-  augroup FormatAutogroup
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-  augroup end
-  ]],
-  false
-)
+-- api.nvim_exec(
+--   [[
+--   augroup FormatAutogroup
+--     autocmd!
+--     autocmd BufWritePost * FormatWrite
+--   augroup end
+--   ]],
+--   false
+-- )
 
 -- lint on save
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

@@ -17,6 +17,7 @@ require("lazy").setup({
   -- basics
   { "kyazdani42/nvim-web-devicons" },
   { "nvim-lua/plenary.nvim" },
+  { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
   -- color scheme
   {
     "folke/tokyonight.nvim",
@@ -64,6 +65,7 @@ require("lazy").setup({
       check_ts = true, -- enalbe treesitter
       ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
       map_c_w = true, -- delete a pair
+      disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
     },
   },
   -- surround objects with brackets and similar
@@ -242,6 +244,22 @@ require("lazy").setup({
   --     { "nvim-treesitter/nvim-treesitter" },
   --   },
   -- },
+  -- lsp features of all kind
+  {
+    "ray-x/navigator.lua",
+    dependencies = { "ray-x/navigator.lua", "ray-x/navigator.lua" },
+    config = function()
+      require("navigator").setup({
+        mason = true,
+        transparency = 0,
+        treesitter_analysis = false, -- to slow
+        lsp = {
+          disable_lsp = { "pylsp" },
+          format_on_save = false,
+        },
+      })
+    end,
+  },
   -- rust
   {
     "simrat39/rust-tools.nvim",
