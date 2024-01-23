@@ -52,7 +52,10 @@ require("lazy").setup({
     "ahmedkhalf/project.nvim",
     lazy = false,
     config = function()
-      require("project_nvim").setup({ silent_chdir = false })
+      require("project_nvim").setup({
+        silent_chdir = false,
+        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "pyproject.toml" },
+      })
       require("telescope").load_extension("projects")
     end,
   },
