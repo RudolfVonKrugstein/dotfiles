@@ -22,6 +22,7 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   { "folke/which-key.nvim" },
   { "folke/trouble.nvim" },
+  { "wincent/ferret" },
   { "code-biscuits/nvim-biscuits" },
   { "nvim-lualine/lualine.nvim" },
   { "mhartington/formatter.nvim" },
@@ -51,7 +52,7 @@ require("lazy").setup({
 -- general options
 local opt = vim.opt
 
-opt.hlsearch = false
+opt.hlsearch = true
 opt.number = true
 opt.relativenumber = true
 opt.hidden = true
@@ -467,11 +468,20 @@ wk.register({
       end,
       "workspace diagnostics",
     },
+    q = {
+      function()
+        trouble.open("quickfix")
+      end,
+      "open quickfix list in trouble",
+    },
   },
   s = {
     name = "search",
     g = { ts_builtin.live_grep, "Live Grep" },
     w = { ts_builtin.grep_string, "Search for word under cursor in workspace" },
+    s = { "<Cmd>Ack ", "search in files to quickfix list" },
+    n = { "<Cmd>Quack ", "narrow items in quickfix list" },
+    r = { "<Cmd>Acks ", "replace items in quickfix list" },
   },
   b = {
     name = "buffer",
