@@ -23,6 +23,7 @@ require("lazy").setup({
   { "folke/which-key.nvim" },
   { "folke/trouble.nvim" },
   { "wincent/ferret" },
+  { "kevinhwang91/nvim-bqf" },
   { "code-biscuits/nvim-biscuits" },
   { "nvim-lualine/lualine.nvim" },
   { "mhartington/formatter.nvim" },
@@ -135,6 +136,9 @@ require("nvim-biscuits").setup({})
 -- trouble
 require("trouble").setup({})
 
+-- better quickfix
+require("bqf").setup({})
+
 -- lsp setup
 local lsp_zero = require("lsp-zero")
 
@@ -183,6 +187,7 @@ require("mason-lspconfig").setup({
 
 -- setup nvim-cmp
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 local cmp_action = lsp_zero.cmp_action()
 
 -- setup autopair with nvim cmp
@@ -190,6 +195,35 @@ cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm
 
 -- load more snippets from friendly-snippets
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- supertab functions
+local function luasnip_supertab(select_opts)
+  return cmp.mapping(function(fallback)
+    local col = vim.fn.col(".") - 1
+
+    if cmp.visible() then
+      cmp.select_next_item(select_opts)
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+      fallback()
+    else
+      cmp.complete()
+    end
+  end, { "i", "s" })
+end
+
+local function luasnip_shift_supertab(select_opts)
+  return cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item(select_opts)
+    elseif luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, { "i", "s" })
+end
 
 cmp.setup({
   sources = {
@@ -204,10 +238,12 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     -- complete common
-    ["<Tab>"] = cmp.mapping.complete_common_string(),
+    ["<Tab>"] = luasnip_supertab(),
+    ["<S-Tab>"] = luasnip_shift_supertab(),
 
     -- confirm completion item
     ["<Enter>"] = cmp.mapping.confirm({ select = false }),
+    ["<S-Enter>"] = cmp.mapping.confirm({ select = true }),
 
     -- trigger completion menu
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -393,7 +429,7 @@ api.nvim_exec(
 -- close certain windows with q
 local group = vim.api.nvim_create_augroup("NeotestConfig", {})
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "neotest-output", "neotest-summary" },
+  pattern = { "neotest-output", "neotest-summary", "quickfix" },
   group = group,
   callback = function(opts)
     vim.keymap.set("n", "q", function()
@@ -440,7 +476,7 @@ wk.register({
     f = { ts_builtin.find_files, "Find files" },
     b = { ts_file_browser_extension.file_browser, "browse files" },
     e = { "<CMD>Oil<CR>", "Open file explorer" },
-    s = { "<CMD>w<CR>", "save" },
+    s = { "<CMD>FormatSave<CR>", "save" },
   },
   u = {
     function()
@@ -479,9 +515,9 @@ wk.register({
     name = "search",
     g = { ts_builtin.live_grep, "Live Grep" },
     w = { ts_builtin.grep_string, "Search for word under cursor in workspace" },
-    s = { "<Cmd>Ack ", "search in files to quickfix list" },
-    n = { "<Cmd>Quack ", "narrow items in quickfix list" },
-    r = { "<Cmd>Acks ", "replace items in quickfix list" },
+    s = { ":Ack ", "search in files to quickfix list" },
+    n = { ":Quack ", "narrow items in quickfix list" },
+    r = { ":Acks ", "replace items in quickfix list" },
   },
   b = {
     name = "buffer",
