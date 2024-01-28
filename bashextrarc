@@ -73,6 +73,7 @@ fi
 
 if grep -qi microsoft /proc/version; then
   echo "Not using gpg agent on WSL"
+  export GPG_TTY=$(tty)
 else
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 fi
