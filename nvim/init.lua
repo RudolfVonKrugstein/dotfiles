@@ -476,7 +476,7 @@ wk.register({
     f = { ts_builtin.find_files, "Find files" },
     b = { ts_file_browser_extension.file_browser, "browse files" },
     e = { "<CMD>Oil<CR>", "Open file explorer" },
-    s = { "<CMD>FormatSave<CR>", "save" },
+    s = { "<CMD>FormatWrite<CR>", "save" },
   },
   u = {
     function()
