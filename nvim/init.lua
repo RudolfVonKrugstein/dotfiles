@@ -23,8 +23,10 @@ require("lazy").setup({
   { "folke/which-key.nvim" },
   { "folke/trouble.nvim" },
   { "wincent/ferret" },
+  { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
   { "code-biscuits/nvim-biscuits" },
+  { "jdrupal-dev/code-refactor.nvim" },
   { "nvim-lualine/lualine.nvim" },
   { "mhartington/formatter.nvim" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -101,6 +103,9 @@ require("telescope").setup({
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("file_browser")
 
+-- marknav
+require("marknav").setup()
+
 -- undotree
 require("undotree").setup({
   float_diff = false,
@@ -138,6 +143,9 @@ require("trouble").setup({})
 
 -- better quickfix
 require("bqf").setup({})
+
+-- code refactor
+require("code-refactor").setup({})
 
 -- lsp setup
 local lsp_zero = require("lsp-zero")
@@ -466,6 +474,10 @@ wk.register({
         vim.lsp.buf.code_action()
       end,
       "code action",
+    },
+    b={
+            "<cmd>CodeActions all<CR>",
+            "non lsp code action"
     },
     s = { ts_builtin.lsp_workspace_symbols, "symbols (workspace)" },
     S = { ts_builtin.lsp_document_symbols, "symbols (document)" },
