@@ -1,2 +1,7 @@
-signature
-mode
+cjk
+JetBrainsMono
+h14
+colorscheme
+lsp
+png
+json
