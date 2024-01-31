@@ -108,7 +108,7 @@ require("undotree").setup({
 })
 
 -- oil
-require("oil").setup({ keymaps = { ["q"] = "action.close" } })
+require("oil").setup({ keymaps = { ["q"] = "actions.close" } })
 
 -- nvim-autopairs
 require("nvim-autopairs").setup({
