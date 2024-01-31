@@ -22,6 +22,8 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   { "folke/which-key.nvim" },
   { "folke/trouble.nvim" },
+  { "nvim-neotest/neotest" },
+  { "nvim-neotest/neotest-python" },
   { "wincent/ferret" },
   { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
@@ -146,6 +148,15 @@ require("bqf").setup({})
 
 -- code refactor
 require("code-refactor").setup({})
+
+-- neotest
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+  },
+})
 
 -- lsp setup
 local lsp_zero = require("lsp-zero")
@@ -475,9 +486,9 @@ wk.register({
       end,
       "code action",
     },
-    b={
-            "<cmd>CodeActions all<CR>",
-            "non lsp code action"
+    b = {
+      "<cmd>CodeActions all<CR>",
+      "non lsp code action",
     },
     s = { ts_builtin.lsp_workspace_symbols, "symbols (workspace)" },
     S = { ts_builtin.lsp_document_symbols, "symbols (document)" },
@@ -546,7 +557,28 @@ wk.register({
     name = "language and spelling",
     l = { ts_builtin.spell_suggest, "fix spelling" },
     e = { "<cmd>setlocal spell spelllang=en_us<CR>", "switch to english" },
-    d = { "<cmd>setlocal spell spelllang=de_de<CR>", "swich to german" },
+    d = { "<cmd>setlocal spell spelllang=de_de<CR>", "switch to german" },
+  },
+  t = {
+    name = "test",
+    s = { require("neotest").summary.toggle, "Toggle neotest summary" },
+    r = { require("neotest").run.run, "Run closest test" },
+    d = {
+      function()
+        require("neotest").run.run({ strategy = "dap" })
+      end,
+      "Debug closest test",
+    },
+    f = {
+      function()
+        require("neotest").run.run(vim.fn.expand("%"))
+      end,
+      "Run all test in file",
+    },
+    x = {
+      require("neotest").run.stop,
+      "Stop closes test",
+    },
   },
 }, { prefix = "<leader>" })
 
