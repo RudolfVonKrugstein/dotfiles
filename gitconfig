@@ -12,6 +12,6 @@
 	rebase = true
 [mu-repo]
 	remote-base-url = ssh://git@github.com:RudolfVonKrugstein
-	remote-base-url = ssh://git@gitlab.com:nathan-private
+	remote-base-url = ssh://git@gitlab.com:nathan-privat
 	remote-base-url = ssh://git@gitlab.com:huesken-consulting
 	remote-base-url = ssh://git@gitlab.com:hagebutze
