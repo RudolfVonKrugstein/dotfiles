@@ -265,7 +265,7 @@ require("mason-lspconfig").setup({
     "cssls",
     "html",
     "lua_ls",
-    "bash-language-server",
+    "bashls",
   },
   handlers = {
     lsp_zero.default_setup,
