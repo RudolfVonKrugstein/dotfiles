@@ -179,7 +179,7 @@ lsp_zero.set_sign_icons({
 -- setup treesitter
 require("nvim-treesitter.configs").setup({
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = "all",
+  ensure_installed = {},
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = true,
@@ -265,6 +265,7 @@ require("mason-lspconfig").setup({
     "cssls",
     "html",
     "lua_ls",
+    "bash-language-server",
   },
   handlers = {
     lsp_zero.default_setup,
@@ -361,6 +362,9 @@ require("formatter").setup({
   log_level = vim.log.levels.WARN,
   -- All formatter configurations are opt-in
   filetype = {
+    sh = {
+      require("formatter.filetypes.sh").shfmt,
+    },
     python = {
       require("formatter.filetypes.python").ruff,
     },
