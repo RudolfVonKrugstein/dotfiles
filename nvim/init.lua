@@ -25,6 +25,7 @@ require("lazy").setup({
   { "nvim-neotest/neotest" },
   { "nvim-neotest/neotest-python" },
   { "wincent/ferret" },
+  { "nvim-pack/nvim-spectre" },
   { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
   { "code-biscuits/nvim-biscuits" },
@@ -284,7 +285,6 @@ local function ls_name_from_event(event)
   return event.entry.source.source.client.config.name
 end
 
-
 -- Add parenthesis on completion confirmation
 cmp.event:on("confirm_done", function(event)
   local ok, ls_name = pcall(ls_name_from_event, event)
@@ -538,7 +538,7 @@ api.nvim_exec(
 -- close certain windows with q
 local group = vim.api.nvim_create_augroup("NeotestConfig", {})
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "neotest-output", "neotest-summary", "quickfix" },
+  pattern = { "neotest-output", "neotest-summary", "quickfix", "spectre" },
   group = group,
   callback = function(opts)
     vim.keymap.set("n", "q", function()
@@ -548,6 +548,9 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+-- nvim spectre for searching
+require("spectre").setup()
 
 -- keymaps
 require("which-key").setup()
@@ -631,6 +634,7 @@ wk.register({
     s = { ":Ack ", "search in files to quickfix list" },
     n = { ":Quack ", "narrow items in quickfix list" },
     r = { ":Acks ", "replace items in quickfix list" },
+    S = { require("spectre").toggle, "Search and replace using spectre" },
   },
   b = {
     name = "buffer",
