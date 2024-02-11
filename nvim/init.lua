@@ -278,6 +278,9 @@ local ind = cmp.lsp.CompletionItemKind
 local luasnip = require("luasnip")
 local cmp_action = lsp_zero.cmp_action()
 
+-- exit insert mode with jj
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape" })
+
 -- setup autopair with nvim cmp
 -- cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 -- setup ultimate autopair with cmp
