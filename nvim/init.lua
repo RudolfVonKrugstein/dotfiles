@@ -49,7 +49,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-path" },
   { "saadparwaiz1/cmp_luasnip" },
   { "rafamadriz/friendly-snippets" },
-  { "windwp/nvim-autopairs" },
+  { "altermo/ultimate-autopair.nvim" },
   { "kylechui/nvim-surround" },
   { "echasnovski/mini.nvim" },
   { "stevearc/oil.nvim" },
@@ -118,13 +118,8 @@ require("undotree").setup({
 -- oil
 require("oil").setup({ keymaps = { ["q"] = "actions.close" } })
 
--- nvim-autopairs
-require("nvim-autopairs").setup({
-  check_ts = true,
-  ignore_next_char = "[%w%.]",
-  map_c_w = true,
-  disable_filetype = { "TelescopePrompt", "clap_input" },
-})
+-- autopairs
+require("ultimate-autopair").setup({})
 
 -- nvim surround
 require("nvim-surround").setup({})
@@ -278,11 +273,31 @@ require("mason-lspconfig").setup({
 
 -- setup nvim-cmp
 local cmp = require("cmp")
+local ind = cmp.lsp.CompletionItemKind
 local luasnip = require("luasnip")
 local cmp_action = lsp_zero.cmp_action()
 
 -- setup autopair with nvim cmp
-cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+-- cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+-- setup ultimate autopair with cmp
+local function ls_name_from_event(event)
+  return event.entry.source.source.client.config.name
+end
+
+
+-- Add parenthesis on completion confirmation
+cmp.event:on("confirm_done", function(event)
+  local ok, ls_name = pcall(ls_name_from_event, event)
+  if ok and vim.tbl_contains({ "rust_analyzer" }, ls_name) then
+    return
+  end
+
+  local completion_kind = event.entry:get_completion_item().kind
+  if vim.tbl_contains({ ind.Function, ind.Method }, completion_kind) then
+    local left = vim.api.nvim_replace_termcodes("<Left>", true, true, true)
+    vim.api.nvim_feedkeys("()" .. left, "n", false)
+  end
+end)
 
 -- load more snippets from friendly-snippets
 require("luasnip.loaders.from_vscode").lazy_load()
