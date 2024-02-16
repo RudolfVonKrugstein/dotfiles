@@ -135,7 +135,16 @@ require("mini.cursorword").setup({})
 require("mini.indentscope").setup({})
 
 -- nvim context vt
-require("nvim-biscuits").setup({})
+require("nvim-biscuits").setup({
+  language_config = {
+    markdown = {
+      disabled = true
+    },
+    python = {
+      disabled = true
+    }
+  }
+})
 
 -- trouble
 require("trouble").setup({})
