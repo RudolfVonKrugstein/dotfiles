@@ -235,27 +235,25 @@ gpg:
 # password into the topmost window.
 hotkeys:
   - 
-    hotkey: 'ctrl alt p'
+    hotkey: 'win alt p'
     action: 'decrypt-password'
     options:
         copy-to-clipboard: false
         type-username: false
         type-password: true
   - 
-    hotkey: 'ctrl alt u'
+    hotkey: 'win alt u'
     action: 'decrypt-password'
     options:
         copy-to-clipboard: false
         type-username: true
         type-password: false
   -  
-    hotkey: 'ctrl alt shift p'
+    hotkey: 'win alt shift p'
     action: 'password-field'
     options:
         copy-to-clipboard: false
         type: true
-  - hotkey: 'ctrl alt t'
-    action: 'generate-totp-code'
 
     # Example configuration of an 'add password' hotkey. Uncomment to enable.
 #  - 
