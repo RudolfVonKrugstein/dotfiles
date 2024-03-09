@@ -54,6 +54,7 @@ require("lazy").setup({
   { "kylechui/nvim-surround" },
   { "echasnovski/mini.nvim" },
   { "stevearc/oil.nvim" },
+  { "elixir-tools/elixir-tools.nvim" },
 })
 
 -- general options
@@ -138,12 +139,12 @@ require("mini.indentscope").setup({})
 require("nvim-biscuits").setup({
   language_config = {
     markdown = {
-      disabled = true
+      disabled = true,
     },
     python = {
-      disabled = true
-    }
-  }
+      disabled = true,
+    },
+  },
 })
 
 -- trouble
@@ -286,6 +287,27 @@ local cmp = require("cmp")
 local ind = cmp.lsp.CompletionItemKind
 local luasnip = require("luasnip")
 local cmp_action = lsp_zero.cmp_action()
+
+-- elixir
+local elixir = require("elixir")
+local elixirls = require("elixir.elixirls")
+
+elixir.setup({
+  nextls = { enable = true },
+  credo = {},
+  elixirls = {
+    enable = true,
+    settings = elixirls.settings({
+      dialyzerEnabled = false,
+      enableTestLenses = false,
+    }),
+    on_attach = function(client, bufnr)
+      vim.keymap.set("n", "<space>cp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
+      vim.keymap.set("n", "<space>cp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
+      vim.keymap.set("v", "<space>ce", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
+    end,
+  },
+})
 
 -- exit insert mode with jj
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape" })
