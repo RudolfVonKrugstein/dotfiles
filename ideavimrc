@@ -1,0 +1,31 @@
+set clipboard+=unnamed
+set surround
+set commentary
+set highlightedyank
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set ideajoin
+
+set incsearch
+set hlsearch
+set smartcase
+
+let mapleader = " "
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+nnoremap <leader>cr :action RenameElement
+
+nnoremap <leader>ft :action SelectInProjectView
+nnoremap <leader>]d :action GotoNextError
+nnoremap <leader>[d :action GotoPrevError
+nnoremap <leader>dd :action ShowErrorDescription
+nnoremap <leader>ff :action FindInPath
+
+" Reformat the current line only
+nnoremap <leader>cf :action ReformatCode
+
+nnoremap <leader>cs :action FileStructurePopup
+
+inoremap <leader>jj <ESC>
