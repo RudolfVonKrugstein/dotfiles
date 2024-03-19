@@ -22,6 +22,7 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   { "folke/which-key.nvim" },
   { "folke/trouble.nvim" },
+  { "nvim-neotest/nvim-nio" },
   { "nvim-neotest/neotest" },
   { "nvim-neotest/neotest-python" },
   { "wincent/ferret" },
