@@ -33,7 +33,7 @@ require("lazy").setup({
   { "code-biscuits/nvim-biscuits" },
   { "jdrupal-dev/code-refactor.nvim" },
   { "nvim-lualine/lualine.nvim" },
-  { "mhartington/formatter.nvim" },
+  { "stevearc/conform.nvim" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "nvim-telescope/telescope.nvim" },
@@ -141,13 +141,13 @@ require("mini.indentscope").setup({})
 -- falsh/sneak
 require("flash").setup({})
 local keymap = vim.api.nvim_set_keymap
-keymap("n","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
-keymap("x","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
-keymap("o","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+keymap("n", "s", '<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+keymap("x", "s", '<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+keymap("o", "s", '<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
 
-keymap("n","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
-keymap("x","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
-keymap("o","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
+keymap("n", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
+keymap("x", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
+keymap("o", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
 
 -- nvim context vt
 require("nvim-biscuits").setup({
@@ -308,7 +308,7 @@ local elixirls = require("elixir.elixirls")
 
 elixir.setup({
   nextls = { enable = true },
-  credo = {},
+  credo = { enabled = true },
   elixirls = {
     enable = true,
     settings = elixirls.settings({
@@ -417,115 +417,75 @@ cmp.setup({
 })
 
 -- formatter
-local futil = require("formatter.util")
-require("formatter").setup({
-  -- Enable or disable logging
-  logging = true,
-  -- Set the log level
-  log_level = vim.log.levels.WARN,
+require("conform").setup({
   -- All formatter configurations are opt-in
-  filetype = {
+  formatters_by_ft = {
     sh = {
-      require("formatter.filetypes.sh").shfmt,
+      "shfmt",
     },
-    python = {
-      require("formatter.filetypes.python").ruff,
-    },
+    python = function(bufnr)
+      if require("conform").get_formatter_info("ruff_format", bufnr).available then
+        return { "ruff_format" }
+      else
+        return { "isort", "black" }
+      end
+    end,
     rust = {
-      require("formatter.filetypes.rust").default,
+      "rustfmt",
     },
     lua = {
-      require("formatter.filetypes.lua").stylua,
+      "stylua",
     },
     yaml = {
-      require("formatter.filetypes.yaml").prettier,
+      "prettier",
     },
     javascript = {
-      require("formatter.filetypes.javascript").prettiereslint,
+      "prettier",
     },
     typescript = {
-      require("formatter.filetypes.typescript").prettiereslint,
+      "prettier",
     },
     json = {
-      require("formatter.filetypes.json").prettier,
+      "prettier",
     },
     toml = {
-      require("formatter.filetypes.toml").taplo,
+      "taplo",
     },
     markdown = {
-      require("formatter.filetypes.markdown").prettier,
+      "mdformat",
     },
     go = {
-      require("formatter.filetypes.go").gofmt,
+      "gofmt",
     },
     cmake = {
-      require("formatter.filetypes.cmake").cmakeformat,
+      "cmake_format",
     },
     cpp = {
-      require("formatter.filetypes.cpp").clangformat,
+      "clang-format",
     },
     dart = {
-      require("formatter.filetypes.dart").dartformat,
+      "dart_format",
     },
     html = {
-      require("formatter.filetypes.html").htmlbeautify,
+      "htmlbeautify",
     },
     css = {
-      require("formatter.filetypes.css").prettier,
+      "prettier",
     },
     vue = {
-      require("formatter.filetypes.vue").prettier,
+      "prettier",
     },
     svelte = {
-      require("formatter.filetypes.svelte").prettier,
-    },
-    terraform = {
-      require("formatter.filetypes.terraform").terraformfmt,
+      "prettier",
     },
     astro = {
-      function()
-        return {
-          exe = "npx",
-          args = {
-            "prettier",
-            "--stdin-filepath",
-            futil.escape_path(futil.get_current_buffer_file_path()),
-          },
-          stdin = true,
-        }
-      end,
+      "prettier",
     },
     elixir = {
-      function()
-        return {
-          exe = "mix",
-          args = "format",
-        }
-      end,
+      "mix",
     },
     ocaml = {
-      function()
-        return {
-          exe = "ocamlformat",
-          args = {
-            "--enable-outside-detected-project",
-            futil.escape_path(futil.get_current_buffer_file_path()),
-          },
-          stdin = true,
-        }
-      end,
-    },
-    dune = {
-      function()
-        return {
-          exe = "dune",
-          args = {
-            "format-dune-file",
-            futil.escape_path(futil.get_current_buffer_file_path()),
-          },
-          stdin = true,
-        }
-      end,
+      "ocamlformat",
     },
   },
 })
@@ -620,7 +580,12 @@ g.maplocalleader = " "
 wk.register({
   c = {
     name = "code",
-    f = { "<cmd>Format<CR>", "format code" },
+    f = {
+      function()
+        require("conform").format({ lsp_fallback = false })
+      end,
+      "format code",
+    },
     a = {
       function()
         vim.lsp.buf.code_action()

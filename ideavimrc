@@ -12,20 +12,24 @@ set incsearch
 set hlsearch
 set smartcase
 
+set easymotion
+
 let mapleader = " "
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
-nnoremap <leader>cr :action RenameElement
+nnoremap <leader>cr :action RenameElement<cr>
 
-nnoremap <leader>ft :action SelectInProjectView
-nnoremap <leader>]d :action GotoNextError
-nnoremap <leader>[d :action GotoPrevError
-nnoremap <leader>dd :action ShowErrorDescription
-nnoremap <leader>ff :action FindInPath
+nnoremap <leader>ft :action SelectInProjectView<cr>
+nnoremap <leader>]d :action GotoNextError<cr>
+nnoremap <leader>[d :action GotoPrevError<cr>
+nnoremap <leader>dd :action ShowErrorDescription<cr>
+nnoremap <leader>ff :action SearchEverywhere<cr>
+
+nnoremap s :<Plug>(easymotion-s)<cr>
 
 " Reformat the current line only
-nnoremap <leader>cf :action ReformatCode
+nnoremap <leader>cf :action ReformatCode<cr>
 
-nnoremap <leader>cs :action FileStructurePopup
+nnoremap <leader>cs :action FileStructurePopup<cr>
 
 inoremap <leader>jj <ESC>
