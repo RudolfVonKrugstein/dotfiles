@@ -26,6 +26,7 @@ require("lazy").setup({
   { "nvim-neotest/neotest" },
   { "nvim-neotest/neotest-python" },
   { "wincent/ferret" },
+  { "folke/flash.nvim" },
   { "nvim-pack/nvim-spectre" },
   { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
@@ -136,6 +137,17 @@ require("mini.comment").setup({})
 -- highlight the word under cursor
 require("mini.cursorword").setup({})
 require("mini.indentscope").setup({})
+
+-- falsh/sneak
+require("flash").setup({})
+local keymap = vim.api.nvim_set_keymap
+keymap("n","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+keymap("x","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+keymap("o","s",'<cmd>lua require("flash").jump()<cr>', { noremap = true, silent = true })
+
+keymap("n","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
+keymap("x","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
+keymap("o","S",'<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
 
 -- nvim context vt
 require("nvim-biscuits").setup({
