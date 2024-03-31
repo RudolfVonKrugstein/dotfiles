@@ -198,6 +198,7 @@ lsp_zero.set_sign_icons({
 
 -- setup treesitter
 require("nvim-treesitter.configs").setup({
+  compilers = { "clang", "gcc" },
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {},
 
@@ -265,6 +266,7 @@ require("nvim-treesitter.configs").setup({
     },
   },
 })
+require("nvim-treesitter").compilers = { "clang", "gcc" }
 
 -- setup mason and lspconfig
 require("mason").setup({})
@@ -307,7 +309,7 @@ local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
 
 elixir.setup({
-  nextls = { enable = true },
+  nextls = { enabled = true },
   credo = { enabled = true },
   elixirls = {
     enable = true,
