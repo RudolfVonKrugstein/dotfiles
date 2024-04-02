@@ -25,11 +25,12 @@ nnoremap <leader>[d :action GotoPrevError<cr>
 nnoremap <leader>dd :action ShowErrorDescription<cr>
 nnoremap <leader>ff :action SearchEverywhere<cr>
 
-nnoremap s :<Plug>(easymotion-s)<cr>
+nmap s <Plug>(easymotion-s)
 
 " Reformat the current line only
 nnoremap <leader>cf :action ReformatCode<cr>
 
 nnoremap <leader>cs :action FileStructurePopup<cr>
+nnoremap <leader>ca :action ShowIntentionActions<cr>
 
 inoremap <leader>jj <ESC>
