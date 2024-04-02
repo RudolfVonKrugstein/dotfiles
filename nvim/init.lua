@@ -33,8 +33,6 @@ require("lazy").setup({
   { "code-biscuits/nvim-biscuits" },
   { "jdrupal-dev/code-refactor.nvim" },
   { "nvim-lualine/lualine.nvim" },
-  { "stevearc/conform.nvim" },
-  { "mfussenegger/nvim-lint" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "nvim-telescope/telescope.nvim" },
@@ -186,7 +184,7 @@ local lsp_zero = require("lsp-zero")
 lsp_zero.on_attach(function(client, bufnr)
   -- keybindings
   -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/README.md#keybindings
-  -- lsp_zero.default_keymaps({ buffer = bufnr })
+  lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 -- set some fancy icons
@@ -195,6 +193,53 @@ lsp_zero.set_sign_icons({
   warn = "▲",
   hint = "⚑",
   info = "»",
+})
+
+-- setup efm
+require("lspconfig").efm.setup({
+  init_options = {
+    documentFormatting = true,
+    hover = true,
+    documentSymbol = true,
+    codeAction = true,
+    completion = true,
+  },
+  settings = {
+    rootMarkers = { ".git/" },
+    languages = {
+      markdown = {
+        {
+          lintCommand = "markdownlint -s",
+          lintStdin = true,
+          lintFormats = {
+            "%f:%l %m",
+            "%f:%l:%c %m",
+            "%f: %l: %m",
+          },
+        },
+        {
+          formatCommand = "mdformat --wrap 120 -",
+          formatStdin = true,
+        },
+      },
+      lua = {
+        {
+          formatCommand = "stylua -",
+          formatStdin = true,
+        },
+      },
+      python = {
+        {
+          formatCommand = "black --quiet -",
+          formatStdin = true,
+        },
+        {
+          formatCommand = "isort --quiet -",
+          formatStdin = true,
+        },
+      },
+    },
+  },
 })
 
 -- setup treesitter
@@ -278,7 +323,6 @@ require("mason-lspconfig").setup({
     "efm",
     "elixirls",
     "taplo",
-    "ruff_lsp",
     "pyright",
     "tailwindcss",
     "tflint",
@@ -419,95 +463,6 @@ cmp.setup({
   formatting = lsp_zero.cmp_format(),
 })
 
--- linter
-require('lint').linters_by_ft = {
-  markdown = {'markdownlint',}
-}
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
-
--- formatter
-require("conform").setup({
-  -- All formatter configurations are opt-in
-  formatters_by_ft = {
-    sh = {
-      "shfmt",
-    },
-    python = function(bufnr)
-      if require("conform").get_formatter_info("ruff_format", bufnr).available then
-        return { "ruff_format" }
-      else
-        return { "isort", "black" }
-      end
-    end,
-    rust = {
-      "rustfmt",
-    },
-    lua = {
-      "stylua",
-    },
-    yaml = {
-      "prettier",
-    },
-    javascript = {
-      "prettier",
-    },
-    typescript = {
-      "prettier",
-    },
-    json = {
-      "prettier",
-    },
-    toml = {
-      "taplo",
-    },
-    markdown = {
-      "mdformat",
-    },
-    go = {
-      "gofmt",
-    },
-    cmake = {
-      "cmake_format",
-    },
-    cpp = {
-      "clang-format",
-    },
-    dart = {
-      "dart_format",
-    },
-    html = {
-      "htmlbeautify",
-    },
-    css = {
-      "prettier",
-    },
-    vue = {
-      "prettier",
-    },
-    svelte = {
-      "prettier",
-    },
-    astro = {
-      "prettier",
-    },
-    elixir = {
-      "mix",
-    },
-    ocaml = {
-      "ocamlformat",
-    },
-  },
-})
-require("conform").formatters.mdformat = {
-  prepend_args = function(self, ctx)
-    return { "--wrap", "120" }
-  end,
-}
-
 -- lualine
 local function lsp_server()
   local clients = vim.lsp.get_active_clients()
@@ -599,9 +554,7 @@ wk.register({
   c = {
     name = "code",
     f = {
-      function()
-        require("conform").format({ lsp_fallback = false })
-      end,
+      "<cmd>LspZeroFormat efm<CR>",
       "format code",
     },
     a = {
