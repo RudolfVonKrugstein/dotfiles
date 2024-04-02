@@ -34,6 +34,7 @@ require("lazy").setup({
   { "jdrupal-dev/code-refactor.nvim" },
   { "nvim-lualine/lualine.nvim" },
   { "stevearc/conform.nvim" },
+  { "mfussenegger/nvim-lint" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "nvim-telescope/telescope.nvim" },
@@ -418,6 +419,16 @@ cmp.setup({
   formatting = lsp_zero.cmp_format(),
 })
 
+-- linter
+require('lint').linters_by_ft = {
+  markdown = {'markdownlint',}
+}
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
 -- formatter
 require("conform").setup({
   -- All formatter configurations are opt-in
@@ -491,6 +502,11 @@ require("conform").setup({
     },
   },
 })
+require("conform").formatters.mdformat = {
+  prepend_args = function(self, ctx)
+    return { "--wrap", "120" }
+  end,
+}
 
 -- lualine
 local function lsp_server()
