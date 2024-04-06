@@ -1,17 +1,5 @@
 # set the editor to helix
-# export EDITOR="hx"
-
-# enable startship
-eval "$(starship init bash)"
-
-# configure zoxide
-eval "$(zoxide init bash)"
-alias ll="exa -l -g --icons --git"
-alias llt="exa -1 --icons --tree --git-ignore"
-
-# aliases
-alias ll="exa -l -g --icons --git"
-alias llt="exa -1 --icons --tree --git-ignore"
+export EDITOR="nvim"
 
 # load github tokens
 if [ -f ~/.gitlab_token ]; then
@@ -32,6 +20,14 @@ fi
 # go
 if [ -d /usr/local/go/bin ]; then
     export PATH=$PATH:/usr/local/go/bin
+fi
+if [ -d ~/go/bin ]; then
+    export PATH=$PATH:~/go/bin
+fi
+
+# cargo
+if [ -d ~/.cargo/bin ]; then
+    export PATH=$PATH:~/.cargo/bin
 fi
 
 # android sdk
@@ -109,3 +105,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # ocaml
 eval $(opam env)
+
+# enable startship
+[[ ! -z "$ZSH_VERSION" ]] && eval "$(starship init zsh)" || eval "$(starship init bash)"
+
+# configure zoxide
+[[ ! -z "$ZSH_VERSION" ]] && eval "$(zoxide init zsh)" || eval "$(zoxide init bash)"
+
+# aliases
+alias ll="exa -l -g --icons --git"
+alias llt="exa -1 --icons --tree --git-ignore"
+

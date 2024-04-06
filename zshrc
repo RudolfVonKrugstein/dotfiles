@@ -1,93 +1,74 @@
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="gnzh"
-source <(antibody init)
 
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+# git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 plugins=(
-  git
-  tmux
+  gitfast
   zoxide
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  fast-syntax-highlighting 
+  zsh-autocomplete
 )
-antibody bundle ohmyzsh/ohmyzsh
-antibody bundle djui/alias-tips
-antibody bundle zsh-users/zsh-history-substring-search
 
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
+source $ZSH/oh-my-zsh.sh
 
-# alias git=/usr/local/bin/g
-
-# add ssh keys
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-fi
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-# export SSH_KEYS="
-# /home/nathan/Tresors/wintercloud-developer-confidential/aws/keypairs/wintercloud-test-general.pem
-# /home/nathan/Tresors/wintercloud-developer-confidential/aws/keypairs/wintercloud-test-heartbleed-general.pem"
-# SSH_ADD_OUTPUT=`ssh-add -L`
-#
-# for key in "$SSH_KEYS"; do
-# 	if ! echo $SSH_ADD_OUTPUT | grep -q $key; then
-# 		ssh-add $key
-# 	fi
-# done
-
-export EDITOR=vim
-
-# Update path variable
-export PATH="$PATH:/usr/local/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.poetry/bin:$PATH"
-
-# flutter
-export PATH="$HOME/development/flutter/bin:$PATH"
-export PATH="$HOME/development/Android/Sdk/platform-tools:$PATH"
-
-# java
-export JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk '{print $3}')
-
-# rust
-[ -f ~/.cargo/env ] && source $HOME/.cargo/env
-
-# go
-[ -d ~/go/bin ] && export PATH=$PATH:$HOME/go/bin
-
-# enable startship
-eval "$(starship init zsh)"
-
-# configure zoxide
-eval "$(zoxide init zsh)"
-alias ll="exa -l -g --icons --git"
-alias llt="exa -1 --icons --tree --git-ignore"
-
-# aliases
-alias ll="exa -l -g --icons --git"
-alias llt="exa -1 --icons --tree --git-ignore"
-
-# spawn tmux
-ZSH_TMUX_AUTOSTART=true
-
-# load github tokens
-if [ -f ~/.gitlab_token ]; then
-    export GITLAB_TOKEN=$(cat ~/.gitlab_token)
-fi
-if [ -f ~/.gitlab_wc_token ]; then
-    export GITLAB_WC_TOKEN=$(cat ~/.gitlab_wc_token)
-fi
-if [ -f ~/.github_token ]; then
-    export GITHUB_TOKEN=$(cat ~/.github_token)
-fi
-
-export GIT_WORKSPACE="~/projects"
-
-# tmux session manager
-# ~/.tmux/plugins
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-
-# fzf
-if [ -d ~/.fzf/bin ]; then
-  export PATH=$PATH:~/.fzf/bin
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source dotfiles/bashextrarc
