@@ -71,4 +71,4 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source dotfiles/bashextrarc
+source ~/dotfiles/bashextrarc
