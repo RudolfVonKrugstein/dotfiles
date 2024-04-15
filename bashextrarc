@@ -80,7 +80,11 @@ export FZF_CTRL_T_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
 export FZF_CTRL_R_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
 export FZF_ALT_C_OPTS="--bind 'tab:up' --bind 'shift-tab:down'"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [[ ! -z "$ZSH_VERSION" ]]; then
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+else
+  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
