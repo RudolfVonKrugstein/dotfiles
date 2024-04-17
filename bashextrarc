@@ -110,6 +110,9 @@ export NVM_DIR="$HOME/.nvm"
 # ocaml
 eval $(opam env)
 
+# nvim
+[ -d /opt/nvim-linux64/bin ] && export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # enable startship
 [[ ! -z "$ZSH_VERSION" ]] && eval "$(starship init zsh)" || eval "$(starship init bash)"
 
