@@ -634,6 +634,12 @@ wk.register({
     name = "test",
     s = { require("neotest").summary.toggle, "Toggle neotest summary" },
     r = { require("neotest").run.run, "Run closest test" },
+    o = {
+      function()
+        require("neotest").output.open({ enter = true })
+      end,
+      "Open test output window",
+    },
     d = {
       function()
         require("neotest").run.run({ strategy = "dap" })
