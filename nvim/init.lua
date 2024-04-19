@@ -21,7 +21,7 @@ require("lazy").setup({
   { "kyazdani42/nvim-web-devicons" },
   { "nvim-lua/plenary.nvim" },
   { "folke/which-key.nvim" },
-  { "folke/trouble.nvim" },
+  { "folke/trouble.nvim", branch = "dev" },
   { "nvim-neotest/nvim-nio" },
   { "nvim-neotest/neotest" },
   { "nvim-neotest/neotest-python" },
@@ -102,8 +102,8 @@ require("telescope").setup({
   },
   defaults = {
     mappings = {
-      i = { ["<c-t>"] = require("trouble").open_with_trouble },
-      n = { ["<c-t>"] = require("trouble").open_with_trouble },
+      i = { ["<c-t>"] = require("trouble.sources.telescope").open },
+      n = { ["<c-t>"] = require("trouble.sources.telescope").open },
     },
   },
 })
@@ -539,7 +539,6 @@ local wk = require("which-key")
 wk.setup()
 local ts_builtin = require("telescope.builtin")
 local ts_file_browser_extension = require("telescope").extensions.file_browser
-local trouble = require("trouble")
 
 local g = vim.g
 local keymap = vim.keymap.set
@@ -593,21 +592,15 @@ wk.register({
       "show line diagnostic",
     },
     l = {
-      function()
-        trouble.toggle("document_diagnostics")
-      end,
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       "document diagnostics",
     },
     w = {
-      function()
-        trouble.toggle("workspace_diagnostics")
-      end,
+      "<cmd>Trouble diagnostics toggle<cr>",
       "workspace diagnostics",
     },
     q = {
-      function()
-        trouble.open("quickfix")
-      end,
+      "<cmd>Trouble qflist toggle<cr>",
       "open quickfix list in trouble",
     },
   },
@@ -664,14 +657,21 @@ wk.register({
   d = { ts_builtin.lsp_definitions, "jump to definition" },
   D = { vim.lsp.buf.declaration, "jump to declaration" },
   k = { ts_builtin.lsp_type_definitions, "jump to type definition" },
-  r = { ts_builtin.lsp_references, "jump to references" },
-  i = { ts_builtin.lsp_implementations, "jump to implementation" },
+  r = { "<cmd>Trouble lsp_references focus<CR>", "jump to references" },
+  i = { "<cmd>Trouble lsp_implementations focus<CR>", "jump to implementation" },
   l = { ts_builtin.lsp_incoming_calls, "jump to incoming calls" },
   o = { ts_builtin.lsp_outgoing_calls, "jump to outgoing calls" },
   s = { vim.lsp.buf.signature_help, "show signature help" },
 
   m = { ts_builtin.marks, "jump to mark" },
 }, { prefix = "g" })
+
+wk.register({
+  d = { vim.diagnostic.goto_next, "Next diagnostic" },
+}, { prefix = "]" })
+wk.register({
+  d = { vim.diagnostic.goto_prev, "Previous diagnostic" },
+}, { prefix = "[" })
 
 wk.register({
   K = {
