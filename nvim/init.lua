@@ -333,6 +333,7 @@ require("mason-lspconfig").setup({
     "html",
     "lua_ls",
     "bashls",
+    "spectral",
   },
   handlers = {
     lsp_zero.default_setup,
