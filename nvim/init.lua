@@ -56,6 +56,7 @@ require("lazy").setup({
   { "echasnovski/mini.nvim" },
   { "stevearc/oil.nvim" },
   { "elixir-tools/elixir-tools.nvim" },
+  { "b0o/schemastore.nvim" },
 })
 
 -- general options
@@ -195,6 +196,51 @@ lsp_zero.set_sign_icons({
   info = "»",
 })
 
+-- special lsp setup
+-- jsonls
+require("lspconfig").jsonls.setup({
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+-- yamls
+require("lspconfig").yamlls.setup({
+  settings = {
+    yaml = {
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use
+        -- schemaStore plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+      schemas = require("schemastore").yaml.schemas(),
+    },
+  },
+})
+-- pyright
+require("lspconfig").pyright.setup({
+  single_file_support = true,
+  settings = {
+    pyright = {
+      disableLanguageServices = false,
+      disableOrganizeImports = false,
+    },
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = "workspace", -- openFilesOnly, workspace
+        typeCheckingMode = "basic", -- off, basic, strict
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+
 -- setup efm
 require("lspconfig").efm.setup({
   init_options = {
@@ -316,9 +362,9 @@ require("nvim-treesitter").compilers = { "clang", "gcc" }
 
 -- setup mason and lspconfig
 require("mason").setup({})
+
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "ocamllsp",
     "astro",
     "efm",
     "elixirls",
@@ -334,6 +380,8 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "bashls",
     "spectral",
+    "jsonls",
+    "yamlls",
   },
   handlers = {
     lsp_zero.default_setup,
