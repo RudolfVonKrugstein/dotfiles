@@ -223,6 +223,7 @@ require("lspconfig").yamlls.setup({
 })
 -- pyright
 require("lspconfig").pyright.setup({
+  cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
   single_file_support = true,
   settings = {
     pyright = {
@@ -239,6 +240,10 @@ require("lspconfig").pyright.setup({
       },
     },
   },
+})
+-- ruff lsp
+require("lspconfig").pyright.setup({
+  cmd = { "poetry", "run", "ruff-lsp" },
 })
 
 -- setup efm
