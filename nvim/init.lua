@@ -197,6 +197,9 @@ lsp_zero.set_sign_icons({
 })
 
 -- special lsp setup
+-- gleam
+require("lspconfig").gleam.setup({})
+
 -- jsonls
 require("lspconfig").jsonls.setup({
   settings = {
