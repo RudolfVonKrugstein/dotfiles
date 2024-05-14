@@ -245,7 +245,7 @@ require("lspconfig").pyright.setup({
   },
 })
 -- ruff lsp
-require("lspconfig").pyright.setup({
+require("lspconfig").ruff_lsp.setup({
   cmd = { "poetry", "run", "ruff-lsp" },
 })
 
