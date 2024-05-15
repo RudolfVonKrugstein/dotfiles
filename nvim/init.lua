@@ -292,6 +292,12 @@ require("lspconfig").efm.setup({
           formatStdin = true,
         },
       },
+      gleam = {
+        {
+          formatCommand = "gleam format --stdin",
+          formatStdin = true,
+        },
+      },
     },
   },
 })
