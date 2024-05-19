@@ -30,7 +30,6 @@ require("lazy").setup({
   { "nvim-pack/nvim-spectre" },
   { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
-  { "code-biscuits/nvim-biscuits" },
   { "jdrupal-dev/code-refactor.nvim" },
   { "nvim-lualine/lualine.nvim" },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -148,18 +147,6 @@ keymap("o", "s", '<cmd>lua require("flash").jump()<cr>', { noremap = true, silen
 keymap("n", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
 keymap("x", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
 keymap("o", "S", '<cmd>lua require("flash").treesitter()<cr>', { noremap = true, silent = true })
-
--- nvim context vt
-require("nvim-biscuits").setup({
-  language_config = {
-    markdown = {
-      disabled = true,
-    },
-    python = {
-      disabled = true,
-    },
-  },
-})
 
 -- trouble
 require("trouble").setup({})
