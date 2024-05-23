@@ -5,14 +5,19 @@ keybinds {
         // bind "Alt c" { Copy; }
         // unbind "Ctrl g"
        unbind "Ctrl g"
-        unbind "Ctrl p"
-        unbind "Ctrl t"
-        unbind "Ctrl n"
-        unbind "Ctrl h"
-        unbind "Ctrl s"
-        unbind "Ctrl o"
-        unbind "Ctrl q"
-        unbind "Ctrl b"
+       unbind "Ctrl p"
+       unbind "Ctrl t"
+       unbind "Ctrl n"
+       unbind "Ctrl h"
+       unbind "Ctrl s"
+       unbind "Ctrl o"
+       unbind "Ctrl q"
+       unbind "Ctrl b"
+       // change layout chaning keys
+       unbind "Alt ["
+       unbind "Alt ]"
+       bind "Alt <" { PreviousSwapLayout; }
+       bind "Alt >" { NextSwapLayout; }
     }
     locked {
         bind "Alt g" { SwitchToMode "Normal"; }
@@ -46,12 +51,6 @@ keybinds {
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
-        bind "g" {
-          Run "lazygit_zellij_close_pane.sh" {
-            Direction "Down"
-          }; SwitchToMode "Normal"; ToggleFocusFullscreen
-        }
-        bind "P" { SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }
     }
     move {
         bind "Alt m" { SwitchToMode "Normal"; }
@@ -80,7 +79,15 @@ keybinds {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
-        bind "P" { NewTab; SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }
+        bind "p" { NewTab; SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }
+        bind "g" {
+          Run "lazygit" {
+               close_on_exit true
+          };
+          ToggleFocusFullscreen;
+          SwitchToMode "Normal";
+          // "zellij run -c -f -x '2%' -y '2%' --height '96%' --width '96%' -- lazygit"
+        }
     }
     scroll {
         bind "Alt s" { SwitchToMode "Normal"; }
@@ -161,8 +168,8 @@ keybinds {
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
+        bind "Alt <" { PreviousSwapLayout; }
+        bind "Alt >" { NextSwapLayout; }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
@@ -259,7 +266,7 @@ default_shell "zsh"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "/home/nathan/.config/zellij/my-layout.kdl"
+// default_layout "/home/nathan/.config/zellij/layout.kdl"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
