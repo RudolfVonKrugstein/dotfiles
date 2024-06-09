@@ -54,6 +54,7 @@ require("lazy").setup({
   { "kylechui/nvim-surround" },
   { "echasnovski/mini.nvim" },
   { "stevearc/oil.nvim" },
+  { "nvim-tree/nvim-tree.lua" },
   { "elixir-tools/elixir-tools.nvim" },
   { "b0o/schemastore.nvim" },
 })
@@ -121,6 +122,22 @@ require("undotree").setup({
 
 -- oil
 require("oil").setup({ keymaps = { ["q"] = "actions.close" } })
+
+-- nvimtree
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 -- autopairs
 require("ultimate-autopair").setup({})
@@ -625,6 +642,7 @@ wk.register({
     f = { ts_builtin.find_files, "Find files" },
     b = { ts_file_browser_extension.file_browser, "browse files" },
     e = { "<CMD>Oil<CR>", "Open file explorer" },
+    t = { "<CMD>NvimTreeFocus<CR>", "Open/Focus NvimTree" },
     s = { "<CMD>LspZeroFormat efm<CR><CMD>w<CR>", "save" },
   },
   u = {
