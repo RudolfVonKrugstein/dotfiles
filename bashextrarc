@@ -123,3 +123,5 @@ eval $(opam env)
 alias ll="exa -l -g --icons --git"
 alias llt="exa -1 --icons --tree --git-ignore"
 
+# asdf
+[ -d ~/.asdf ] && . "$HOME/.asdf/asdf.sh"

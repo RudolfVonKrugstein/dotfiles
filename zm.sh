@@ -24,6 +24,8 @@ while true; do
                 pushd "$choice"
 
                 git_root=$(git rev-parse --show-toplevel)
+
+                echo "Git directory: $git_root"
                 above_git_root=$(dirname "${git_root}")
 
                 session_name=${choice#"$above_git_root"}
