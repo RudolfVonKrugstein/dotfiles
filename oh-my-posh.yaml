@@ -5,31 +5,31 @@ blocks:
   - type: prompt
     alignment: left
     newline: true
+    leading_diamond: 
+    trailing_diamond: "\ue0b4"
     segments:
       - type: session
         style: diamond
         foreground: "#ffffff"
         background: "#c386f1"
         background_templates:
-          - "{{ if (.Root) }}#FF0000{{ else }}#00A000{{ end }}"
-        leading_diamond: 
-        trailing_diamond: 
-        template: "{{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }}"
+          - "{{ if (.Root) }}#FF0000{{ else }}#004000{{ end }}"
+        template: "{{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }} "
       - type: path
+        style: diamond
         foreground: "#ffffff"
-        background: "#61AFEF"
+        background: "#000080"
         template: "{{ $segment := .Segments.Git }}{{ $icon := \"\uf1d2\" }}{{ if $segment.Dir }} {{ $icon }} <i><b>{{ $segment.RepoName }}{{ if $segment.IsWorkTree}} \ue21c{{ end }}</b></i>{{if ne $segment.RepoName .Path}} {{ trimPrefix $segment.Dir .PWD }}{{ end }}{{ else }}{{ .PWD }}{{ end }}{{ if not .Writable }} \uf023{{ end }} "
       - type: git
-        style: powerline
-        powerline_symbol: 
-        foreground: "#193549"
-        background: "#ffeb3b"
+        style: diamond
+        foreground: "#ffffff"
+        background: "#404000"
         background_templates:
           - "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}"
           - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}"
           - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
           - "{{ if gt .Behind 0 }}#B388FB{{ end }}"
-      template: "{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus
+        template: " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus
           }}{{ end }}{{ if .Working.Changed }}  {{ end }}{{ if and
           (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} 
           {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{
@@ -37,6 +37,7 @@ blocks:
         properties:
           fetch_status: true
           fetch_upstream_icon: true
+
   - type: prompt
     alignment: left
     newline: true
@@ -44,5 +45,11 @@ blocks:
       - foreground: "#A9FFB4"
         foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
         style: plain
-        template: " \ue286 "
-        type: status
+        template: ">"
+        type: text
+transient_prompt:
+        foreground: "#A9FFB4"
+        foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
+        style: plain
+        template: "> "
+        type: text
