@@ -13,7 +13,7 @@ blocks:
         foreground: "#ffffff"
         background: "#c386f1"
         background_templates:
-          - "{{ if (.Root) }}#FF0000{{ else }}#004000{{ end }}"
+          - "{{ if (.Root) }}#FF0000{{ else }}#008000{{ end }}"
         template: "{{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }} "
       - type: path
         style: diamond
@@ -23,9 +23,9 @@ blocks:
       - type: git
         style: diamond
         foreground: "#ffffff"
-        background: "#404000"
+        background: "#008000"
         background_templates:
-          - "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}"
+          - "{{ if or (.Working.Changed) (.Staging.Changed) }}#808000{{ end }}"
           - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}"
           - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
           - "{{ if gt .Behind 0 }}#B388FB{{ end }}"
