@@ -193,6 +193,7 @@ lsp_zero.on_attach(function(client, bufnr)
   -- keybindings
   -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/README.md#keybindings
   lsp_zero.default_keymaps({ buffer = bufnr })
+  vim.lsp.inlay_hint.enable()
 end)
 
 -- set some fancy icons
@@ -231,16 +232,12 @@ require("lspconfig").yamlls.setup({
     },
   },
 })
--- pyright
-require("lspconfig").pyright.setup({
-  cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
+-- bsedpyright
+require("lspconfig").basedpyright.setup({
+  cmd = { "poetry", "run", "basedpyright-langserver", "--stdio" },
   single_file_support = true,
   settings = {
-    pyright = {
-      disableLanguageServices = false,
-      disableOrganizeImports = false,
-    },
-    python = {
+    basedpyright = {
       analysis = {
         autoImportCompletions = true,
         autoSearchPaths = true,
@@ -390,7 +387,7 @@ require("mason-lspconfig").setup({
     "efm",
     "elixirls",
     "taplo",
-    "pyright",
+    "basedpyright",
     "tailwindcss",
     "tflint",
     "terraformls",
