@@ -288,7 +288,7 @@ require("lspconfig").efm.setup({
       },
       python = {
         {
-          formatCommand = "black --quiet -",
+          formatCommand = "ruff format  -",
           formatStdin = true,
         },
         {
