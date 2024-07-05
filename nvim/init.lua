@@ -27,7 +27,7 @@ require("lazy").setup({
   { "nvim-neotest/neotest-python" },
   { "wincent/ferret" },
   { "folke/flash.nvim" },
-  { "nvim-pack/nvim-spectre" },
+  { "MagicDuck/grug-far.nvim" },
   { "daenikon/marknav.nvim" },
   { "kevinhwang91/nvim-bqf" },
   { "jdrupal-dev/code-refactor.nvim" },
@@ -53,7 +53,7 @@ require("lazy").setup({
   { "altermo/ultimate-autopair.nvim" },
   { "kylechui/nvim-surround" },
   { "echasnovski/mini.nvim" },
-  { "stevearc/oil.nvim" },
+  { "mikavilpas/yazi.nvim" },
   { "nvim-tree/nvim-tree.lua" },
   { "elixir-tools/elixir-tools.nvim" },
   { "b0o/schemastore.nvim" },
@@ -120,8 +120,8 @@ require("undotree").setup({
   layout = "left_bottom",
 })
 
--- oil
-require("oil").setup({ keymaps = { ["q"] = "actions.close" } })
+-- yazi
+require("yazi").setup({})
 
 -- nvimtree
 require("nvim-tree").setup({
@@ -586,7 +586,7 @@ api.nvim_exec(
 -- close certain windows with q
 local group = vim.api.nvim_create_augroup("NeotestConfig", {})
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "neotest-output", "neotest-summary", "quickfix", "spectre" },
+  pattern = { "neotest-output", "neotest-summary", "quickfix" },
   group = group,
   callback = function(opts)
     vim.keymap.set("n", "q", function()
@@ -597,8 +597,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- nvim spectre for searching
-require("spectre").setup()
+-- nvim grug-far for searching and replacing
+require("grug-far").setup()
 
 -- keymaps
 require("which-key").setup()
@@ -641,7 +641,18 @@ wk.register({
     name = "file",
     f = { ts_builtin.find_files, "Find files" },
     b = { ts_file_browser_extension.file_browser, "browse files" },
-    e = { "<CMD>Oil<CR>", "Open file explorer" },
+    e = {
+      function()
+        require("yazi").yazi()
+      end,
+      "Open file explorer",
+    },
+    E = {
+      function()
+        require("yazi").yazi(nil, vim.fn.getcwd())
+      end,
+      "Open file explorer in working directory",
+    },
     t = { "<CMD>NvimTreeFocus<CR>", "Open/Focus NvimTree" },
     s = { "<CMD>LspZeroFormat efm<CR><CMD>w<CR>", "save" },
   },
@@ -679,7 +690,7 @@ wk.register({
     s = { ":Ack ", "search in files to quickfix list" },
     n = { ":Quack ", "narrow items in quickfix list" },
     r = { ":Acks ", "replace items in quickfix list" },
-    S = { require("spectre").toggle, "Search and replace using spectre" },
+    S = { ":GrugFar", "Search and replace using grug-far" },
   },
   b = {
     name = "buffer",
