@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 require("lazy").setup({
-  { "folke/tokyonight.nvim" },
+  { "scottmckendry/cyberdream.nvim" },
   { "kyazdani42/nvim-web-devicons" },
   { "nvim-lua/plenary.nvim" },
   { "folke/which-key.nvim" },
@@ -82,7 +82,7 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.timeout = false
 opt.ttimeout = false
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme cyberdream")
 vim.cmd("highlight GitSignsAdd guifg=GREEN")
 vim.cmd("highlight GitSignsChange guifg=YELLOW")
 vim.cmd("highlight GitSignsDelete guifg=RED")
