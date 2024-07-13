@@ -126,3 +126,9 @@ alias llt="exa -1 --icons --tree --git-ignore"
 
 # asdf
 [ -d ~/.asdf ] && . "$HOME/.asdf/asdf.sh"
+
+# atui
+if [ -d ~/.atuin/bin ]; then
+    . "$HOME/.atuin/bin/env"
+   [[ ! -z "$ZSH_VERSION" ]] && eval "$(atuin init zsh)" || eval "$(atuin init bash)"
+fi
