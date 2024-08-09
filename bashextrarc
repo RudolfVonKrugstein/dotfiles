@@ -108,13 +108,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -d ~/.config/emacs/bin ] && export PATH="$PATH:$HOME/.config/emacs/bin"
 
 # ocaml
-eval $(opam env)
+if which opam; then
+  eval $(opam env)
+fi
 
 # nvim
 [ -d /opt/nvim-linux64/bin ] && export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # enable startship
 # [[ ! -z "$ZSH_VERSION" ]] && eval "$(starship init zsh)" || eval "$(starship init bash)"
+# enable oh-my-posh
 [[ ! -z "$ZSH_VERSION" ]] && eval "$(oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)" || eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh.yaml)"
 
 # configure zoxide
@@ -130,5 +133,7 @@ alias llt="exa -1 --icons --tree --git-ignore"
 # atui
 if [ -d ~/.atuin/bin ]; then
     . "$HOME/.atuin/bin/env"
+fi
+if which atuin > /dev/null; then
    [[ ! -z "$ZSH_VERSION" ]] && eval "$(atuin init zsh)" || eval "$(atuin init bash)"
 fi

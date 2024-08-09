@@ -56,14 +56,17 @@ in
     curl
     wget
     git
+    # neovim and tools around that
     pkgsUnstable.lazygit
     pkgsUnstable.zellij
+    pkgsUnstable.yazi
     pkgsUnstable.neovim
+    zoxide
     zsh
     jetbrains-mono
     pkgsUnstable.oh-my-posh
     pkgsUnstable.atuin
-    zoxide
+    pkgsUnstable.fzf
     pkgsUnstable.clang
     pkgsUnstable.gleam
     pkgsUnstable.elixir
@@ -72,7 +75,17 @@ in
     cargo
     rustc
     nodejs
-    python3
+    # python
+    pkgsUnstable.python3
+    pkgsUnstable.ruff
+    pkgsUnstable.basedpyright
+    # other language servers
+    lua-language-server
+    spectral-language-server
+    # ocaml
+    opam
+    gnumake
+    patch
     (pkgs.writeScriptBin "sshd-start" ''
       #!${pkgs.runtimeShell}
 
