@@ -82,6 +82,11 @@ in
     # other language servers
     lua-language-server
     spectral-language-server
+    # pandoc
+    pkgsUnstable.pandoc
+    pkgsUnstable.plantuml
+    pkgsUnstable.d2
+    lua
     # ocaml
     opam
     gnumake
