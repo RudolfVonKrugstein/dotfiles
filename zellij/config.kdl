@@ -63,6 +63,7 @@ keybinds {
     }
     tab {
         bind "Alt t" { SwitchToMode "Normal"; }
+        bind "Alt w" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
@@ -188,6 +189,9 @@ keybinds {
     }
     shared_except "tab" "locked" {
         bind "Alt t" { SwitchToMode "Tab"; }
+    }
+    shared_except "tab" "locked" {
+        bind "Alt w" { SwitchToMode "Tab"; }
     }
     shared_except "move" "locked" {
         bind "Alt m" { SwitchToMode "Move"; }
