@@ -61,6 +61,8 @@ in
     pkgsUnstable.zellij
     pkgsUnstable.yazi
     pkgsUnstable.neovim
+    pkgsUnstable.ripgrep
+    pkgsUnstable.fd
     zoxide
     zsh
     jetbrains-mono
@@ -86,6 +88,7 @@ in
     pkgsUnstable.pandoc
     pkgsUnstable.plantuml
     pkgsUnstable.d2
+    pkgsUnstable.nodePackages.mermaid-cli
     lua
     # ocaml
     opam
