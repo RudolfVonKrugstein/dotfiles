@@ -3,4 +3,5 @@ return {
   -- function: auto save changes
   -- src: https://github.com/pocco81/auto-save.nvim
   "Pocco81/auto-save.nvim",
+  opts = { debounce_delay = 2000 },
 }
