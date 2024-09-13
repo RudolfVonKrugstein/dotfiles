@@ -63,48 +63,10 @@ in {
     curl
     wget
     gitFull
-    # neovim and tools around that
-    unstable.lazygit
-    zellij
-    yazi
-    unstable.neovim
-    ripgrep
-    fd
-    # shell
-    zoxide
-    zsh
-    jetbrains-mono
-    unstable.oh-my-posh
-    atuin
-    fzf
-    # programming languages
-    clang
-    unstable.gleam
-    elixir
-    erlang
-    ocaml
-    cargo
-    rustc
-    nodejs
-    # python
-    python3
-    ruff
-    # pkgs.basedpyright
-    # other language servers
-    lua-language-server
-    spectral-language-server
-    # pandoc
-    unstable.pandoc
-    plantuml
-    d2
-    nodePackages.mermaid-cli
-    lua
-    # ocaml
-    opam
-    gnumake
-    patch
   ];
-  
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = ["FiraCode" "JetBrainsMono"]; })
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

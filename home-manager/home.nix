@@ -11,6 +11,8 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # font
+    jetbrains-mono
     # shell
     zsh
     fzf
@@ -18,7 +20,49 @@ in {
     htop
     fortune
     cowsay
+    # neovim and tools around that
+    unstable.lazygit
+    zellij
+    yazi
+    unstable.neovim
+    ripgrep
+    fd
+    # shell
+    zoxide
+    zsh
+    unstable.oh-my-posh
+    atuin
+    fzf
+    # programming languages
+    clang
+    unstable.gleam
+    elixir
+    erlang
+    ocaml
+    cargo
+    rustc
+    nodejs
+    # python
+    python3
+    ruff
+    # pkgs.basedpyright
+    # other language servers
+    lua-language-server
+    stylua
+    spectral-language-server
+    # pandoc
+    unstable.pandoc
+    plantuml
+    d2
+    nodePackages.mermaid-cli
+    lua
+    # ocaml
+    opam
+    gnumake
+    patch
   ];
+  
+  fonts.fontconfig.enable = true;
 
   programs.git = {
     enable = true;
@@ -86,4 +130,32 @@ in {
     enableSshSupport = true;
     pinentryPackage = pkgs.pinentry;
   };  
+
+  # neovim/LazyVim activation script
+  home.activation = {
+    initLazyVim = lib.hm.dag.entryAfter ["installPackages"] ''
+    export PATH="${config.home.path}/bin:$PATH"
+    if [ ! -d ~/.config/nvim ]; then
+      $DRY_RUN_CMD git clone https://github.com/LazyVim/starter ~/.config/nvim
+    fi
+
+    # symlink the layzvim.json
+    $DRY_RUN_CMD rm -rf ~/.config/nvim/lazyvim.json
+    $DRY_RUN_CMD ln -s ~/dotfiles/lazyvim/lazyvim.json ~/.config/nvim/lazyvim.json
+
+    # symlink files in config dir
+    for config_file in ~/dotfiles/lazyvim/lua/config/*.lua; do
+      export target_config_file="$HOME/.config/nvim/lua/config/$(basename $config_file)"
+      $DRY_RUN_CMD rm -rf "$target_config_file"
+      $DRY_RUN_CMD ln -s "$config_file" "$target_config_file"
+    done
+
+    # symlink files in plugin dir
+    for plugin_file in ~/dotfiles/lazyvim/lua/plugins/*.lua; do
+      export target_plugin_file="$HOME/.config/nvim/lua/plugins/$(basename $plugin_file)"
+      $DRY_RUN_CMD rm -rf "$target_plugin_file"
+      $DRY_RUN_CMD ln -s "$plugin_file" "$target_plugin_file"
+    done
+    '';
+  };
 }
