@@ -8,11 +8,12 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
 in {
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
-    <home-manager/nixos>
+    (import "${home-manager}/nixos")
   ];
 
   wsl.enable = true;
@@ -28,13 +29,9 @@ in {
     extraGroups = [ "wheel" "docker" ];
   };
   
-  home-manager.users.nathan = {
-    home.stateVersion = "24.05";
-    programs.home-manager.enable = true;
-  };
+  home-manager.users.nathan = import "/home/nathan/dotfiles/home-manager/home.nix";
 	
   environment.systemPackages = with pkgs; [
-    home-manager
     # User-facing stuff that you really really want to have
     vim # or some other editor, e.g. nano or neovim
 
@@ -74,5 +71,5 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
