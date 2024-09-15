@@ -158,4 +158,8 @@ in {
     done
     '';
   };
+
+  home.file = {
+    "${config.xdg.configFile}/zellij/".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/dotfiles/zellij/";
+  };
 }
