@@ -55,7 +55,10 @@ in {
     plantuml
     d2
     nodePackages.mermaid-cli
+    # lua
     lua
+    luarocks
+    luaPackages.lpeg
     # ocaml
     opam
     gnumake
