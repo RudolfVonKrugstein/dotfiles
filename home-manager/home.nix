@@ -157,9 +157,9 @@ in {
       $DRY_RUN_CMD ln -s "$plugin_file" "$target_plugin_file"
     done
     '';
-  };
-
-  home.file = {
-    "${config.xdg.configFile}/zellij/".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/dotfiles/zellij/";
+    zellijConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    $DRY_RUN_CMD rm -rf ~/.config/zellij
+    $DRY_RUN_CMD ln -s dotfiles/zellij ~/.config/zellij
+    '';
   };
 }
