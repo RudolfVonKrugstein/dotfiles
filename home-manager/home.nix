@@ -162,7 +162,7 @@ in {
     '';
     zellijConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD rm -rf ~/.config/zellij
-    $DRY_RUN_CMD ln -s dotfiles/zellij ~/.config/zellij
+    $DRY_RUN_CMD ln -s ~/dotfiles/zellij ~/.config/zellij
     '';
   };
 }
