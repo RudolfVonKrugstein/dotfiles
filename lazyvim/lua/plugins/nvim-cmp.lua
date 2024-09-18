@@ -5,7 +5,7 @@ return {
     local cmp = require("cmp")
     opts.completion = {
       -- disable auto selelect in completion options
-      completeopt = "menu,menuone,noinsert,noselect"
+      completeopt = "menu,menuone,noinsert,noselect",
     }
     opts.preselect = cmp.PreselectMode.None
     opts.mapping = cmp.mapping.preset.insert({
@@ -20,5 +20,10 @@ return {
         fallback()
       end,
     })
+    opts.window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    }
+    return opts
   end,
 }
