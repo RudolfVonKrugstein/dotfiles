@@ -65,6 +65,36 @@ in {
     (nerdfonts.override { fonts = ["FiraCode" "JetBrainsMono"]; })
   ];
 
+  # enable and configure nix-ld
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    alsa-lib
+    atk
+    curl
+    dbus
+    expat
+    fontconfig
+    freetype
+    fuse3
+    glib
+    icu
+    libdrm
+    libnotify
+    libpulseaudio
+    libunwind
+    libusb1
+    libuuid
+    libxml2
+    nspr
+    nss
+    openssl
+    pango
+    pipewire
+    stdenv.cc.cc
+    systemd
+    zlib
+    ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
