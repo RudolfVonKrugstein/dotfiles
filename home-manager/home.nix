@@ -36,12 +36,14 @@ in {
     # programming languages
     clang
     unstable.gleam
-    elixir
-    erlang
     ocaml
     cargo
     rustc
     nodejs
+    # elixir/erlang
+    elixir
+    erlang
+    rebar3
     # python
     python3
     ruff
@@ -60,9 +62,15 @@ in {
     luarocks
     luaPackages.lpeg
     # ocaml
-    opam
+    unstable.opam
     gnumake
     patch
+    # golang
+    unstable.go
+    unstable.gotools
+    unstable.gopls
+    # fonts
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
   
   fonts.fontconfig.enable = true;
