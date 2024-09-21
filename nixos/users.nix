@@ -15,5 +15,6 @@ in {
     extraGroups = [ "wheel" "docker" ];
   };
   
+  home-manager.useGlobalPkgs = true;
   home-manager.users.nathan = import "/home/nathan/dotfiles/home-manager/home.nix";
 }
