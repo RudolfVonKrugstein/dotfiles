@@ -11,7 +11,6 @@ let
   unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [
-    ../nix-ld.nix
     ../package-overrides.nix
     ../general.nix
   ];
@@ -21,7 +20,7 @@ in {
 
   # user settings
   user.shell = "${pkgs.zsh}/bin/zsh";
-  home-manger.config = ./home-manager/nathan.nix;
+  home-manager.config = ../home-manager/nathan.nix;
 
   # font
   terminal.font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
@@ -32,5 +31,5 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
