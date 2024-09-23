@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
 in {
   home = {
     stateVersion = "24.05";
