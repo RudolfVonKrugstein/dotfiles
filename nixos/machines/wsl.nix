@@ -14,6 +14,7 @@ in {
     <nixos-wsl/modules>
     ../nix-ld.nix
     ../users.nix
+    ../package-overrides.nix
     ../packages.nix
     ../general.nix
   ];

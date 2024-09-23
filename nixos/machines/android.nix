@@ -12,9 +12,12 @@ let
 in {
   imports = [
     ../nix-ld.nix
-    ../packages.nix
+    ../package-overrides.nix
     ../general.nix
   ];
+
+  # packages
+  environment.packages = import ../system-packages-list.nix pkgs;
 
   # user settings
   user.shell = "${pkgs.zsh}/bin/zsh";
