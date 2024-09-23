@@ -51,6 +51,7 @@ in {
     spectral-language-server
     # pandoc
     unstable.pandoc
+    plantuml-headless
     d2
     nodePackages.mermaid-cli
     # lua

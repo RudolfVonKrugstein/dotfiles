@@ -20,6 +20,7 @@ in {
 
   # user settings
   user.shell = "${pkgs.zsh}/bin/zsh";
+  home-manager.useGlobalPkgs = true;
   home-manager.config = ../home-manager/nathan.nix;
 
   # font
