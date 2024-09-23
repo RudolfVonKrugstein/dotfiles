@@ -9,11 +9,10 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # basics
+    git
     # font
     jetbrains-mono
-    # shell
-    zsh
-    fzf
     # fun tools
     htop
     fortune

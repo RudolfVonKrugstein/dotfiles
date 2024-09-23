@@ -11,6 +11,7 @@ pkgs: with pkgs; [
     tzdata
     hostname
     file
+    gawk
     #man
     gnugrep
     gnupg
@@ -26,5 +27,5 @@ pkgs: with pkgs; [
     nettools
     curl
     wget
-    gitFull
+    git
 ]
