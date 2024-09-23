@@ -12,11 +12,15 @@ let
 in {
   imports = [
     ../nix-ld.nix
-    ../users.nix
     ../packages.nix
     ../general.nix
   ];
 
+  # user settings
+  user.shell = "${pkgs.zsh}/bin/zsh";
+  home-manger.config = ./home-manager/nathan.nix;
+
+  # font
   terminal.font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
 
   # This value determines the NixOS release from which the default

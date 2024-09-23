@@ -16,5 +16,5 @@ in {
   };
   
   home-manager.useGlobalPkgs = true;
-  home-manager.users.nathan = import "/home/nathan/dotfiles/home-manager/home.nix";
+  home-manager.users.nathan = ./home-manager/nathan.nix;
 }
