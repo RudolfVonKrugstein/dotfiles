@@ -4,7 +4,7 @@ local function file_exists(name)
 end
 
 -- test if antoropic api key exists and enable avante if so
-if file_exists("    /home/nathan/.ANTHROPIC_API_KEY") then
+if file_exists("/home/nathan/.ANTHROPIC_API_KEY") then
   return {
     "yetone/avante.nvim",
     event = "VeryLazy",
