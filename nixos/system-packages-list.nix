@@ -24,6 +24,7 @@ pkgs: with pkgs; [
     zip
     unzip
     openssh
+    mosh
     nettools
     curl
     wget
