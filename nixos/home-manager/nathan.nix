@@ -118,6 +118,12 @@ in {
         source "$(fzf-share)/completion.zsh"
       fi
       eval "$(zoxide init --cmd cd zsh)"
+
+      # init luarocks
+      eval "$(luarocks path --bin)"
+
+      # add cargo binaries to path
+      export PATH="$PATH:$HOME/.cargo/bin"
     '';
   };
 
