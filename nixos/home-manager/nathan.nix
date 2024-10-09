@@ -55,6 +55,8 @@ in {
     plantuml-headless
     d2
     nodePackages.mermaid-cli
+    # latex
+    texlive.combined.scheme-medium
     # lua
     lua
     luarocks
