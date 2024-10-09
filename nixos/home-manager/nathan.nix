@@ -43,6 +43,7 @@ in {
     rebar3
     # python
     python3
+    python3.pkgs.pip
     ruff
     # pkgs.basedpyright
     # other language servers
