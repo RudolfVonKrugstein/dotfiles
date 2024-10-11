@@ -69,6 +69,8 @@ in {
     unstable.go
     unstable.gotools
     unstable.gopls
+    # keybaord configuration
+    qmk
     # fonts
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
