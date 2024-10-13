@@ -61,6 +61,7 @@ in {
     lua
     luarocks
     luaPackages.lpeg
+    luaPackages.busted
     # ocaml
     unstable.opam
     gnumake
