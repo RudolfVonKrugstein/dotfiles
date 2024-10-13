@@ -5,3 +5,5 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = "ruff"
 -- disable transparency
 vim.opt.pumblend = 0
+-- disable virtual text for tiny-inline-diagnostics
+vim.diagnostic.config({ virtual_text = false })
