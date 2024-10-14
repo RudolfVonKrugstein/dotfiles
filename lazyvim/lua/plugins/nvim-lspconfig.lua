@@ -17,5 +17,6 @@ return {
     codelens = { enabled = true },
     inlay_hints = { exclude = { "vue", "lua" } },
     servers = servers,
+    diagnostics = { virtual_text = false },
   },
 }
