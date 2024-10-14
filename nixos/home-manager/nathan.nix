@@ -24,6 +24,10 @@ in {
     unstable.neovim
     ripgrep
     fd
+    # nix
+    nil
+    # helm
+    helm-ls
     # shell
     zoxide
     zsh
