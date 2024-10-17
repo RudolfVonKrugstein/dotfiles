@@ -14,7 +14,7 @@ blocks:
         background: "#c386f1"
         background_templates:
           - "{{ if (.Root) }}#FF0000{{ else }}#008000{{ end }}"
-        template: "{{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }} "
+        template: " {{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }} "
       - type: path
         style: diamond
         foreground: "#ffffff"
@@ -37,19 +37,46 @@ blocks:
         properties:
           fetch_status: true
           fetch_upstream_icon: true
+      - type: dart
+        style: diamond
+      - type: elixir
+        style: diamond
+      - type: go
+        style: diamond
+      - type: lua
+        style: diamond
+      - type: node
+        style: diamond
+      - type: ocaml
+        style: diamond
+      - type: python
+        style: diamond
+      - type: rust
+        style: diamond
+      - type: swift
+        style: diamond
 
   - type: prompt
     alignment: left
     newline: true
     segments:
+      - type: shell
+        style: diamond
+        foreground: "#ffffff"
+        background: "#000000"
+        properties:
+          mapped_shell_names:
+            pwsh: PS
+            zsh: z
+            bash: b
       - foreground: "#A9FFB4"
         foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
         style: plain
         template: ">"
         type: text
 transient_prompt:
-        foreground: "#A9FFB4"
-        foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
-        style: plain
-        template: "> "
-        type: text
+  foreground: "#A9FFB4"
+  foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
+  style: plain
+  template: "> "
+  type: text
