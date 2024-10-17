@@ -49,6 +49,8 @@ in {
     python3
     python3.pkgs.pip
     ruff
+    poetry
+    uv
     # pkgs.basedpyright
     # other language servers
     lua-language-server
