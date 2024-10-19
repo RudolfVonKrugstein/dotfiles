@@ -58,6 +58,7 @@ in {
     spectral-language-server
     # pandoc
     unstable.pandoc
+    marksman
     plantuml-headless
     d2
     nodePackages.mermaid-cli
