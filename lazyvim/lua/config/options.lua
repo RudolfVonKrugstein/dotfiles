@@ -7,3 +7,5 @@ vim.g.lazyvim_python_ruff = "ruff"
 vim.opt.pumblend = 0
 -- disable virtual text for tiny-inline-diagnostics
 vim.diagnostic.config({ virtual_text = false })
+-- dont conceal
+vim.opt.conceallevel = 0
