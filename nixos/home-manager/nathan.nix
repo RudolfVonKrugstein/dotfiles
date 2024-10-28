@@ -57,7 +57,8 @@ in {
     stylua
     spectral-language-server
     # pandoc
-    unstable.pandoc
+    quarto
+    pandoc
     marksman
     plantuml-headless
     d2
