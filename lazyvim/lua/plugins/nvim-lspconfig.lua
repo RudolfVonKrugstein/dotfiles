@@ -10,6 +10,12 @@ if is_arm then
   servers["texlab"] = { mason = false }
 end
 
+local util = require("lspconfig.util")
+servers["marksman"] = {
+  filetypes = { "markdown", "quarto" },
+  root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
+}
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
