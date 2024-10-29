@@ -80,6 +80,8 @@ in {
     unstable.gopls
     # keybaord configuration
     qmk
+    # podman
+    podman-tui
     # fonts
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];

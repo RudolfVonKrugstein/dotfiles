@@ -17,6 +17,7 @@ in {
     ../package-overrides.nix
     ../packages.nix
     ../general.nix
+    ../podman.nix
   ];
 
   wsl.enable = true;
