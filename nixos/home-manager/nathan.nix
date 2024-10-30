@@ -82,6 +82,9 @@ in {
     qmk
     # podman
     podman-tui
+    # gitlab/github clis
+    unstable.glab
+    unstable.gh
     # fonts
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
