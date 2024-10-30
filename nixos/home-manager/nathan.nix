@@ -11,6 +11,7 @@ in {
   home.packages = with pkgs; [
     # basics
     git
+    jq
     # font
     jetbrains-mono
     # fun tools
