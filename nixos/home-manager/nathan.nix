@@ -25,6 +25,15 @@ in {
     unstable.neovim
     ripgrep
     fd
+    # spelling
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.de_DE
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+    aspellDicts.de
     # nix
     nil
     # helm

@@ -9,3 +9,5 @@ vim.opt.pumblend = 0
 vim.diagnostic.config({ virtual_text = false })
 -- dont conceal
 vim.opt.conceallevel = 0
+-- enable spelling
+vim.opt.spell = true
