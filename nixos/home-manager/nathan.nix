@@ -203,6 +203,10 @@ in {
       echo "$plugin_file -> $target_plugin_file"
       $DRY_RUN_CMD ln -s "$plugin_file" "$target_plugin_file"
     done
+
+    # symlink spell dir
+    $DRY_RUN_CMD rm -rf $HOME/.config/nvim/spell
+    $DRY_RUN_CMD ln -s $HOME/dotfiles/lazyvim/spell/ $HOME/.config/nvim/spell
     '';
     zellijConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD rm -rf $HOME/.config/zellij
