@@ -28,6 +28,7 @@ in {
     openssl
     pipewire
     stdenv.cc.cc
+    stdenv.cc.cc.lib
     systemd
     zlib
     ];
