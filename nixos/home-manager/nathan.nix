@@ -70,6 +70,7 @@ in {
     quarto
     pandoc
     rPackages.knitr
+    rPackages.reticulate
     marksman
     plantuml-headless
     d2
