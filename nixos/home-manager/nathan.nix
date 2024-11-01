@@ -69,9 +69,12 @@ in {
     # pandoc
     quarto
     pandoc
+    rPackages.knitr
     marksman
     plantuml-headless
     d2
+    gnuplot
+    graphviz
     nodePackages.mermaid-cli
     # latex
     texlive.combined.scheme-medium
