@@ -11,7 +11,7 @@ in {
     description = "Nathan Hüsken";
     home = "/home/nathan";
     createHome = true;
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.nushell}/bin/nu";
     extraGroups = [ "wheel" "docker" ];
   };
   

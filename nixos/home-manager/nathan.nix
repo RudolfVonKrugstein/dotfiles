@@ -40,6 +40,8 @@ in {
     helm-ls
     # shell
     zoxide
+    unstable.nushell
+    unstable.carapace
     zsh
     unstable.oh-my-posh
     atuin
@@ -219,6 +221,10 @@ in {
     marksmanConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD rm -rf $HOME/.config/marksman
     $DRY_RUN_CMD ln -s $HOME/dotfiles/marksman $HOME/.config/marksman
+    '';
+    nushellConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    $DRY_RUN_CMD rm -rf $HOME/.config/nushell
+    $DRY_RUN_CMD ln -s $HOME/dotfiles/nushell $HOME/.config/nushell
     '';
   };
 }
