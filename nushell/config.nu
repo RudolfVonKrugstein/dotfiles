@@ -1,3 +1,4 @@
+$env.config.show_banner = false
 $env.config.edit_mode = "vi"
 
 source ~/.cache/oh-my-posh/init.nu
