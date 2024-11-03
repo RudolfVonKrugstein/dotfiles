@@ -11,3 +11,6 @@ vim.diagnostic.config({ virtual_text = false })
 vim.opt.conceallevel = 0
 -- enable spelling
 vim.opt.spell = true
+-- textwidth
+vim.opt.textwidth = 120
+vim.opt.colorcolumn = "120"
