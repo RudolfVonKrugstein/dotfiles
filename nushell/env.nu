@@ -7,8 +7,13 @@ if (which luarocks | is-not-empty) {
 }
 
 # add ~/.cargo/bin to path
-if ($env | get CARGO_HOME? | is-not-empty) {
-  $env.PATH = ($env.PATH | split row (char esep) | append ($env.CARGO_HOME | path join "bin"))
+if ($env.HOME | path join ".cargo" "bin" | path exists) {
+  $env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | path join ".cargo" "bin"))
+}
+
+# add ~/.nix-profile/bin
+if ($env.HOME | path join ".nix-profile" "bin" | path exists) {
+  $env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | path join ".nix-profile" "bin"))
 }
 
 # add .local/bin
