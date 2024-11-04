@@ -7,9 +7,7 @@ pkgs,
     programs.git = {
       enable = true;
       userName = "Nathan Hüsken";
-      userEmail = "nathan@huesken";
-      signing.signByDefault = true;
-      signing.key = "A7FB930FB8597407AEAB96236FEB23FCF209BDB0";
+      userEmail = "nathan.huesken-extern@deutschebahn.com";
       aliases = {
         unstage = "reset HEAD --";
         pr = "pull --rebase";
