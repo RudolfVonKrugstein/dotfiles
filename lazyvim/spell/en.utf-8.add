@@ -10,3 +10,7 @@ EFS
 RDS
 SSM
 param
+Subdomain
+DNS
+VpcInformation
+Aws
