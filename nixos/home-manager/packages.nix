@@ -30,6 +30,7 @@ in {
       # basics
       git
       jq
+      keychain
       # font
       jetbrains-mono
       # fun tools

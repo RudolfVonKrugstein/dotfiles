@@ -34,3 +34,12 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
+# keychain/ssh-agent
+keychain --eval --quiet
+    | lines
+    | where not ($it | is-empty)
+    | parse "{k}={v}; export {k2};"
+    | select k v
+    | transpose --header-row
+    | into record
+    | load-env
