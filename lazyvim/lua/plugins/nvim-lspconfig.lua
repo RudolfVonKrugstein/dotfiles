@@ -16,6 +16,20 @@ servers["marksman"] = {
   root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
 }
 
+servers["basedpyright"] = {
+  single_file_support = true,
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly", -- openFilesOnly, workspace
+        typeCheckingMode = "standard",
+      },
+    },
+  },
+}
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
