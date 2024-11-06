@@ -21,6 +21,11 @@ if ($env.HOME | path join ".local" "bin" | path exists) {
   $env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | path join ".local" "bin"))
 }
 
+# add /usr/local/cuda/bin
+if ("/usr/local/cuda/bin" | path exists) {
+  $env.PATH = ($env.PATH | split row (char esep) | append "/usr/local/cuda/bin")
+}
+
 # oh-my-osh
 mkdir ~/.cache/oh-my-posh/
 oh-my-posh init nu  --config ~/dotfiles/oh-my-posh.yaml --print | save -f ~/.cache/oh-my-posh/init.nu
