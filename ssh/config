@@ -1,0 +1,8 @@
+Host bwin
+  Hostname 192.168.178.38
+Host bserv
+  Hostname 192.168.178.25
+  
+Host bservd
+  Hostname 192.168.178.40
+  
