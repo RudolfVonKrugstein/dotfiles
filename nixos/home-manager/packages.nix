@@ -89,6 +89,8 @@ in {
       # gitlab/github clis
       unstable.glab
       unstable.gh
+      # ansible
+      ansible
       # fonts
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ] ++ (lib.optionals (config.installBundles.quarto) [
