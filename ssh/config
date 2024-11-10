@@ -6,3 +6,9 @@ Host bserv
 Host bservd
   Hostname 192.168.178.40
   
+Host bserv-ext
+  Hostname butzenserver.hagebutze.de
+  Port 8309
+Host bservd-ext
+  Hostname butzenserver.hagebutze.de
+  Port 8310
