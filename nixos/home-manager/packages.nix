@@ -92,6 +92,8 @@ in {
       unstable.gh
       # ansible
       ansible
+      # put into own condition?
+      (pkgs.callPackage "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/pkgs/agenix.nix" {})
       # fonts
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ] ++ (lib.optionals (config.installBundles.quarto) [
