@@ -59,6 +59,7 @@ in {
       # shell
       zoxide
       unstable.nushell
+      fish
       unstable.carapace
       zsh
       unstable.oh-my-posh

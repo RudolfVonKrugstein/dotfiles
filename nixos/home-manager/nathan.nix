@@ -12,6 +12,7 @@ in {
     ./lazyvim-activate.nix
     ./marksman-activate.nix
     ./nushell-activate.nix
+    ./fish-activate.nix
     ./zellij-activate.nix
     ./zsh.nix
   ];
