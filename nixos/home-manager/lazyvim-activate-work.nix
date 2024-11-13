@@ -36,6 +36,10 @@ pkgs,
       # symlink spell dir
       $DRY_RUN_CMD rm -rf $HOME/.config/nvim/spell
       $DRY_RUN_CMD ln -s $HOME/dotfiles/lazyvim/spell/ $HOME/.config/nvim/spell
+
+      # symlink ftplugin dir
+      $DRY_RUN_CMD rm -rf $HOME/.config/nvim/ftplugin
+      $DRY_RUN_CMD ln -s $HOME/dotfiles/lazyvim/ftplugin $HOME/.config/nvim/ftplugin
       '';
     };
 }
