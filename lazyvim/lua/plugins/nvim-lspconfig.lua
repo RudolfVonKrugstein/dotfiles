@@ -62,6 +62,11 @@ servers["pylsp"] = {
       },
     },
   },
+  on_attach = function(client)
+    if client.name == "pylsp" then
+      client.server_capabilities.renameProvider = false
+    end
+  end,
 }
 
 return {
