@@ -1,4 +1,4 @@
-Host bwin
+Host bvirt
   Hostname 192.168.178.38
 Host bserv
   Hostname 192.168.178.25

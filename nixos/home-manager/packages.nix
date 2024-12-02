@@ -74,6 +74,7 @@ in {
       python3.pkgs.pip
       ruff
       uv
+      pipx
       # pkgs.basedpyright
       # other language servers
       lua-language-server
@@ -106,7 +107,7 @@ in {
     ])
     ++ (lib.optionals config.installBundles.latex [
       # latex
-      texlive.combined.scheme-medium
+      texlive.combined.scheme-full
     ])
     ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.pandoc || config.installBundles.quarto) [
       marksman
