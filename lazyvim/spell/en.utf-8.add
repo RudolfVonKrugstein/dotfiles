@@ -16,3 +16,6 @@ VpcInformation
 Aws
 Cognito
 Fargate
+DynamoDB
+#uircks
+boto3
