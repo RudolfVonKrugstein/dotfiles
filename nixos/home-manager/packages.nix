@@ -70,8 +70,8 @@ in {
       clang
       nodejs
       # python
-      python3
-      python3.pkgs.pip
+      python313
+      python313.pkgs.pip
       ruff
       uv
       pipx
