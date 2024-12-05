@@ -9,6 +9,7 @@ pkgs,
     ./git-work.nix
     ./lazyvim-activate-work.nix
     ./marksman-activate.nix
+    ./lazygit-activate.nix
     ./nushell-activate.nix
     ./fish-activate.nix
     ./zellij-activate.nix
