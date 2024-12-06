@@ -72,6 +72,7 @@ in {
       # python
       python313
       python313.pkgs.pip
+      virtualenv
       ruff
       uv
       pipx
