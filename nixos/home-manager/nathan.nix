@@ -11,6 +11,7 @@ in {
     ./gpg.nix
     ./lazyvim-activate.nix
     ./marksman-activate.nix
+    ./lazygit-activate.nix
     ./nushell-activate.nix
     ./fish-activate.nix
     ./zellij-activate.nix

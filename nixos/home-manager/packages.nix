@@ -96,8 +96,8 @@ in {
       # put into own condition?
       (pkgs.callPackage "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/pkgs/agenix.nix" {})
       # fonts
-      nerd-fonts.fira-code
-      nerd-fonts.droid-sans-mono
+      unstable.nerd-fonts.fira-code
+      unstable.nerd-fonts.droid-sans-mono
     ] ++ (lib.optionals (config.installBundles.quarto) [
       quarto
     ])
