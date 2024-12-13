@@ -69,6 +69,9 @@ in {
       patch
       clang
       nodejs
+      # bash programming
+      shellspec
+      shellcheck
       # python
       python313
       python313.pkgs.pip
