@@ -22,6 +22,9 @@ pkgs,
           source "$(fzf-share)/key-bindings.zsh"
           source "$(fzf-share)/completion.zsh"
         fi
+
+        eval "$(keychain --eval --quiet)"
+
         eval "$(zoxide init --cmd cd zsh)"
 
         # init luarocks
