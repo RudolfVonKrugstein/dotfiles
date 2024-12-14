@@ -20,6 +20,7 @@ in {
       ocaml=lib.mkOption{default=true;};
       elixir=lib.mkOption{default=true;};
       gleam=lib.mkOption{default=true;};
+      zig=lib.mkOption{default=true;};
       qmk=lib.mkOption{default=true;};
     };
   };
@@ -145,6 +146,10 @@ in {
       erlang
       rebar3
     ])
+    ++ (lib.optionals (config.installBundles.zig) [
+        zig
+        zls
+      ])
     ++ (lib.optionals config.installBundles.qmk [
         qmk
     ])
