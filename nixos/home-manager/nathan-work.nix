@@ -21,6 +21,8 @@ pkgs,
       stateVersion = "24.05";
     };
 
+    targets.genericLinux.enable = true;
+
     programs.home-manager.enable = true;
     
     fonts.fontconfig.enable = true;
