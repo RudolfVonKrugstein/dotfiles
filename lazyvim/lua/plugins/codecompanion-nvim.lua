@@ -33,4 +33,6 @@ if file_exists("/home/nathan/.ANTHROPIC_API_KEY") then
     },
     config = true,
   }
+else
+  return {}
 end
