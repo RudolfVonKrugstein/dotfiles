@@ -5,9 +5,6 @@ end
 
 local opts = {
   provider = "ollama",
-  claude = {
-    api_key_name = { "cat", "/home/nathan/.ANTHROPIC_API_KEY" },
-  },
   vendors = {
     ollama = {
       __inherited_from = "openai",
