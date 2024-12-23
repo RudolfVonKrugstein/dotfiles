@@ -18,6 +18,7 @@ in {
     ../packages.nix
     ../general.nix
     ../podman.nix
+    ../ollama.nix
   ];
 
   wsl.enable = true;
