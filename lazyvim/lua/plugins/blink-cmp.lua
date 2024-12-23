@@ -5,17 +5,15 @@ return {
       list = {
         selection = "manual",
       },
-      sources = {
-        completion = {
-          enabled_providers = { "lsp", "path", "snippets", "buffer", "codecompanion" },
-        },
+    },
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer", "codecompanion" },
 
-        providers = {
-          codecompanion = {
-            name = "CodeCompanion",
-            module = "codecompanion.providers.completion.blink",
-            enabled = true,
-          },
+      providers = {
+        codecompanion = {
+          name = "CodeCompanion",
+          module = "codecompanion.providers.completion.blink",
+          enabled = true,
         },
       },
     },
