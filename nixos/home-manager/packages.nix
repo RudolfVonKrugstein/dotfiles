@@ -142,9 +142,9 @@ in {
     ])
     ++ (lib.optionals (config.installBundles.elixir|| config.installBundles.gleam) [
       # elixir/erlang
-      elixir
-      erlang
-      rebar3
+      unstable.elixir
+      unstable.erlang
+      unstable.rebar3
     ])
     ++ (lib.optionals (config.installBundles.zig) [
         zig
