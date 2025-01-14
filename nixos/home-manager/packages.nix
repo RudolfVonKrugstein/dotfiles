@@ -70,6 +70,7 @@ in {
       patch
       clang
       nodejs
+      nodePackages.aws-cdk
       # bash programming
       shellspec
       shellcheck
