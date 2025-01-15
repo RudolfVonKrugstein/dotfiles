@@ -31,7 +31,19 @@ pkgs,
         eval "$(luarocks path --bin)"
 
         # add cargo binaries to path
-        export PATH="$PATH:$HOME/.cargo/bin"
+        if [ -d "$HOME/.cargo/bin" ]; then
+          export PATH="$PATH:$HOME/.cargo/bin"
+        fi
+
+        # add go binaries to path
+        if [ -d "$HOME/go/bin" ]; then
+          export PATH="$PATH:$HOME/go/bin"
+        fi
+
+        # add ~/.local/bin binaries to path
+        if [ -d "$HOME/.local/bin" ]; then
+          export PATH="$PATH:$HOME/.local/bin"
+        fi
       '';
     };
 }
