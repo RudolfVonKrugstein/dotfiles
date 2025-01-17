@@ -38,6 +38,7 @@ in {
       htop
       fortune
       cowsay
+      tree
       # neovim and tools around that
       unstable.lazygit
       zellij
