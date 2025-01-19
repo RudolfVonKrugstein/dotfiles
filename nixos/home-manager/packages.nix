@@ -82,6 +82,7 @@ in {
       virtualenv
       ruff
       uv
+      poetry
       pipx
       # pkgs.basedpyright
       # other language servers
@@ -168,7 +169,7 @@ in {
       sops
     ])
     ++ (lib.optionals config.installBundles.ai [
-      aider-chat
+      unstable.aider-chat
     ]);
   };
 }
