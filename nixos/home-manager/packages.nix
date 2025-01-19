@@ -22,6 +22,7 @@ in {
       gleam=lib.mkOption{default=true;};
       zig=lib.mkOption{default=true;};
       qmk=lib.mkOption{default=true;};
+      ai=lib.mkOption{default=true;};
     };
   };
 
@@ -165,6 +166,9 @@ in {
       awscli2
       aws-gate
       sops
+    ])
+    ++ (lib.optionals config.installBundles.ai [
+      aider-chat
     ]);
   };
 }
