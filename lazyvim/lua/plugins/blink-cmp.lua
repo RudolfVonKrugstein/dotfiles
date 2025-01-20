@@ -1,21 +1,18 @@
 return {
   "saghen/blink.cmp",
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   opts = {
     completion = {
       list = {
-        selection = "manual",
+        selection = {
+          auto_insert = false,
+          preselect = false,
+        },
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "codecompanion" },
-
-      providers = {
-        codecompanion = {
-          name = "CodeCompanion",
-          module = "codecompanion.providers.completion.blink",
-          enabled = true,
-        },
-      },
+      default = { "lsp", "path", "snippets", "buffer" },
     },
   },
 }

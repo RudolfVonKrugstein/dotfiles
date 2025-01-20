@@ -40,5 +40,6 @@ pkgs,
       elixir=false;
       gleam=false;
       qmk=false;
+      ai=false;
     };
 }
