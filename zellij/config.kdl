@@ -82,12 +82,12 @@ keybinds {
         bind "Tab" { ToggleTab; }
         bind "p" { NewTab; SwitchToMode "Normal"; WriteChars "source ~/.local/bin/zsp.sh\n"; }
         bind "g" {
-          Run "lazygit" {
-               close_on_exit true
-          };
-          ToggleFocusFullscreen;
           SwitchToMode "Normal";
-          // "zellij run -c -f -x '2%' -y '2%' --height '96%' --width '96%' -- lazygit"
+          Run "lazygit" {
+              floating true;
+               x "2%"; y "2%"; width "96%"; height "96%";
+              close_on_exit true;
+            };
         }
     }
     scroll {
