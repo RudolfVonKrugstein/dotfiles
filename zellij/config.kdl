@@ -134,6 +134,15 @@ keybinds {
     session {
         bind "Alt o" { SwitchToMode "Normal"; }
         bind "Alt s" { SwitchToMode "Scroll"; }
+        bind "f" {
+          LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-sessionizer.wasm" {
+            floating true
+            move_to_focused_tab true
+            cwd "/"
+            root_dirs "/home/nathan/projects"
+          };
+          SwitchToMode "Normal";
+        }
         bind "d" { Detach; }
     }
     tmux {
@@ -171,6 +180,12 @@ keybinds {
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt <" { PreviousSwapLayout; }
         bind "Alt >" { NextSwapLayout; }
+        bind "Alt r" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zbuffers.wasm" {
+              floating true
+            };
+            SwitchToMode "Normal";
+        }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
