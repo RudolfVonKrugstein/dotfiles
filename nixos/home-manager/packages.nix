@@ -6,6 +6,7 @@ pkgs,
 ... }: let
   unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
 in {
+
   # optional installs
   options = {
     installBundles = {
@@ -27,6 +28,7 @@ in {
   };
 
   config = {
+
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       # basics

@@ -12,6 +12,10 @@ pkgs,
       $DRY_RUN_CMD mkdir -p $HOME/.config/zellij/plugins
       $DRY_RUN_CMD ${pkgs.wget}/bin/wget https://github.com/laperlej/zellij-sessionizer/releases/latest/download/zellij-sessionizer.wasm -O ~/.config/zellij/plugins/zellij-sessionizer.wasm
       $DRY_RUN_CMD ${pkgs.wget}/bin/wget https://github.com/strech/zbuffers/releases/latest/download/zbuffers.wasm -O ~/.config/zellij/plugins/zbuffers.wasm
+      $DRY_RUN_CMD ${pkgs.wget}/bin/wget https://github.com/mostafaqanbaryan/zellij-switch/releases/latest/download/zellij-switch.wasm -O ~/.config/zellij/plugins/zellij-switch.wasm
+
+      $DRY_RUN_CMD mkdir -p $HOME/.local/bin
+      $DRY_RUN_CMD ln -s $HOME/dotfiles/zellij/z $HOME/.local/bin/z
       '';
     };
 }

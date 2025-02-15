@@ -181,10 +181,12 @@ keybinds {
         bind "Alt <" { PreviousSwapLayout; }
         bind "Alt >" { NextSwapLayout; }
         bind "Alt r" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zbuffers.wasm" {
-              floating true
-            };
             SwitchToMode "Normal";
+            Run "z" {
+                floating true;
+                x "2%"; y "2%"; width "96%"; height "96%";
+                close_on_exit true;
+            };
         }
     }
     shared_except "normal" "locked" {
