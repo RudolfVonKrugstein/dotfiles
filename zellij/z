@@ -97,15 +97,15 @@ set_last_session "$current_session"
 # If we're inside of zellij, detach
 if [[ -n "$ZELLIJ" ]]; then
 	if [[ -z "$is_current_session" ]]; then
-		echo "Switching session from inside zellij"
+		echo "Switching session $session_name from inside zellij in $cwd"
+		cd $cwd
 		zellij pipe --plugin file:$HOME/.config/zellij/plugins/zellij-switch.wasm -- "--session=$session_name --cwd=$cwd"
 	fi
 else
 	if [[ -n "$session" ]]; then
-		echo "Existing session, switching to it"
-		zellij attach $session_name -c
+		echo "Existing session, switching to $session_name"
 	else
-		echo "New session, creating it"
+		echo "New session, creating $session_name in $cwd"
 		zellij attach $session_name -c options --default-cwd $cwd
 	fi
 fi
