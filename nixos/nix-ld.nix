@@ -16,6 +16,7 @@ in {
     fuse3
     glib
     icu
+    libgcc
     libdrm
     libnotify
     libpulseaudio
