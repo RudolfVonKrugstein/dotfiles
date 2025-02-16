@@ -12,7 +12,7 @@ in {
     home = "/home/nathan";
     createHome = true;
     shell = "${pkgs.zsh}/bin/zsh";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "mlocate" ];
   };
   
   home-manager.useGlobalPkgs = true;

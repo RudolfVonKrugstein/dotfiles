@@ -15,6 +15,7 @@ pkgs,
       $DRY_RUN_CMD ${pkgs.wget}/bin/wget https://github.com/mostafaqanbaryan/zellij-switch/releases/latest/download/zellij-switch.wasm -O ~/.config/zellij/plugins/zellij-switch.wasm
 
       $DRY_RUN_CMD mkdir -p $HOME/.local/bin
+      $DRY_RUN_CMD rm -rf $HOME/.local/bin/z
       $DRY_RUN_CMD ln -s $HOME/dotfiles/zellij/z $HOME/.local/bin/z
       '';
     };
