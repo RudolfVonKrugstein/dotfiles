@@ -84,7 +84,7 @@ in {
       virtualenv
       ruff
       uv
-      poetry
+      unstable.poetry
       pipx
       # pkgs.basedpyright
       # other language servers
