@@ -1,7 +1,7 @@
 {config,lib,pkgs, ...}:
 {
   services.ollama = {
-    enable = true;
+    enable = false;
     acceleration = "cuda";
   };
 }
