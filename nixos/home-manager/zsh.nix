@@ -32,16 +32,19 @@ pkgs,
 
         # add cargo binaries to path
         if [ -d "$HOME/.cargo/bin" ]; then
+          echo "Adding cargo/rust path"
           export PATH="$PATH:$HOME/.cargo/bin"
         fi
 
         # add go binaries to path
         if [ -d "$HOME/go/bin" ]; then
+          echo "Adding go path"
           export PATH="$PATH:$HOME/go/bin"
         fi
 
         # add ~/.local/bin binaries to path
         if [ -d "$HOME/.local/bin" ]; then
+          echo "Adding local bin path"
           export PATH="$HOME/.local/bin:$PATH"
         fi
       '';
