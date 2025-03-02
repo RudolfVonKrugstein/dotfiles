@@ -17,6 +17,8 @@ pkgs,
       $DRY_RUN_CMD mkdir -p $HOME/.local/bin
       $DRY_RUN_CMD rm -rf $HOME/.local/bin/z
       $DRY_RUN_CMD ln -s $HOME/dotfiles/zellij/z $HOME/.local/bin/z
+
+      $DRY_RUN_CMD ${pkgs.cargo}/bin/cargo install zellij-runner
       '';
     };
 }
