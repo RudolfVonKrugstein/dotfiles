@@ -83,6 +83,7 @@ in {
       python313.pkgs.pip
       virtualenv
       unstable.ruff
+      unstable.mypy
       uv
       unstable.poetry
       pipx
