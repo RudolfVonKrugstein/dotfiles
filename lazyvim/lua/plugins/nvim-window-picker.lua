@@ -3,13 +3,7 @@ return {
   name = "window-picker",
   event = "VeryLazy",
   version = "2.*",
-  keys = {
-    "<C-w>",
-    function()
-      require("window-picker").pick_window()
-    end,
-  },
   config = function()
-    require("window-picker").setup({ hint = "floating-big-letter" })
+    require("window-picker").setup()
   end,
 }
