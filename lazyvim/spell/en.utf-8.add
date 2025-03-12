@@ -21,3 +21,5 @@ DynamoDB
 boto3
 #eployes
 repo
+OpenAPI
+FastAPI
