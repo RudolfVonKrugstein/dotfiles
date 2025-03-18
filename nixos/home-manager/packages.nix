@@ -104,6 +104,7 @@ in {
       unstable.gh
       # ansible
       ansible
+      ansible-language-server
       # put into own condition?
       (pkgs.callPackage "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/pkgs/agenix.nix" {})
       # fonts
