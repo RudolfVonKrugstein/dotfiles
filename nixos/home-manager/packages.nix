@@ -69,6 +69,7 @@ in {
       zsh
       unstable.oh-my-posh
       fzf
+      go-task
       # programming languages
       gnumake
       patch
