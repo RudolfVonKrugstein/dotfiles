@@ -76,6 +76,8 @@ in {
       clang
       nodejs
       nodePackages.aws-cdk
+      # css
+      nodePackages.tailwindcss
       # bash programming
       shellspec
       shellcheck
