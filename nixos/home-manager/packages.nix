@@ -70,6 +70,7 @@ in {
       unstable.oh-my-posh
       fzf
       go-task
+      inotify-tools
       # programming languages
       gnumake
       patch
