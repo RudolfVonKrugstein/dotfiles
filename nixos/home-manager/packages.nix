@@ -141,6 +141,7 @@ in {
       unstable.go
       unstable.gotools
       unstable.gopls
+      unstable.goreleaser
     ])
     ++ (lib.optionals config.installBundles.rust [
       cargo
