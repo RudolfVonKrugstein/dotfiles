@@ -3,19 +3,11 @@ local function file_exists(name)
   return f ~= nil and io.close(f)
 end
 
-local opts = {
-  provider = "ollama",
-  vendors = {
-    ollama = {
-      __inherited_from = "openai",
-      api_key_name = "",
-      endpoint = "http://127.0.0.1:11434/v1",
-      model = "qwen2.5-coder:7b-instruct",
-    },
-  },
-}
+local opts = { provider = "copilot" }
+
 -- test if antoropic api key exists and enable claude if so
 if file_exists("/home/nathan/.ANTHROPIC_API_KEY") then
+  opts["provider"] = "claude"
   opts["claude"] = {
     api_key_name = { "cat", "/home/nathan/.ANTHROPIC_API_KEY" },
   }
