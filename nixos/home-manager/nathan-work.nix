@@ -19,6 +19,10 @@ pkgs,
       username = "nathan";
       homeDirectory = "/home/nathan";
       stateVersion = "24.05";
+      sessionVariables = {
+        noproxy= "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";
+        NOPROXY= "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";
+      };
     };
 
     targets.genericLinux.enable = true;
@@ -42,4 +46,5 @@ pkgs,
       qmk=false;
       ai=false;
     };
+
 }

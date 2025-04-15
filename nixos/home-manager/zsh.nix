@@ -15,6 +15,9 @@ pkgs,
       };
 
       initExtra = ''
+        # load session variables
+        [[ -f ~/.profile ]] && . ~/.profile
+
         # oh my posh
         eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)"
         # Shell integrations
