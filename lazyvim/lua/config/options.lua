@@ -12,3 +12,5 @@ vim.opt.conceallevel = 0
 -- enable spelling
 vim.opt.spell = true
 vim.opt.colorcolumn = "120"
+-- absolute line numbers
+vim.wo.relativenumber = false
