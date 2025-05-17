@@ -184,6 +184,7 @@ in {
     ])
     ++ (lib.optionals config.installBundles.ai [
       unstable.aider-chat
+      unstable.goose-cli
     ]);
   };
 }
