@@ -29,4 +29,5 @@ pkgs: with pkgs; [
     curl
     wget
     git
+    openssl
 ]

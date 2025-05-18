@@ -32,5 +32,6 @@ in {
     stdenv.cc.cc.lib
     systemd
     zlib
+    openssl
     ];
 }
