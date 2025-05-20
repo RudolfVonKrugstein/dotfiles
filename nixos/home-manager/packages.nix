@@ -160,9 +160,9 @@ in {
     ])
     ++ (lib.optionals (config.installBundles.elixir|| config.installBundles.gleam) [
       # elixir/erlang
-      unstable.elixir
-      unstable.erlang
-      unstable.rebar3
+      beam.packages.erlang_27.elixir
+      beam.packages.erlang_27.erlang
+      beam.packages.erlang_27.rebar3
     ])
     ++ (lib.optionals (config.installBundles.zig) [
         zig
