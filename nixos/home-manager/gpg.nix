@@ -18,6 +18,7 @@ pkgs,
       defaultCacheTtlSsh = 36000;
       maxCacheTtlSsh = 36000;
       enableSshSupport = true;
-      pinentryPackage = pkgs.pinentry;
+      pinentry.package = pkgs.pinentry;
+
     };  
 }

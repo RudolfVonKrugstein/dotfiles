@@ -1,82 +1,106 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-final_space: true
-version: 2
-blocks:
-  - type: prompt
-    alignment: left
-    newline: true
-    leading_diamond: 
-    trailing_diamond: "\ue0b4"
-    segments:
-      - type: session
-        style: diamond
-        foreground: "#ffffff"
-        background: "#c386f1"
-        background_templates:
-          - "{{ if (.Root) }}#FF0000{{ else }}#008000{{ end }}"
-        template: " {{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName  }} "
-      - type: path
-        style: diamond
-        foreground: "#ffffff"
-        background: "#000080"
-        template: "{{ $segment := .Segments.Git }}{{ $icon := \"\uf1d2\" }}{{ if $segment.Dir }} {{ $icon }} <i><b>{{ $segment.RepoName }}{{ if $segment.IsWorkTree}} \ue21c{{ end }}</b></i>{{if ne $segment.RepoName .Path}} {{ trimPrefix $segment.Dir .PWD }}{{ end }}{{ else }}{{ .PWD }}{{ end }}{{ if not .Writable }} \uf023{{ end }} "
-      - type: git
-        style: diamond
-        foreground: "#ffffff"
-        background: "#008000"
-        background_templates:
-          - "{{ if or (.Working.Changed) (.Staging.Changed) }}#808000{{ end }}"
-          - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}"
-          - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
-          - "{{ if gt .Behind 0 }}#B388FB{{ end }}"
-        template: " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus
-          }}{{ end }}{{ if .Working.Changed }}  {{ end }}{{ if and
-          (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} 
-          {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{
-          end }}"
-        properties:
-          fetch_status: true
-          fetch_upstream_icon: true
-      - type: dart
-        style: diamond
-      - type: elixir
-        style: diamond
-      - type: go
-        style: diamond
-      - type: lua
-        style: diamond
-      - type: node
-        style: diamond
-      - type: ocaml
-        style: diamond
-      - type: python
-        style: diamond
-      - type: rust
-        style: diamond
-      - type: swift
-        style: diamond
 
-  - type: prompt
-    alignment: left
-    newline: true
-    segments:
-      - type: shell
-        style: diamond
-        foreground: "#ffffff"
-        background: "#000000"
-        properties:
-          mapped_shell_names:
-            pwsh: PS
-            zsh: z
-            bash: b
-      - foreground: "#A9FFB4"
-        foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
-        style: plain
-        template: ">"
-        type: text
 transient_prompt:
-  foreground: "#A9FFB4"
-  foreground_templates: ["{{ if gt .Code 0 }}#ef5350{{ end }}"]
-  style: plain
   template: "> "
+  foreground: "#A9FFB4"
   type: text
+  style: plain
+  foreground_templates:
+  - "{{ if gt .Code 0 }}#ef5350{{ end }}"
+blocks:
+- type: prompt
+  alignment: left
+  leading_diamond: 
+  trailing_diamond: 
+  segments:
+  - properties:
+      cache_duration: none
+    template: " {{ if .SSHSession }}\ueba9 {{ end }}{{ .UserName }}@{{ .HostName  }} "
+    foreground: "#ffffff"
+    background: "#c386f1"
+    type: session
+    style: diamond
+    background_templates:
+    - "{{ if (.Root) }}#FF0000{{ else }}#008000{{ end }}"
+  - properties:
+      cache_duration: none
+    template: "{{ $segment := .Segments.Git }}{{ $icon := \"\uf1d2\" }}{{ if $segment.Dir }} {{ $icon }} <i><b>{{ $segment.RepoName }}{{ if $segment.IsWorkTree}} \ue21c{{ end }}</b></i>{{if ne $segment.RepoName .Path}} {{ trimPrefix $segment.Dir .PWD }}{{ end }}{{ else }}{{ .PWD }}{{ end }}{{ if not .Writable }} \uf023{{ end }} "
+    foreground: "#ffffff"
+    background: "#000080"
+    type: path
+    style: diamond
+  - properties:
+      cache_duration: none
+      fetch_status: true
+      fetch_upstream_icon: true
+    template: " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf0c7 {{ .StashCount }}{{ end }}"
+    foreground: "#ffffff"
+    background: "#008000"
+    type: git
+    style: diamond
+    background_templates:
+    - "{{ if or (.Working.Changed) (.Staging.Changed) }}#808000{{ end }}"
+    - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}"
+    - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
+    - "{{ if gt .Behind 0 }}#B388FB{{ end }}"
+  - properties:
+      cache_duration: none
+    type: dart
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: elixir
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: go
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: lua
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: node
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: ocaml
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: python
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: rust
+    style: diamond
+  - properties:
+      cache_duration: none
+    type: swift
+    style: diamond
+  newline: true
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+      mapped_shell_names:
+        bash: b
+        pwsh: PS
+        zsh: z
+    foreground: "#ffffff"
+    background: "#000000"
+    type: shell
+    style: diamond
+  - properties:
+      cache_duration: none
+    template: ">"
+    foreground: "#A9FFB4"
+    type: text
+    style: plain
+    foreground_templates:
+    - "{{ if gt .Code 0 }}#ef5350{{ end }}"
+  newline: true
+version: 3
+final_space: true

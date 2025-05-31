@@ -14,7 +14,7 @@ pkgs,
         path = "${config.xdg.dataHome}/zsh/history";
       };
 
-      initExtra = ''
+      initContent = ''
         # load session variables
         [[ -f ~/.profile ]] && . ~/.profile
 
