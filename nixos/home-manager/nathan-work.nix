@@ -47,4 +47,6 @@ pkgs,
       ai=false;
     };
 
+    nixpkgs.config.allowUnfree = true;
+
 }

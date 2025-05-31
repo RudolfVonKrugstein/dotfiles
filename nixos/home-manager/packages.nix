@@ -29,7 +29,6 @@ in {
 
   config = {
 
-    nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       # basics
       git
