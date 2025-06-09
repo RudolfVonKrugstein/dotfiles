@@ -30,4 +30,5 @@
     wget
     git
     openssl
+    xdg-utils
 ]
