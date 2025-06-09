@@ -145,6 +145,7 @@ in {
       unstable.goreleaser
       unstable.revive
       unstable.golangci-lint
+      manim
     ])
     ++ (lib.optionals config.installBundles.rust [
       cargo
