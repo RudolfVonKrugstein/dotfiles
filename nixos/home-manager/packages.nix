@@ -34,6 +34,8 @@ in {
       git
       jq
       keychain
+      # nixos
+      nix-index
       # font
       jetbrains-mono
       # fun tools
