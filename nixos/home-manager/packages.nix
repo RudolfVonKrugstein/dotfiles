@@ -138,6 +138,9 @@ in {
       gnuplot
       graphviz
       nodePackages.mermaid-cli
+      manim
+      pango.dev
+      xorg.libxcb.dev
     ])
     ++ (lib.optionals config.installBundles.golang [
       # golang
@@ -147,8 +150,6 @@ in {
       unstable.goreleaser
       unstable.revive
       unstable.golangci-lint
-      manim
-      pango.dev
     ])
     ++ (lib.optionals config.installBundles.rust [
       cargo
