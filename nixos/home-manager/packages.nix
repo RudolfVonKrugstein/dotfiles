@@ -146,6 +146,7 @@ in {
       unstable.revive
       unstable.golangci-lint
       manim
+      pango.dev
     ])
     ++ (lib.optionals config.installBundles.rust [
       cargo
