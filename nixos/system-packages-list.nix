@@ -31,4 +31,5 @@
     git
     openssl
     xdg-utils
+    pkg-config
 ]
