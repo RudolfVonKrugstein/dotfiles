@@ -139,8 +139,6 @@ in {
       graphviz
       nodePackages.mermaid-cli
       manim
-      pango.dev
-      xorg.libxcb.dev
     ])
     ++ (lib.optionals config.installBundles.golang [
       # golang

@@ -18,6 +18,9 @@ pkgs,
         # load session variables
         [[ -f ~/.profile ]] && . ~/.profile
 
+        # direnv
+        eval "$(direnv hook zsh)"
+
         # oh my posh
         eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)"
         # Shell integrations
