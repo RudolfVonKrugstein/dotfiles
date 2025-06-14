@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+function use_uv() {
+	uv venv
+	source .venv/bin/activate
+}

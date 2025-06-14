@@ -13,6 +13,7 @@ pkgs,
     ./nushell-activate.nix
     ./fish-activate.nix
     ./zellij-activate.nix
+    ./direnv-activate.nix
     ./zsh.nix
   ];
     home = {
