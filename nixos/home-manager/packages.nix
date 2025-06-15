@@ -71,6 +71,7 @@ in {
       unstable.oh-my-posh
       fzf
       go-task
+      just
       inotify-tools
       # programming languages
       gnumake
