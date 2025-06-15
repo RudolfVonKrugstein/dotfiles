@@ -3,12 +3,12 @@ local function file_exists(name)
   return f ~= nil and io.close(f)
 end
 
-local opts = { provider = "copilot" }
+local opts = { provider = "copilot", providers = {} }
 
 -- test if antoropic api key exists and enable claude if so
 if file_exists("/home/nathan/.ANTHROPIC_API_KEY") then
   opts["provider"] = "claude"
-  opts["claude"] = {
+  opts["providers"]["claude"] = {
     api_key_name = { "cat", "/home/nathan/.ANTHROPIC_API_KEY" },
   }
 end
