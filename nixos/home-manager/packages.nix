@@ -79,6 +79,8 @@ in {
       clang
       nodejs
       nodePackages.aws-cdk
+      direnv
+      nix-direnv
       # css
       nodePackages.tailwindcss
       # bash programming
