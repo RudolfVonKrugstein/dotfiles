@@ -43,6 +43,8 @@ in {
       fortune
       cowsay
       tree
+      # helix
+      helix
       # neovim and tools around that
       unstable.lazygit
       zellij
@@ -78,7 +80,6 @@ in {
       patch
       clang
       nodejs
-      nodePackages.aws-cdk
       direnv
       nix-direnv
       # css
