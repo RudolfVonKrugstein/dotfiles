@@ -14,6 +14,7 @@ in {
       pandoc=lib.mkOption{default=true;};
       asciidoc=lib.mkOption{default=true;};
       latex=lib.mkOption{default=true;};
+      astro=lib.mkOption{default=true;};
       rust=lib.mkOption{default=true;};
       golang=lib.mkOption{default=true;};
       aws=lib.mkOption{default=true;};
@@ -53,6 +54,10 @@ in {
       ripgrep
       fd
       marksman
+      taplo
+      yaml-language-server
+      yamlfmt
+      vscode-langservers-extracted
       # spelling
       hunspell
       hunspellDicts.en_US
@@ -93,9 +98,11 @@ in {
       virtualenv
       unstable.ruff
       unstable.mypy
+      basedpyright
       uv
       unstable.poetry
       pipx
+      unstalbe.pyrefly
       # pkgs.basedpyright
       # other language servers
       lua-language-server
@@ -135,6 +142,9 @@ in {
       # latex
       texlive.combined.scheme-full
     ])
+    ++ (lib.optionals config.installBundles.astro [
+      astro-language-server
+    ])
     ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.pandoc || config.installBundles.quarto) [
       marksman
       plantuml-headless
@@ -152,6 +162,8 @@ in {
       unstable.goreleaser
       unstable.revive
       unstable.golangci-lint
+      unstable.golangci-lint-langserver
+      unstable.delve
     ])
     ++ (lib.optionals config.installBundles.rust [
       cargo
