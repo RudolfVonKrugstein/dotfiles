@@ -102,7 +102,8 @@ in {
       uv
       unstable.poetry
       pipx
-      unstalbe.pyrefly
+      unstable.pyrefly
+      unstable.ty
       # pkgs.basedpyright
       # other language servers
       lua-language-server
