@@ -7,7 +7,7 @@ pkgs,
     ./../package-overrides.nix
     ./packages.nix
     ./git-work.nix
-    ./lazyvim-activate-work.nix
+    ./neovim-activate.nix
     ./marksman-activate.nix
     ./lazygit-activate.nix
     ./nushell-activate.nix

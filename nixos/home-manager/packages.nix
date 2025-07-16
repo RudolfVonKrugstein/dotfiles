@@ -54,11 +54,13 @@ in {
       ripgrep
       fd
       marksman
+      markdownlint-cli2
       taplo
       yaml-language-server
       yamlfmt
       vscode-langservers-extracted
       # spelling
+      harper
       hunspell
       hunspellDicts.en_US
       hunspellDicts.de_DE
