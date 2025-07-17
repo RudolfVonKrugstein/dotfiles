@@ -13,7 +13,7 @@ return {
           pytest_discover_instances = true,
         }),
         require("neotest-golang")({
-          go_test_args = { "./src/...", "-v", "-race", "-count=1", "-timeout=60s" },
+          go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
           dap_go_enabled = true,
         }),
       },
