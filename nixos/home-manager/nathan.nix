@@ -9,9 +9,9 @@ in {
     ./packages.nix
     ./git.nix
     ./gpg.nix
-    ./lazyvim-activate.nix
+    ./neovim-activate.nix
     ./marksman-activate.nix
-    ./noevim-activate.nix
+    ./lazygit-activate.nix
     ./nushell-activate.nix
     ./fish-activate.nix
     ./zellij-activate.nix
