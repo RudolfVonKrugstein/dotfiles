@@ -2,9 +2,7 @@
 config, 
 lib, 
 pkgs,
-... }: let
-  unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
-in {
+... }: {
   imports = [
     ./packages.nix
     ./git.nix

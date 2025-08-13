@@ -3,9 +3,7 @@
 config, 
 lib, 
 pkgs,
-... }: let
-  unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
-in {
+... }: {
 
   # optional installs
   options = {
@@ -128,7 +126,7 @@ in {
       # other usefull tools
       gitleaks
       # put into own condition?
-      (pkgs.callPackage "${builtins.fetchTarball "https://github.com/ryantm/agenix/archive/main.tar.gz"}/pkgs/agenix.nix" {})
+      # agenix.packages.x86_64-linux.default
       # fonts
       unstable.nerd-fonts.fira-code
       unstable.nerd-fonts.droid-sans-mono
