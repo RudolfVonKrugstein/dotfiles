@@ -101,6 +101,7 @@ vim.lsp.enable({
   "docker_compose_language_service",
   "ansiblels",
   "lua_ls",
+  "nixd",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
