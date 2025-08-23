@@ -10,6 +10,7 @@ let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [
+    ../../overlays.nix
     ../../nix-ld.nix
     ../../users.nix
     ../../package-overrides.nix

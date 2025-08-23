@@ -69,6 +69,7 @@ pkgs,
       aspellDicts.de
       # nix
       nil
+      nixfmt-rfc-style
       # shell
       zoxide
       unstable.nushell
@@ -141,7 +142,7 @@ pkgs,
     ])
     ++ (lib.optionals config.installBundles.latex [
       # latex
-      texlive.combined.scheme-full
+      texlive.combined.scheme-medium
     ])
     ++ (lib.optionals config.installBundles.astro [
       astro-language-server
