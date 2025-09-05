@@ -102,6 +102,7 @@ vim.lsp.enable({
   "ansiblels",
   "lua_ls",
   "nixd",
+  "gleam",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
