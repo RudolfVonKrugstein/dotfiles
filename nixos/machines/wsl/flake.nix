@@ -7,6 +7,11 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # NixOS unstable channel
     # nixos-hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # NUR
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # WSL
     NixOS-WSL = {
       url = "github:nix-community/NixOS-WSL";
@@ -33,6 +38,7 @@
       home-manager,
       NixOS-WSL,
       agenix,
+      nur,
       ...
     }@inputs:
     let
@@ -46,6 +52,7 @@
         system = "x86_64-linux";
         modules = [
           { nix.registry.nixpkgs.flake = nixpkgs; }
+          { nixpkgs.overlays = [ nur.overlays.default ]; }
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./configuration.nix

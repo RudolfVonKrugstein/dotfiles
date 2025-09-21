@@ -61,6 +61,7 @@
         yaml-language-server
         yamlfmt
         vscode-langservers-extracted
+        nur.repos.charmbracelet.crush
         # spelling
         harper
         hunspell
