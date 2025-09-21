@@ -28,9 +28,11 @@
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "quarto-nvim": { "branch": "main", "commit": "0e9491509b38efbd83d3f41dbfacc7fc4bd40191" },
   "snacks.nvim": { "branch": "main", "commit": "d67a47739dfc652cfcf66c59e929c704a854b37a" },
+  "texpresso.vim": { "branch": "main", "commit": "d543df30b61ea886cb726a18c1d1d28ea36d30cc" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "tokyonight.nvim": { "branch": "main", "commit": "14fd5ff7f84027064724ec3157fe903199e77ded" },
   "vim-DetectSpellLang": { "branch": "master", "commit": "ba8fa4202ccdcfc89362bca37a3dcec2a84395b7" },
+  "vimtex": { "branch": "master", "commit": "77f31bd02cec678823c8614e6400db97390b5ce7" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" }
 }

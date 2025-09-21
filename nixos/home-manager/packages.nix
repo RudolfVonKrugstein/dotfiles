@@ -52,6 +52,7 @@
         zellij
         yazi
         unstable.neovim
+        tree-sitter
         ripgrep
         fd
         marksman
@@ -154,6 +155,9 @@
             paralist
             datetime2
             enumitem
+            texpresso
+            zathura
+            latexrun
           ]
         ))
       ])
