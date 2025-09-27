@@ -60,6 +60,7 @@
         taplo
         yaml-language-server
         yamlfmt
+        lsp-ai
         vscode-langservers-extracted
         nur.repos.charmbracelet.crush
         # spelling
