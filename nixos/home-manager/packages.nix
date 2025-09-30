@@ -122,7 +122,9 @@
         luaPackages.lpeg
         luaPackages.busted
         # podman
+        podman
         podman-tui
+        podman-compose
         # gitlab/github clis
         unstable.glab
         unstable.gh
