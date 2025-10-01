@@ -104,6 +104,7 @@ vim.lsp.enable({
   "lua_ls",
   "gleam",
   "nil_ls",
+  "lsp_ai_gleam",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
