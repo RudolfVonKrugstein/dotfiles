@@ -14,6 +14,14 @@ return {
     input = { enabled = true },
     picker = {
       enabled = true,
+      win = {
+        list = {
+          keys = {
+            ["v"] = "edit_vsplit",
+            ["s"] = "edit_split",
+          },
+        },
+      },
     },
     notifier = { enabled = true },
     quickfile = { enabled = true },
