@@ -16,6 +16,7 @@
       astro = lib.mkOption { default = true; };
       rust = lib.mkOption { default = true; };
       golang = lib.mkOption { default = true; };
+      nim = lib.mkOption { default = true; };
       aws = lib.mkOption { default = true; };
       kube = lib.mkOption { default = true; };
       ocaml = lib.mkOption { default = true; };
@@ -24,6 +25,7 @@
       zig = lib.mkOption { default = true; };
       qmk = lib.mkOption { default = true; };
       ai = lib.mkOption { default = true; };
+      webdev = lib.mkOption { default = true; };
     };
   };
 
@@ -96,8 +98,6 @@
         nodejs
         direnv
         nix-direnv
-        # css
-        nodePackages.tailwindcss
         # bash programming
         shellspec
         shellcheck
@@ -193,6 +193,10 @@
         unstable.golangci-lint-langserver
         unstable.delve
       ])
+      ++ (lib.optionals config.installBundles.nim [
+        nim
+        nimble
+      ])
       ++ (lib.optionals config.installBundles.rust [
         cargo
         rustc
@@ -214,6 +218,11 @@
         zig
         zls
       ])
+      ++ (lib.optionals (config.installBundles.webdev) [
+        # webdev
+        nodePackages.browser-sync
+        nodePackages.tailwindcss
+      ])
       ++ (lib.optionals config.installBundles.qmk [
         qmk
       ])
@@ -231,6 +240,7 @@
       ++ (lib.optionals config.installBundles.ai [
         unstable.aider-chat
         unstable.goose-cli
+        claude-code
       ]);
   };
 }
