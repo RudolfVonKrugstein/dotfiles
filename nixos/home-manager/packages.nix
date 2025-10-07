@@ -38,6 +38,8 @@
         keychain
         # nixos
         nix-index
+        nix-du
+        graphviz
         # font
         jetbrains-mono
         # fun tools
