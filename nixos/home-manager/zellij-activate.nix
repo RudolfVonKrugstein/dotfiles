@@ -1,10 +1,14 @@
 {
-config, 
-lib, 
-pkgs,
-... }: {
-    home.activation = {
-      zellijConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  home.activation = {
+    zellijConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      PATH=$PATH:${lib.makeBinPath [ pkgs.gcc ]}
+
       $DRY_RUN_CMD rm -rf $HOME/.config/zellij
       $DRY_RUN_CMD cd $HOME/.config/
       $DRY_RUN_CMD ln -s ../dotfiles/zellij $HOME/.config/zellij
@@ -19,6 +23,6 @@ pkgs,
       $DRY_RUN_CMD ln -s $HOME/dotfiles/zellij/z $HOME/.local/bin/z
 
       $DRY_RUN_CMD ${pkgs.cargo}/bin/cargo install zellij-runner
-      '';
-    };
+    '';
+  };
 }
