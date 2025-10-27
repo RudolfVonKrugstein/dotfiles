@@ -38,6 +38,8 @@
         git
         jq
         keychain
+        # disk tools
+        ncdu
         # nixos
         nix-index
         nix-du
