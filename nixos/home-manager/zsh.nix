@@ -56,6 +56,13 @@
         export PATH="$HOME/.local/bin:$PATH"
       fi
 
+      # add windows scoop direcotry if it exists to path
+      if [-d /mnt/c/Users/NathanHuesken/scoop/shims ]; then
+        echo "Adding windows scoop direcotry"
+        export PATH="/mnt/c/Users/NathanHuesken/scoop/shims:$PATH"
+      fi
+
+
       # run dirgit.sh
       ~/dotfiles/dirgit.sh ~/projects/private
       ~/dotfiles/dirgit.sh ~/projects/work
