@@ -56,9 +56,9 @@
         export PATH="$HOME/.local/bin:$PATH"
       fi
 
-      # add windows scoop direcotry if it exists to path
-      if [-d /mnt/c/Users/NathanHuesken/scoop/shims ]; then
-        echo "Adding windows scoop direcotry"
+      # add windows scoop directory (if it exists) to path
+      if [ -d "/mnt/c/Users/NathanHuesken/scoop/shims" ]; then
+        echo "Adding windows scoop directory"
         export PATH="/mnt/c/Users/NathanHuesken/scoop/shims:$PATH"
       fi
 
