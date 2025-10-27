@@ -35,7 +35,7 @@
     in
     {
       homeConfigurations = {
-        deck = home-manager.lib.homeManagerConfiguration {
+        nathan = home-manager.lib.homeManagerConfiguration {
           # specialArgs = { inherit inputs outputs; };
           pkgs = import nixpkgs { inherit system; };
           extraSpecialArgs = { inherit inputs outputs; };

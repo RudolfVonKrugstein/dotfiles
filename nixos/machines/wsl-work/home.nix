@@ -9,7 +9,7 @@
     ../../overlays.nix
     ../../package-overrides.nix
     ../../home-manager/packages.nix
-    ../../home-manager/git.nix
+    ../../home-manager/git-work.nix
     ../../home-manager/gpg.nix
     ../../home-manager/neovim-activate.nix
     ../../home-manager/marksman-activate.nix
