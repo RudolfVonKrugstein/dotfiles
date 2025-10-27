@@ -53,7 +53,7 @@
     kube = false;
     ocaml = false;
     elixir = false;
-    gleam = false;
+    gleam = true;
     qmk = false;
     ai = false;
   };
