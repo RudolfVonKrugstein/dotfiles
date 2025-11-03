@@ -166,6 +166,11 @@
             texpresso
             zathura
             latexrun
+            environ
+            datetime
+            fmtcount
+            wallpaper
+            numprint
           ]
         ))
       ])
