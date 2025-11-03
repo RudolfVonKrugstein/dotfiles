@@ -89,9 +89,9 @@ require("lazy").setup({
 --configure lsp
 vim.lsp.enable({
   --python
-  --"basedpyright",
+  "basedpyright",
   --"pyrefly",
-  "zuban",
+  --"zuban",
   "ruff",
   "gopls",
   "harper_ls",
