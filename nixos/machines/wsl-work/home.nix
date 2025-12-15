@@ -55,7 +55,7 @@
     elixir = false;
     gleam = true;
     qmk = false;
-    ai = false;
+    ai = true;
   };
 
   nixpkgs.config.allowUnfree = true;
