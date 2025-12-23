@@ -30,6 +30,11 @@ if [ -d ~/.cargo/bin ]; then
     export PATH=$PATH:~/.cargo/bin
 fi
 
+# emacs
+if [ -d ~/.config/emacs/bin ]; then
+    export PATH=$PATH:~/.config/emacs/bin
+fi
+
 # android sdk
 if [ -d ~/development/AndroidSDK/cmdline-tools/latest/bin ]; then
     export PATH=$PATH:$HOME/development/AndroidSDK/cmdline-tools/latest/bin

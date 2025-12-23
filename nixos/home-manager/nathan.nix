@@ -10,6 +10,7 @@
     ./git.nix
     ./gpg.nix
     ./neovim-activate.nix
+    ./emacs-activate.nix
     ./marksman-activate.nix
     ./lazygit-activate.nix
     ./nushell-activate.nix

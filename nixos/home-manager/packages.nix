@@ -69,6 +69,8 @@
         lsp-ai
         vscode-langservers-extracted
         nur.repos.charmbracelet.crush
+        # emacs
+        emacs
         # spelling
         harper
         hunspell

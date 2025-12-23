@@ -56,6 +56,12 @@
         export PATH="$HOME/.local/bin:$PATH"
       fi
 
+      # emacs
+      if [ -d ~/.config/emacs/bin ]; then
+          echo "Adding emacs config bin path"
+          export PATH=$PATH:~/.config/emacs/bin
+      fi
+
       # add windows scoop directory (if it exists) to path
       if [ -d "/mnt/c/Users/NathanHuesken/scoop/shims" ]; then
         echo "Adding windows scoop directory"
