@@ -27,11 +27,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # emacs
-    emacs = {
-      url = "github.com:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -43,7 +38,6 @@
       home-manager,
       NixOS-WSL,
       agenix,
-      emacs,
       nur,
       ...
     }@inputs:
