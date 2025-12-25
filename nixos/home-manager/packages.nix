@@ -250,6 +250,7 @@
         unstable.aider-chat
         unstable.goose-cli
         claude-code
+        opencode
       ]);
   };
 }
