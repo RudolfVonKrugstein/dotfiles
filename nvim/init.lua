@@ -107,5 +107,24 @@ vim.lsp.enable({
   "lsp_ai_gleam",
 })
 
+-- configure auto reload of files
+vim.o.autoread = true
+
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      local buf = vim.api.nvim_get_current_buf()
+      local changedtick = vim.api.nvim_buf_get_changedtick(buf)
+
+      vim.cmd("checktime")
+
+      -- If buffer was reloaded
+      if vim.api.nvim_buf_get_changedtick(buf) ~= changedtick then
+        vim.notify("File reloaded from disk", vim.log.levels.INFO)
+      end
+    end
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
