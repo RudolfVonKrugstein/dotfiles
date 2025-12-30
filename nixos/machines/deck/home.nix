@@ -24,7 +24,7 @@
   home = {
     username = "deck";
     homeDirectory = "/home/deck";
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 
   programs.home-manager.enable = true;

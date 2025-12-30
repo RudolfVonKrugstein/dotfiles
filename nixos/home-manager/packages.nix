@@ -136,7 +136,6 @@
         unstable.gh
         # ansible
         ansible
-        ansible-language-server
         ansible-lint
         # other usefull tools
         gitleaks

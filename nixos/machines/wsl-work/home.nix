@@ -24,7 +24,7 @@
   home = {
     username = "nathan";
     homeDirectory = "/home/nathan";
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     sessionVariables = {
       noproxy = "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";
       NOPROXY = "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";

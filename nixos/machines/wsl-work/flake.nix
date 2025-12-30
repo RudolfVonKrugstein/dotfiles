@@ -2,8 +2,8 @@
   description = "WSL at Work NixOS Flake config for home-manager";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # NixOS official package source, using the nixos-25.11 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # NixOS unstable channel
     # nixos-hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -14,7 +14,7 @@
     };
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
