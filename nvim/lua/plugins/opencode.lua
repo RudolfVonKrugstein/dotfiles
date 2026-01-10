@@ -5,6 +5,7 @@ return {
     vim.g.opencode_opts = {
       port = 4096,
     }
+    vim.g.opencode_opts.provider = { enabled = false }
 
     -- Required for `opts.events.reload`.
     vim.o.autoread = true
