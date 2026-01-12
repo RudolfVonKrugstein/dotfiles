@@ -35,11 +35,11 @@
       with pkgs;
       [
         # basics
-        git
         jq
         keychain
         # disk tools
         ncdu
+        dua
         # nixos
         nix-index
         nix-du
@@ -53,11 +53,15 @@
         tree
         # helix
         helix
-        # neovim and tools around that
+        # git
+        git
+        jujutsu
         unstable.lazygit
+        # neovim and tools around that
+        unstable.neovim
         zellij
         yazi
-        unstable.neovim
+        superfile
         tree-sitter
         ripgrep
         fd
@@ -95,6 +99,8 @@
         go-task
         just
         inotify-tools
+        tailspin
+        hexyl
         # programming languages
         gnumake
         patch
@@ -131,6 +137,7 @@
         podman
         podman-tui
         podman-compose
+        lazydocker
         # gitlab/github clis
         unstable.glab
         unstable.gh
@@ -144,6 +151,8 @@
         # fonts
         unstable.nerd-fonts.fira-code
         unstable.nerd-fonts.droid-sans-mono
+        # database tools
+        harlequin
       ]
       ++ (lib.optionals (config.installBundles.quarto) [
         quarto
