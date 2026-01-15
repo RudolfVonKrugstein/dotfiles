@@ -259,6 +259,7 @@
         unstable.goose-cli
         claude-code
         unstable.opencode
+        lsof
       ]);
   };
 }
