@@ -119,7 +119,7 @@
         unstable.mypy
         basedpyright
         uv
-        unstable.poetry
+        poetry
         pipx
         unstable.pyrefly
         unstable.ty
