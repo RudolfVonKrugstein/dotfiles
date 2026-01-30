@@ -260,6 +260,7 @@
         claude-code
         unstable.opencode
         lsof
+        unstable.llama-cpp
       ]);
   };
 }
