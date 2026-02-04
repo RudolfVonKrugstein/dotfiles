@@ -153,6 +153,8 @@
         unstable.nerd-fonts.droid-sans-mono
         # database tools
         harlequin
+        # dev tools
+        toxiproxy
       ]
       ++ (lib.optionals (config.installBundles.quarto) [
         quarto
