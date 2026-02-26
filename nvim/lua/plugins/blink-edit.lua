@@ -1,5 +1,6 @@
 return {
   "BlinkResearchLabs/blink-edit.nvim",
+  enabled=false,
   config = function()
     require("blink-edit").setup({
       llm = {
