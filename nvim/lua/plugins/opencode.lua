@@ -3,7 +3,7 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      provider = { enabled = false }
+      server = { enabled = false }
     }
 
     -- Required for `opts.events.reload`.
