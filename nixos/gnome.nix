@@ -1,0 +1,25 @@
+{ conifg, lib, pkgs, ... }:
+
+{
+  # Configure network connections interactively with nmcli or nmtui.
+  networking.networkmanager.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.wayland = true;
+  services.desktopManager.gnome.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.enableRedistributableFirmware = true;
+
+  # firefox
+  programs.firefox.enable = true;
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput.enable = true;
+  environment.systemPackages = with pkgs; [
+    mesa-demos
+  ];
+}
