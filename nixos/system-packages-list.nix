@@ -33,4 +33,6 @@ with pkgs;
   openssl
   xdg-utils
   pinentry-gtk2
+  dnsutils
+  pciutils
 ]

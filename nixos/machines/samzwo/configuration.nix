@@ -22,6 +22,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../../gnome.nix
+    ../../steam.nix
     ../../overlays.nix
     ../../nix-ld.nix
     ../../users.nix

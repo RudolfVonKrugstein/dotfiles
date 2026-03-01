@@ -16,10 +16,14 @@
 
   # firefox
   programs.firefox.enable = true;
+  # thunderbird
+  programs.thunderbird.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   environment.systemPackages = with pkgs; [
     mesa-demos
+    networkmanagerapplet
   ];
+  services.flatpak.enable = true;
 }
