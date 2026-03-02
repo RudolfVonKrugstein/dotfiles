@@ -1,4 +1,4 @@
-#!/bin/bash
+#!env bash
 
 # Use current directory or first argument
 ROOT="${1:-$(pwd)}"

@@ -70,8 +70,8 @@
 
 
       # run dirgit.sh
-      ~/dotfiles/dirgit.sh ~/projects/private
-      ~/dotfiles/dirgit.sh ~/projects/work
+      PATH=$PATH:${pkgs.bash} ~/dotfiles/dirgit.sh ~/projects/private
+      PATH=$PATH:${pkgs.bash} ~/dotfiles/dirgit.sh ~/projects/work
     '';
   };
 }
