@@ -26,4 +26,9 @@
     networkmanagerapplet
   ];
   services.flatpak.enable = true;
+
+  # fix, see: https://discourse.nixos.org/t/virtualbox-under-gnome/74450/2
+  environment.extraInit = ''
+    export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+  '';
 }

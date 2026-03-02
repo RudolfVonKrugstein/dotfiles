@@ -268,6 +268,9 @@
         keepassxc
         brave
         google-chrome
+        masterpdfeditor
+        evince
+        kdePackages.okular
       ]);
   };
 }
