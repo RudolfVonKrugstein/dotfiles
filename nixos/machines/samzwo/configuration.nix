@@ -23,6 +23,7 @@ in
     ./hardware-configuration.nix
     ../../gnome.nix
     ../../steam.nix
+    ../../syncthing.nix
     ../../overlays.nix
     ../../nix-ld.nix
     ../../users.nix
