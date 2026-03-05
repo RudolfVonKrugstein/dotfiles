@@ -1,4 +1,4 @@
-{ conifg, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Configure network connections interactively with nmcli or nmtui.
@@ -26,6 +26,9 @@
     networkmanagerapplet
   ];
   services.flatpak.enable = true;
+
+  # enable scanners
+  hardware.sane.enable = true;
 
   # fix, see: https://discourse.nixos.org/t/virtualbox-under-gnome/74450/2
   environment.extraInit = ''
