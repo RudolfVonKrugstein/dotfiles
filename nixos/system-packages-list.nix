@@ -35,4 +35,5 @@ with pkgs;
   pinentry-gtk2
   dnsutils
   pciutils
+  inetutils
 ]
