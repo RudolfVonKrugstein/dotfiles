@@ -271,6 +271,7 @@
         masterpdfeditor
         evince
         kdePackages.okular
+        libsecret
       ]);
   };
 }

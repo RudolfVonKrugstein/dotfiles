@@ -22,6 +22,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../../gnome.nix
+    ../../keypassxc.nix
     ../../steam.nix
     ../../syncthing.nix
     ../../overlays.nix

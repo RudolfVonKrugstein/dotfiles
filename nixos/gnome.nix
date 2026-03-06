@@ -24,6 +24,7 @@
   environment.systemPackages = with pkgs; [
     mesa-demos
     networkmanagerapplet
+    wl-clipboard
   ];
   services.flatpak.enable = true;
 
