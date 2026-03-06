@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  agenix,
   ...
 }:
 {
@@ -26,6 +27,7 @@
       ai = lib.mkOption { default = true; };
       webdev = lib.mkOption { default = true; };
       gui = lib.mkOption { default = false; };
+      agenix = lib.mkOption { default = false; };
     };
   };
 
@@ -37,6 +39,7 @@
         # basics
         jq
         keychain
+        sops
         # disk tools
         ncdu
         dua
@@ -147,7 +150,6 @@
         # other usefull tools
         gitleaks
         # put into own condition?
-        # agenix.packages.x86_64-linux.default
         # fonts
         unstable.nerd-fonts.fira-code
         unstable.nerd-fonts.droid-sans-mono
@@ -272,6 +274,9 @@
         evince
         kdePackages.okular
         libsecret
+      ])
+      ++ (lib.optionals config.installBundles.agenix [
+        agenix.packages.x86_64-linux.default
       ]);
   };
 }

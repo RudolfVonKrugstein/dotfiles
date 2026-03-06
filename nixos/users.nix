@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -23,5 +24,6 @@
   };
 
   home-manager.useGlobalPkgs = true;
+  home-manager.extraSpecialArgs = { agenix = inputs.agenix; };
   home-manager.users.nathan = ./home-manager/nathan.nix;
 }

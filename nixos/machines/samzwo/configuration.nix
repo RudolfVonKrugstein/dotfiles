@@ -54,6 +54,7 @@ in
 
   home-manager.users.nathan.installBundles = {
     gui = true;
+    agenix = true;
   };
 
   # This value determines the NixOS release from which the default

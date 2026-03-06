@@ -50,7 +50,6 @@
           # so the old configuration file still takes effect
           ./configuration.nix
           home-manager.nixosModules.home-manager
-          agenix.nixosModules.default
         ];
       };
     };
