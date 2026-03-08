@@ -91,6 +91,9 @@
         # nix
         nil
         nixfmt-rfc-style
+        # build
+        cmake
+        pkg-config
         # shell
         zoxide
         unstable.nushell
@@ -274,6 +277,10 @@
         evince
         kdePackages.okular
         libsecret
+        gobject-introspection
+        wofi
+        zenity
+        cairo
       ])
       ++ (lib.optionals config.installBundles.agenix [
         agenix.packages.x86_64-linux.default
