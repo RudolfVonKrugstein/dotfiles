@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Configure network connections interactively with nmcli or nmtui.
@@ -30,6 +35,11 @@
 
   # enable scanners
   hardware.sane.enable = true;
+
+  # enable fingerprintscanner
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   # fix, see: https://discourse.nixos.org/t/virtualbox-under-gnome/74450/2
   environment.extraInit = ''
