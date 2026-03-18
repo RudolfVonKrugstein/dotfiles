@@ -89,8 +89,8 @@ require("lazy").setup({
 --configure lsp
 vim.lsp.enable({
   --python
-  "ty",
-  --"pyrefly",
+  -- "ty",
+  "pyrefly",
   --"zuban",
   "ruff",
   "gopls",
