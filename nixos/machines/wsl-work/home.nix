@@ -47,7 +47,7 @@
     pandoc = true;
     asciidoc = true;
     latex = false;
-    rust = false;
+    rust = true;
     golang = true;
     aws = true;
     kube = false;
