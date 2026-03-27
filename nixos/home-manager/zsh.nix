@@ -24,7 +24,7 @@
       eval "$(direnv hook zsh)"
 
       # oh my posh
-      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)"
+      eval "$(${pkgs.unstable.oh-my-posh}/bin/oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)"
       # Shell integrations
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
