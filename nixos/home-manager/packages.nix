@@ -263,7 +263,6 @@
       ])
       ++ (lib.optionals config.installBundles.ai [
         unstable.aider-chat
-        unstable.goose-cli
         claude-code
         unstable.opencode
         lsof
