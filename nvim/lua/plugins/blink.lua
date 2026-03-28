@@ -94,7 +94,7 @@ return {
           async = true,
         },
       },
-      default = { "copilot", "lsp", "path", "snippets", "buffer", "codecompanion" },
+      default = { "copilot", "lsp", "path", "snippets", "buffer" },
     },
 
     snippets = { preset = "luasnip" },
