@@ -195,7 +195,7 @@
         astro-language-server
       ])
       ++ (lib.optionals
-        (config.installBundles.pandoc || config.installBundles.pandoc || config.installBundles.quarto)
+        (config.installBundles.pandoc || config.installBundles.pandoc || config.installBundles.quarto || config.iunstallBundles.asciidoc)
         [
           marksman
           plantuml-headless
