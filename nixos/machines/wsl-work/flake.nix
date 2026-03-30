@@ -17,6 +17,8 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # neovim nightly
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
@@ -26,6 +28,7 @@
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
+      neovim-nightly-overlay,
       nur,
       ...
     }@inputs:

@@ -24,6 +24,9 @@
   };
 
   home-manager.useGlobalPkgs = true;
-  home-manager.extraSpecialArgs = { agenix = inputs.agenix; };
+  home-manager.extraSpecialArgs = {
+    agenix = inputs.agenix;
+    neovim-nightly-overlay = inputs.neovim-nightly-overlay;
+  };
   home-manager.users.nathan = ./home-manager/nathan.nix;
 }

@@ -3,6 +3,7 @@
   lib,
   pkgs,
   agenix,
+  neovim-nightly-overlay,
   ...
 }:
 {
@@ -61,11 +62,13 @@
         jujutsu
         unstable.lazygit
         # neovim and tools around that
-        unstable.neovim
+        # unstable.neovim
+        # tree-sitter
+        neovim-nightly-overlay.packages.${pkgs.system}.default
+        neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
         zellij
         yazi
         superfile
-        tree-sitter
         ripgrep
         fd
         marksman
