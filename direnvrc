@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 function use_uv() {
-	uv venv
+  if [ ! -d .venv ]; then
+	  uv venv
+	fi
 	source .venv/bin/activate
 }
 
