@@ -1,16 +1,6 @@
-return {
-  "smjonas/inc-rename.nvim",
-  cmd = "IncRename",
-  opts = {},
-  keys = {
-    {
-      "<leader>cr",
-      function()
-        local inc_rename = require("inc_rename")
-        return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
-      end,
-      expr = true,
-      desc = "Rename (inc-rename.nvim)",
-    },
-  },
-}
+vim.pack.add({ "https://github.com/smjonas/inc-rename.nvim" })
+require("inc_rename").setup({})
+vim.keymap.set("n", "<leader>cr", function()
+  local inc_rename = require("inc_rename")
+  return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+end, { desc = "Rename (inc-rename.nvim)" })
