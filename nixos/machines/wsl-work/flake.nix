@@ -41,7 +41,10 @@
         nathan = home-manager.lib.homeManagerConfiguration {
           # specialArgs = { inherit inputs outputs; };
           pkgs = import nixpkgs { inherit system; };
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { 
+            inherit inputs outputs;
+            neovim-nightly-overlay = inputs.neovim-nightly-overlay;
+          };
           modules = [
             { nix.registry.nixpkgs.flake = nixpkgs; }
             { nixpkgs.overlays = [ nur.overlays.default ]; }
