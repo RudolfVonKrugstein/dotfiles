@@ -267,6 +267,7 @@
       ++ (lib.optionals config.installBundles.ai [
         unstable.aider-chat
         claude-code
+        gemini-cli
         unstable.opencode
         lsof
         unstable.llama-cpp
