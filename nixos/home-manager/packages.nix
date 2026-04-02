@@ -62,10 +62,10 @@
         jujutsu
         unstable.lazygit
         # neovim and tools around that
-        # unstable.neovim
-        # tree-sitter
-        neovim-nightly-overlay.packages.${pkgs.system}.default
-        neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
+        unstable.neovim
+        unstable.tree-sitter
+        # neovim-nightly-overlay.packages.${pkgs.system}.default
+        # neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
         zellij
         yazi
         superfile
