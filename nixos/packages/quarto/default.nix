@@ -1,6 +1,6 @@
 { stdenv
 , lib
-, pandoc
+, pandocBinary
 , typst
 , esbuild
 , deno
@@ -19,14 +19,15 @@
 
 stdenv.mkDerivation (final: {
   pname = "quarto";
-  version = "1.6.32";
+  version = "1.9.36";
   src = fetchurl {
     url = "https://github.com/quarto-dev/quarto-cli/releases/download/v${final.version}/quarto-${final.version}-linux-amd64.tar.gz";
-    sha256 = "sha256-mVoFBQJJHGn5ZbwOtamshEQl9FzmRVEBye3bBXFUlUI=";
+    sha256 = "39d2e4546274be39a27cceeeed21a60b693c4c477a8c8cb43fb34326442f3910";
   };
 
   nativeBuildInputs = [
     makeWrapper
+    pandocBinary
   ];
 
   postPatch = ''
@@ -40,7 +41,7 @@ stdenv.mkDerivation (final: {
   preFixup = ''
     wrapProgram $out/bin/quarto \
       --prefix QUARTO_DENO : ${lib.getExe deno} \
-      --prefix QUARTO_PANDOC : ${lib.getExe pandoc} \
+      --prefix QUARTO_PANDOC : ${lib.getExe pandocBinary} \
       --prefix QUARTO_ESBUILD : ${lib.getExe esbuild} \
       --prefix QUARTO_DART_SASS : ${lib.getExe dart-sass} \
       --prefix QUARTO_TYPST : ${lib.getExe typst} \

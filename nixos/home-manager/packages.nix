@@ -171,7 +171,7 @@
         quarto
       ])
       ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.quarto) [
-        pandoc
+        pandocBinary
       ])
       ++ (lib.optionals config.installBundles.asciidoc [
         asciidoc-full-with-plugins
