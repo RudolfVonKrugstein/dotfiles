@@ -79,6 +79,9 @@
         lsp-ai
         vscode-langservers-extracted
         nur.repos.charmbracelet.crush
+        # html lsp
+        superhtml
+        prettier
         # emacs
         emacs
         # spelling
