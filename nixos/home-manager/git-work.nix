@@ -11,6 +11,7 @@
       user.name = "Nathan Hüsken";
       user.email = "nathan.huesken-extern@deutschebahn.com";
       core.editor = "${pkgs.neovim}/bin/nvim";
+      core.excludesfile = "~/.config/git/gitignore";
       init.defaultBranch = "main";
       pull.rebase = true;
       alias = {
@@ -29,5 +30,11 @@
         rf = "reflog";
       };
     };
+  };
+
+  home.file.gitignore_global = {
+    enable = true;
+    target = ".config/git/gitignore";
+    text = ".envrc\n.venv";
   };
 }
