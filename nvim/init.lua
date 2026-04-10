@@ -58,6 +58,7 @@ vim.lsp.enable({
   "lua_ls",
   "gleam",
   "nil_ls",
+  "superhtml",
   "lsp_ai_gleam",
 })
 
