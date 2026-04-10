@@ -6,6 +6,7 @@ vim.pack.add({
   "https://github.com/saghen/blink.cmp",
 })
 
+
 require("luasnip.loaders.from_vscode").lazy_load()
 
 require("blink.cmp").setup({
@@ -29,17 +30,9 @@ require("blink.cmp").setup({
     },
   },
   sources = {
-    providers = {
-      copilot = {
-        name = "copilot",
-        module = "blink-cmp-copilot",
-        score_offset = 100,
-        async = true,
-      },
-    },
-    default = { "copilot", "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "buffer", "snippets" },
   },
   snippets = { preset = "luasnip" },
-  fuzzy = { implementation = "lua" },
+  fuzzy = { implementation = "prefer_rust" },
   signature = { enabled = true },
 })
