@@ -114,48 +114,48 @@ local function git()
   return table.concat({
     "[ ",
     head,
-    hl(config.git_add_hl,added),
-    hl(config.git_change_hl,changed),
-    hl(config.git_delete_hl,removed),
+    hl(config.git_add_hl, added),
+    hl(config.git_change_hl, changed),
+    hl(config.git_delete_hl, removed),
     "]",
   })
 end
 
 -- Diagnostics symbols
 local function get_diagnostics()
-	if not vim.diagnostic then
-		return ""
-	end
-	local d = vim.diagnostic.get(0)
-	local e, w, i, h = 0, 0, 0, 0
-	for _, v in ipairs(d) do
-		if v.severity == vim.diagnostic.severity.ERROR then
-			e = e + 1
-		elseif v.severity == vim.diagnostic.severity.WARN then
-			w = w + 1
-		elseif v.severity == vim.diagnostic.severity.INFO then
-			i = i + 1
-		elseif v.severity == vim.diagnostic.severity.HINT then
-			h = h + 1
-		end
-	end
+  if not vim.diagnostic then
+    return ""
+  end
+  local d = vim.diagnostic.get(0)
+  local e, w, i, h = 0, 0, 0, 0
+  for _, v in ipairs(d) do
+    if v.severity == vim.diagnostic.severity.ERROR then
+      e = e + 1
+    elseif v.severity == vim.diagnostic.severity.WARN then
+      w = w + 1
+    elseif v.severity == vim.diagnostic.severity.INFO then
+      i = i + 1
+    elseif v.severity == vim.diagnostic.severity.HINT then
+      h = h + 1
+    end
+  end
 
-	local s = ""
-	if e > 0 then
-		s = s .. hl(config.error_hl," " .. e .. " ")
-	end
-	if w > 0 then
-		s = s .. hl(config.warning_hl," " .. w .. " ")
-	end
-	if i > 0 then
-		s = s .. hl(config.info_hl," " .. i .. " ")
-	end
-	if h > 0 then
-		s = s .. hl(config.hint_hl," " .. h .. " ")
-	end
+  local s = ""
+  if e > 0 then
+    s = s .. hl(config.error_hl, " " .. e .. " ")
+  end
+  if w > 0 then
+    s = s .. hl(config.warning_hl, " " .. w .. " ")
+  end
+  if i > 0 then
+    s = s .. hl(config.info_hl, " " .. i .. " ")
+  end
+  if h > 0 then
+    s = s .. hl(config.hint_hl, " " .. h .. " ")
+  end
 
-	-- reset to StatusLine for following text
-	return s .. "%#StatusLine#"
+  -- reset to StatusLine for following text
+  return s .. "%#StatusLine#"
 end
 
 local function lsps()
@@ -191,6 +191,37 @@ function Statusline.inactive()
   return " %t"
 end
 
+function Statusline.should_attach()
+  local win = vim.api.nvim_get_current_win()
+  local config = vim.api.nvim_win_get_config(win)
+  if config.relative ~= "" then
+    return false
+  end
+  local bufnr = vim.api.nvim_get_current_buf()
+  local bt = vim.bo[bufnr].buftype
+  if bt ~= "" then
+    return false
+  end
+
+  local ft = vim.bo[bufnr].filetype
+  if
+    ft == nil
+    or vim.tbl_contains({
+      "TelescopePrompt",
+      "TelescopeResults",
+      "NvimTree",
+      "neo-tree",
+      "lazy",
+      "mason",
+      "help",
+    }, ft)
+  then
+    return false
+  end
+
+  return true
+end
+
 function Statusline.toggle_path()
   state.show_path = not state.show_path
   vim.cmd("redrawstatus")
@@ -214,7 +245,9 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
   group = group,
   desc = "Activate statusline on focus",
   callback = function()
-    vim.opt_local.statusline = "%!v:lua.Statusline.active()"
+    if Statusline.should_attach() then
+      vim.opt_local.statusline = "%!v:lua.Statusline.active()"
+    end
   end,
 })
 
@@ -222,6 +255,8 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   group = group,
   desc = "Deactivate statusline when unfocused",
   callback = function()
-    vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
+    if Statusline.should_attach() then
+      vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
+    end
   end,
 })
