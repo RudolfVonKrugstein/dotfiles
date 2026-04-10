@@ -1,6 +1,7 @@
 require("plugins.nvim-treesitter")
 require("plugins.auto-save")
 require("plugins.autolang")
+require("plugins.copilot")
 require("plugins.blink")
 require("plugins.colorscheme")
 require("plugins.conform")
