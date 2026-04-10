@@ -3,7 +3,6 @@
   lib,
   pkgs,
   agenix,
-  neovim-nightly-overlay,
   ...
 }:
 {
@@ -169,6 +168,8 @@
       ]
       ++ (lib.optionals (config.installBundles.quarto) [
         quarto
+        svgo
+        xmlstarlet
       ])
       ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.quarto) [
         pandocBinary
@@ -210,6 +211,11 @@
           graphviz
           nodePackages.mermaid-cli
           manim
+          # needed for manim
+          pkg-config
+          pango
+          cairo
+          gobject-introspection
         ]
       )
       ++ (lib.optionals config.installBundles.golang [
@@ -268,7 +274,7 @@
         sops
       ])
       ++ (lib.optionals config.installBundles.ai [
-        unstable.aider-chat
+        aider-chat
         claude-code
         gemini-cli
         unstable.opencode
