@@ -1,26 +1,28 @@
 vim.pack.add({ "https://github.com/zbirenbaum/copilot.lua" })
 require("copilot").setup({
   suggestion = {
-    enabled = false,
+    enabled = true,
   },
   panel = {
-    enabled = true,
-    auto_refresh = false,
-    keymap = {
-      jump_prev = "[[",
-      jump_next = "]]",
-      accept = "<CR>",
-      refresh = "gr",
-      open = "<C-CR>",
-      close = "q",
-    },
-    layout = {
-      position = "bottom", -- | top | left | right | bottom |
-      ratio = 0.4,
-    },
+    enabled = false,
   },
   filetypes = {
     markdown = true,
     help = true,
   },
 })
+
+vim.keymap.set({ "n", "i" }, "<A-n>", function()
+  require("blink.cmp").hide()
+  require("copilot.suggestion").next()
+end, { desc = "Next copilot suggestion" })
+vim.keymap.set({ "n", "i" }, "<A-p>", function()
+  require("blink.cmp").hide()
+  require("copilot.suggestion").next()
+end, { desc = "Prev copilot suggestion" })
+vim.keymap.set({ "n", "i" }, "<A-y>", function()
+  require("copilot.suggestion").accept()
+end, { desc = "Prev copilot suggestion" })
+vim.keymap.set({ "n", "i" }, "<A-u>", function()
+  require("copilot.suggestion").dismiss()
+end, { desc = "Prev copilot suggestion" })
