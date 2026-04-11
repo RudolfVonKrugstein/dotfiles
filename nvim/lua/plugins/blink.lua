@@ -1,6 +1,22 @@
+-- Create an event to build `blink.cmp` with `cargo build --release`.
+-- This event should be defined *before* the `vim.pack.add` call
+-- so it runs automatically after the plugin is installed.
+vim.api.nvim_create_autocmd("PackChanged", {
+  pattern = "blink.cmp",
+  group = vim.api.nvim_create_augroup("blink_update", { clear = true }),
+  callback = function(e)
+    if e.data.kind == "update" then
+      -- Recommended way to access plugin files inside `PackChanged` event
+      -- vim.cmd [[packadd blink.cmp]]
+      vim.cmd.packadd({ args = { e.data.spec.name }, bang = false })
+      -- Build the plugin from source
+      -- vim.cmd [[BlinkCmp build]]
+      require("blink.cmp.fuzzy.build").build()
+    end
+  end,
+})
+
 vim.pack.add({
-  "https://github.com/zbirenbaum/copilot.lua",
-  "https://github.com/giuxtaposition/blink-cmp-copilot",
   "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/saghen/blink.cmp",
