@@ -158,6 +158,31 @@ local function get_diagnostics()
   return s .. "%#StatusLine#"
 end
 
+local function sidekick_copilot()
+  -- copilot status
+  local status = require("sidekick.status").get()
+  local color = "Special"
+  if status then
+    if status.kind == "Error" then
+      color = "DiagnosticError"
+    end
+    if status.busy then
+      color = "DiagnosticWarn"
+    end
+  end
+  return hl(color, " ")
+end
+
+local function sidekick_cli()
+  -- cli session status
+  local status = require("sidekick.status").cli()
+  if #status == 0 then
+    return "-"
+  end
+  local color = "Special"
+  return hl(color, "𐓙" .. (#status > 1 and #status or ""))
+end
+
 local function lsps()
   local bufnr = vim.api.nvim_get_current_buf()
   local active_lsps = vim.lsp.get_clients({ bufnr = bufnr })
@@ -180,6 +205,10 @@ function Statusline.active()
     "%t] ",
     git(),
     "%=[",
+    sidekick_copilot(),
+    "/",
+    sidekick_cli(),
+    "] [",
     lsps(),
     "]%< ",
     get_diagnostics(),
