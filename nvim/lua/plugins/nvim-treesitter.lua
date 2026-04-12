@@ -2,6 +2,8 @@ vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
 
 require("nvim-treesitter").setup({})
 local languages = {
+  "css",
+  "scss",
   "zsh",
   "elm",
   "git_config",
