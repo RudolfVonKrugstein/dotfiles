@@ -11,6 +11,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
