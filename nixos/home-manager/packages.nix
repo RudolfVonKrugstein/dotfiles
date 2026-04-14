@@ -123,8 +123,13 @@
         shellspec
         shellcheck
         # python
-        python313
-        python313.pkgs.pip
+        (python3.withPackages
+        (ppkgs: [
+          ppkgs.ansible
+          ppkgs.requests
+          ppkgs.pip
+          ppkgs.python-dateutil
+        ]))
         virtualenv
         unstable.ruff
         unstable.mypy
@@ -202,7 +207,12 @@
         astro-language-server
       ])
       ++ (lib.optionals
-        (config.installBundles.pandoc || config.installBundles.pandoc || config.installBundles.quarto || config.iunstallBundles.asciidoc)
+        (
+          config.installBundles.pandoc
+          || config.installBundles.pandoc
+          || config.installBundles.quarto
+          || config.iunstallBundles.asciidoc
+        )
         [
           marksman
           plantuml-headless
