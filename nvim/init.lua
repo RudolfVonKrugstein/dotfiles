@@ -60,6 +60,7 @@ vim.lsp.enable({
   "nil_ls",
   "superhtml",
   "lsp_ai_gleam",
+  "astro",
 })
 
 -- configure auto reload of files
