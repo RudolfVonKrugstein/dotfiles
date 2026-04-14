@@ -43,9 +43,9 @@ require("plugins")
 --configure lsp
 vim.lsp.enable({
   --python
-  -- "ty",
+  "ty",
   --"pyrefly",
-  "zuban",
+  -- "zuban",
   "ruff",
   "gopls",
   "harper_ls",
