@@ -9,7 +9,7 @@ require("snacks").setup({
   indent = { enabled = true },
   input = { enabled = true },
   picker = {
-    title="{title} {live} {flags} [v=vsplit,s=split,c-h=hid,c-j=ign,c-r=reg,c-q=qf]",
+    title = "{title} {live} {flags} [v=vsplit,s=split,c-h=hid,c-j=ign,c-r=reg,c-q=qf]",
     enabled = true,
     win = {
       list = {
@@ -33,6 +33,7 @@ require("snacks").setup({
   scroll = { enabled = true },
   statuscolumn = { enabled = true },
   words = { enabled = true },
+  dim = { enabled = true },
 })
 
 local Snacks = require("snacks")
@@ -50,7 +51,7 @@ end, { desc = "Grep" })
 vim.keymap.set("n", "<leader>:", function()
   Snacks.picker.command_history()
 end, { desc = "Command History" })
-vim.keymap.set("n", "<leader>n", function()
+vim.keymap.set("n", "<leader>sn", function()
   Snacks.picker.notifications()
 end, { desc = "Notification History" })
 vim.keymap.set("n", "<leader>fe", function()
@@ -165,3 +166,22 @@ end, { desc = "LSP Workspace Symbols" })
 vim.keymap.set("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "Code Actions" })
+vim.keymap.set("n", "<leader>n", function()
+  Snacks.words.jump()
+end, { desc = "Jump next lsp word" })
+vim.keymap.set("n", "<leader>N", function()
+  Snacks.words.jump(-1)
+end, { desc = "Jump prev lsp word" })
+
+vim.keymap.set("n", "<leader>vd", function()
+  local enabled = vim.g._dim_enabled or false
+  if enabled then
+    Snacks.dim.disable()
+    vim.g._dim_enabled = false
+  else
+    Snacks.dim.enable()
+    vim.g._dim_enabled = true
+  end
+end, { desc = "Toggle dimming" })
+
+vim.api.nvim_set_hl(0, "SnacksDim", { fg = "#444444" }) -- create if missing
