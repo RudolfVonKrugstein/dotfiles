@@ -9,12 +9,20 @@ require("snacks").setup({
   indent = { enabled = true },
   input = { enabled = true },
   picker = {
+    title="{title} {live} {flags} [v=vsplit,s=split,c-h=hid,c-j=ign,c-r=reg,c-q=qf]",
     enabled = true,
     win = {
       list = {
         keys = {
           ["v"] = "edit_vsplit",
           ["s"] = "edit_split",
+        },
+      },
+      input = {
+        keys = {
+          ["<c-h>"] = { "toggle_hidden", mode = { "n", "i" } },
+          ["<c-j>"] = { "toggle_ignored", mode = { "n", "i" } },
+          ["<c-r>"] = { "toggle_regex", mode = { "n", "i" } },
         },
       },
     },
