@@ -36,6 +36,7 @@ local languages = {
   "rust",
   "gleam",
   "toml",
+  "lips",
 }
 require("nvim-treesitter").install(languages)
 
