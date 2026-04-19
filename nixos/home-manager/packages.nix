@@ -277,7 +277,7 @@
         k9s
       ])
       ++ (lib.optionals config.installBundles.aws [
-        awscli2
+        unstable.awscli2
         aws-gate
         sops
       ])
