@@ -231,7 +231,6 @@
       ++ (lib.optionals config.installBundles.golang [
         # golang
         unstable.go
-        unstable.gotools
         unstable.gopls
         unstable.goreleaser
         unstable.revive
