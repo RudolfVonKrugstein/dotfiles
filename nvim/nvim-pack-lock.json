@@ -136,6 +136,10 @@
       "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
       "src": "https://github.com/quarto-dev/quarto-nvim"
     },
+    "recall.nvim": {
+      "rev": "4b9f3e791fae7e777d97a8e0a8f00889b93e3d85",
+      "src": "https://github.com/fnune/recall.nvim"
+    },
     "sidekick.nvim": {
       "rev": "17447a05f9385e5f8372b61530f6f9329cb82421",
       "src": "https://github.com/folke/sidekick.nvim"
