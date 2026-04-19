@@ -9,7 +9,6 @@ require("snacks").setup({
   indent = { enabled = true },
   input = { enabled = true },
   picker = {
-    title = "{title} {live} {flags} [v=vsplit,s=split,c-h=hid,c-j=ign,c-r=reg,c-q=qf]",
     enabled = true,
     win = {
       list = {
@@ -24,6 +23,21 @@ require("snacks").setup({
           ["<c-j>"] = { "toggle_ignored", mode = { "n", "i" } },
           ["<c-r>"] = { "toggle_regex", mode = { "n", "i" } },
         },
+      },
+    },
+    sources = {
+      grep = {
+        win = {
+          input = {
+            footer = "[v=vsplit,s=split,c-h=hid,c-j=ign,c-r=reg,c-q=qf]",
+            footer_pos = "center",
+          },
+        },
+      },
+      marks = {
+        transform = function(item)
+          return item.label:match("%a") ~= nil
+        end,
       },
     },
   },
