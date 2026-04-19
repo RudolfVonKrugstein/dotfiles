@@ -303,6 +303,7 @@
         wofi
         zenity
         cairo
+        gimp
       ])
       ++ (lib.optionals config.installBundles.agenix [
         agenix.packages.x86_64-linux.default
