@@ -29,6 +29,9 @@ local config = {
   visual_block_hl = "StatusVisualBlock",
   replacep_pending_hl = "StatusReplacePending",
   visual_hl = "StatusVisual",
+
+  select_hl = "StatusSelect",
+  select_line_hl = "StatusLineSelect",
 }
 
 -- Mode icons
@@ -42,7 +45,11 @@ local mode_icons = {
   [""] = { text = "V-B", hl = config.visual_block_hl }, -- Visual Block
   r = { text = "R-P", hl = config.replacep_pending_hl },
   v = { text = " V ", hl = config.visual_hl },
+  s = { text = " S ", hl = config.select_hl },
+  S = { text = " S-L ", hl = config.select_line_hl },
 }
+
+
 
 local colors = require("tokyonight.colors").setup()
 vim.api.nvim_set_hl(0, config.git_add_hl, { fg = colors.green }) -- create if missing
@@ -58,6 +65,9 @@ vim.api.nvim_set_hl(0, config.visual_line_hl, { fg = colors.fg_dark, bg = colors
 vim.api.nvim_set_hl(0, config.visual_block_hl, { fg = colors.fg_dark, bg = colors.yellow }) -- create if missing
 vim.api.nvim_set_hl(0, config.replacep_pending_hl, { fg = colors.fg_dark, bg = colors.red2 }) -- create if missing
 vim.api.nvim_set_hl(0, config.visual_hl, { fg = colors.fg_dark, bg = colors.orange }) -- create if missing
+
+vim.api.nvim_set_hl(0, config.select_hl, { fg = colors.fg_dark, bg = colors.red3 }) -- create if missing
+vim.api.nvim_set_hl(0, config.select_line_hl, { fg = colors.fg_dark, bg = colors.red3 }) -- create if missing
 
 -- helper to wrap text in a statusline highlight group
 local function hl(group, text)

@@ -32,6 +32,10 @@
       "rev": "c573a15a62bd0bfd4006ee0849b24f5404395500",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "codedocs.nvim": {
+      "rev": "eb1a8efe141fdaf0df266fb7d3cbeb9678982d62",
+      "src": "https://github.com/jeangiraldoo/codedocs.nvim"
+    },
     "conform.nvim": {
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -71,6 +75,10 @@
     "inc-rename.nvim": {
       "rev": "0074b551a17338ccdcd299bd86687cc651bcb33d",
       "src": "https://github.com/smjonas/inc-rename.nvim"
+    },
+    "marko.nvim": {
+      "rev": "7128e7a08fc20fb666c22098a47b1827b500dcd2",
+      "src": "https://github.com/mohseenrm/marko.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",

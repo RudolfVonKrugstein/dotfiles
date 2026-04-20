@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/fnune/recall.nvim" })
+vim.pack.add({ "https://github.com/fnune/recall.nvim", "https://github.com/mohseenrm/marko.nvim" })
 
 require("recall").setup({})
 vim.keymap.set("n", "<leader>ml", require("recall.snacks").pick, { desc = "List marks" })
