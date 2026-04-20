@@ -302,6 +302,8 @@
         zenity
         cairo
         gimp
+        gnome-tweaks
+        dconf-editor
       ])
       ++ (lib.optionals config.installBundles.agenix [
         agenix.packages.x86_64-linux.default
