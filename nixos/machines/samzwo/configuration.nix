@@ -21,7 +21,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ../../gnome.nix
+    ../../kde.nix
     ../../keypassxc.nix
     ../../steam.nix
     ../../syncthing.nix
@@ -53,7 +53,7 @@ in
   networking.hostName = "SamZwo"; # Define your hostname.
 
   home-manager.users.nathan.installBundles = {
-    gui = true;
+    kde = true;
     agenix = true;
   };
 
