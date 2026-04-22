@@ -5,6 +5,11 @@ vim.pack.add({
   "https://github.com/leoluz/nvim-dap-go",
 })
 
+vim.fn.sign_define("DapBreakpoint", {
+  text = "●",
+  texthl = "DiagnosticError",
+})
+
 local dap, dapui = require("dap"), require("dapui")
 local dapgo = require("dap-go")
 dapui.setup()
@@ -16,7 +21,7 @@ dap.listeners.before.launch.dapui_config = function()
   dapui.open()
 end
 
-vim.keymap.set("n", "<leader>dc", function()
+vim.keymap.set("n", "<leader>de", function()
   require("dap").continue()
 end, { desc = "debug continue" })
 vim.keymap.set("n", "<leader>dn", function()
