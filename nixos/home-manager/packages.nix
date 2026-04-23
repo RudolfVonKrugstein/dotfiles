@@ -73,6 +73,7 @@
         ripgrep
         fd
         marksman
+        mdformat
         markdownlint-cli2
         taplo
         yaml-language-server
