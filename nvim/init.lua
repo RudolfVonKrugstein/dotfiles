@@ -49,6 +49,7 @@ vim.lsp.enable({
   "ruff",
   "gopls",
   "harper_ls",
+  "ltex_plus",
   "yamlls",
   "taplo",
   "marksman",
