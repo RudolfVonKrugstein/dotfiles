@@ -76,6 +76,14 @@
       "rev": "0074b551a17338ccdcd299bd86687cc651bcb33d",
       "src": "https://github.com/smjonas/inc-rename.nvim"
     },
+    "lsp-toggle.nvim": {
+      "rev": "6eb2811eea333c73754e57679c3736e803ff9f6e",
+      "src": "https://github.com/adoyle-h/lsp-toggle.nvim"
+    },
+    "markdown-table-mode.nvim": {
+      "rev": "bb1ea9b76c1b29e15e14806fdfbb2319df5c06f1",
+      "src": "https://github.com/Kicamon/markdown-table-mode.nvim"
+    },
     "marko.nvim": {
       "rev": "7128e7a08fc20fb666c22098a47b1827b500dcd2",
       "src": "https://github.com/mohseenrm/marko.nvim"
@@ -183,6 +191,10 @@
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "vim-table-mode": {
+      "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
+      "src": "https://github.com/dhruvasagar/vim-table-mode"
     },
     "vimtex": {
       "rev": "9306903316c3ddd250676b7cf97c84a84c9c8f99",
