@@ -56,6 +56,7 @@
         fortune
         cowsay
         tree
+        entr
         # helix
         helix
         # git
