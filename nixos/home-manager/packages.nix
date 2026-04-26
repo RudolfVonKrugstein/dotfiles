@@ -26,7 +26,6 @@
       qmk = lib.mkOption { default = true; };
       ai = lib.mkOption { default = true; };
       webdev = lib.mkOption { default = true; };
-      gui = lib.mkOption { default = false; };
       gnome = lib.mkOption { default = false; };
       kde = lib.mkOption { default = false; };
       agenix = lib.mkOption { default = false; };
@@ -295,6 +294,7 @@
         unstable.llama-cpp
       ])
       ++ (lib.optionals (config.installBundles.gnome || config.installBundles.kde) [
+        kitty
         keepassxc
         brave
         google-chrome
