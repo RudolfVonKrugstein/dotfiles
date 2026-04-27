@@ -72,6 +72,7 @@
         yazi
         superfile
         ripgrep
+        ast-grep
         fd
         marksman
         mdformat
