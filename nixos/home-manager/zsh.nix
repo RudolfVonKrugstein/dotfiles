@@ -5,6 +5,13 @@
   ...
 }:
 {
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    configFile = "~/dotfiles/oh-my-posh.yaml";
+    package = pkgs.unstable.oh-my-posh;
+  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -27,8 +34,6 @@
       # direnv
       eval "$(direnv hook zsh)"
 
-      # oh my posh
-      eval "$(${pkgs.unstable.oh-my-posh}/bin/oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)"
       # Shell integrations
       if [ -n "''${commands[fzf-share]}" ]; then
         source "$(fzf-share)/key-bindings.zsh"
