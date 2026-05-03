@@ -21,7 +21,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ../../kde.nix
+    ../../gnome.nix
     ../../keypassxc.nix
     ../../steam.nix
     ../../syncthing.nix
