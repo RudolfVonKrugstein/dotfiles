@@ -53,7 +53,7 @@ in
   networking.hostName = "SamZwo"; # Define your hostname.
 
   home-manager.users.nathan.installBundles = {
-    kde = true;
+    gnome = true;
     agenix = true;
   };
 
