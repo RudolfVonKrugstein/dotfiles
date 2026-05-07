@@ -307,6 +307,7 @@
         zenity
         cairo
         gimp
+        inkscape
       ])
       ++ (lib.optionals config.installBundles.gnome [
         gnome-tweaks
