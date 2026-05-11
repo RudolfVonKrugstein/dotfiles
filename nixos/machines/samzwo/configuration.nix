@@ -22,6 +22,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../../gnome.nix
+    ../../scanner.nix
     ../../printer.nix
     ../../keypassxc.nix
     ../../steam.nix
