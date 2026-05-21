@@ -71,7 +71,7 @@ return {
     "xhtml",
     "quarto",
   },
-  root_markers = { ".git", ".ltex.json" },
+  root_markers = { ".git", ".ltex.json", "_quarto.yml" },
   get_language_id = function(_, filetype)
     return language_id_mapping[filetype] or filetype
   end,
@@ -106,8 +106,8 @@ return {
   },
 
   on_new_config = function(new_config, root_dir)
-    local config_file = root_dir .. ".ltex.json"
-    if vim.loop.fs_stat(config_file) then
+    local config_file = root_dir .. "/.ltex.json"
+    if vim.uv.fs_stat(config_file) then
       local content = vim.fn.readfile(config_file)
       print(content)
       local decoded = vim.json.decode(table.concat(content, "\n"))
