@@ -29,6 +29,7 @@
       gnome = lib.mkOption { default = false; };
       kde = lib.mkOption { default = false; };
       agenix = lib.mkOption { default = false; };
+      vscode = lib.mkOption { default = false; };
     };
   };
 
@@ -315,6 +316,9 @@
       ])
       ++ (lib.optionals config.installBundles.agenix [
         agenix.packages.x86_64-linux.default
+      ])
+      ++ (lib.optionals config.installBundles.vscode [
+        vscode
       ]);
   };
 }

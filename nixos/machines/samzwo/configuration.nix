@@ -57,6 +57,7 @@ in
   home-manager.users.nathan.installBundles = {
     gnome = true;
     agenix = true;
+    vscode = true;
   };
 
   # This value determines the NixOS release from which the default
