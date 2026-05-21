@@ -7,10 +7,11 @@ require("otter").setup({})
 require("quarto").setup({
   lspFeatures = {
     enabled = true,
-    languages = { "python", "lua" },
+    chunks = "all",
+    languages = { "python", "lua", "go", "bash", "html" },
     diagnostics = {
       enabled = true,
-      triggers = { "BufWrite" },
+      triggers = { "BufWritePost" },
     },
     completion = { enabled = true },
   },
