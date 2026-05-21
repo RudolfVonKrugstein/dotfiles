@@ -120,6 +120,9 @@ fi
 # nvim
 [ -d /opt/nvim-linux64/bin ] && export PATH="$PATH:/opt/nvim-linux64/bin"
 
+# opencode
+[ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
+
 # enable startship
 # [[ ! -z "$ZSH_VERSION" ]] && eval "$(starship init zsh)" || eval "$(starship init bash)"
 # enable oh-my-posh
