@@ -5,6 +5,15 @@
   agenix,
   ...
 }:
+let
+  gotoolsWithoutModernize = pkgs.symlinkJoin {
+    name = "gotools-without-modernize";
+    paths = [ pkgs.unstable.gotools ];
+    postBuild = ''
+      rm -f "$out/bin/modernize"
+    '';
+  };
+in
 {
   # optional installs
   options = {
@@ -127,8 +136,7 @@
         shellspec
         shellcheck
         # python
-        (python3.withPackages
-        (ppkgs: [
+        (python3.withPackages (ppkgs: [
           ppkgs.ansible
           ppkgs.requests
           ppkgs.pip
@@ -241,6 +249,7 @@
         unstable.golangci-lint
         unstable.golangci-lint-langserver
         unstable.delve
+        gotoolsWithoutModernize
       ])
       ++ (lib.optionals config.installBundles.nim [
         nim
