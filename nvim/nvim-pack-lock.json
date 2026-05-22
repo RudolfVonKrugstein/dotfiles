@@ -88,6 +88,10 @@
       "rev": "6eb2811eea333c73754e57679c3736e803ff9f6e",
       "src": "https://github.com/adoyle-h/lsp-toggle.nvim"
     },
+    "ltex_extra.nvim": {
+      "rev": "49ea83c231139d98b7c9668c99e7b4591421b056",
+      "src": "https://github.com/barreiroleo/ltex_extra.nvim"
+    },
     "markdown-table-mode.nvim": {
       "rev": "0b768b58ec45afb7cb091175e837b7f5461663af",
       "src": "https://github.com/Kicamon/markdown-table-mode.nvim"

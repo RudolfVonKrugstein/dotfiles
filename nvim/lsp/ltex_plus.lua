@@ -22,6 +22,10 @@
 --- vim.cmd [[ autocmd BufRead,BufNewFile *.org set filetype=org ]]
 --- ```
 
+-- we need ltex extra
+vim.pack.add({ "https://github.com/barreiroleo/ltex_extra.nvim" })
+
+-- configure LSP
 local language_id_mapping = {
   bib = "bibtex",
   pandoc = "markdown",
@@ -36,6 +40,16 @@ local language_id_mapping = {
 ---@type vim.lsp.Config
 return {
   cmd = { "ltex-ls-plus" },
+
+  on_attach = function(client, bufnr)
+    require("ltex_extra").setup({
+      load_langs = { "en-US", "de-DE" },
+      init_check = true,
+      path = ".ltex",
+      log_level = "info",
+    })
+  end,
+
   on_init = function(client, _)
     local root_dir = client.root_dir
     if not root_dir then
@@ -49,6 +63,7 @@ return {
       client.notify("workspace/didChangeConfiguration", { settings = client.settings })
     end
   end,
+
   filetypes = {
     "asciidoc",
     "bib",
@@ -71,6 +86,7 @@ return {
     "xhtml",
     "quarto",
   },
+
   root_markers = { ".git", ".ltex.json", "_quarto.yml" },
   get_language_id = function(_, filetype)
     return language_id_mapping[filetype] or filetype
