@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
   "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/L3MON4D3/LuaSnip",
+  "https://github.com/saghen/blink.lib",
   "https://github.com/saghen/blink.cmp",
 })
 
