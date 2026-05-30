@@ -49,7 +49,9 @@
     gleam = false;
     qmk = false;
     ai = false;
-    gui = false;
+    gnome = false;
+    kde = false;
+    audio = false;
   };
 
   nixpkgs.config.allowUnfree = true;

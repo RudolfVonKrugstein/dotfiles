@@ -6,11 +6,12 @@
   ...
 }:
 let
-  gotoolsWithoutModernize = pkgs.symlinkJoin {
+  gotoolsWithoutModernizeAndPlay = pkgs.symlinkJoin {
     name = "gotools-without-modernize";
     paths = [ pkgs.unstable.gotools ];
     postBuild = ''
       rm -f "$out/bin/modernize"
+      rm -f "$out/bin/play"
     '';
   };
 in
@@ -37,6 +38,7 @@ in
       webdev = lib.mkOption { default = true; };
       gnome = lib.mkOption { default = false; };
       kde = lib.mkOption { default = false; };
+      audio = lib.mkOption { default = true; };
       agenix = lib.mkOption { default = false; };
       vscode = lib.mkOption { default = false; };
     };
@@ -249,7 +251,7 @@ in
         unstable.golangci-lint
         unstable.golangci-lint-langserver
         unstable.delve
-        gotoolsWithoutModernize
+        gotoolsWithoutModernizeAndPlay
       ])
       ++ (lib.optionals config.installBundles.nim [
         nim
@@ -318,6 +320,11 @@ in
         cairo
         gimp
         inkscape
+      ])
+      ++ (lib.optionals config.installBundles.audio [
+        sox
+        pulseaudio
+        pamix
       ])
       ++ (lib.optionals config.installBundles.gnome [
         gnome-tweaks
