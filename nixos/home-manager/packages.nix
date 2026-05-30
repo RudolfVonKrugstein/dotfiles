@@ -303,7 +303,6 @@ in
         gemini-cli
         unstable.opencode
         lsof
-        unstable.llama-cpp
       ])
       ++ (lib.optionals (config.installBundles.gnome || config.installBundles.kde) [
         kitty
@@ -325,6 +324,8 @@ in
         sox
         pulseaudio
         pamix
+        openai-whisper
+        whisper-cpp
       ])
       ++ (lib.optionals config.installBundles.gnome [
         gnome-tweaks

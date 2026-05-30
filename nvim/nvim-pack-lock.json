@@ -212,9 +212,17 @@
       "rev": "24e229914182ff301496a3e2c4214b28c4928d3f",
       "src": "https://github.com/lervag/vimtex"
     },
+    "vocal.nvim": {
+      "rev": "8535dd0dbb61a4461fac07c9d5b906383199231a",
+      "src": "https://github.com/kyzadev/vocal.nvim"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "whisper.nvim": {
+      "rev": "43b9317c35d33cecb89cad6b9f581f136f26a22d",
+      "src": "https://github.com/Avi-D-coder/whisper.nvim"
     },
     "yanky.nvim": {
       "rev": "b13d318dc7c816e2eee626dde61fa0a7237bc77e",
