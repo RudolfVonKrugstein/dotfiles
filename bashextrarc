@@ -128,9 +128,6 @@ fi
 # enable oh-my-posh
 [[ ! -z "$ZSH_VERSION" ]] && eval "$(oh-my-posh init zsh --config ~/dotfiles/oh-my-posh.yaml)" || eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh.yaml)"
 
-# configure zoxide
-[[ ! -z "$ZSH_VERSION" ]] && eval "$(zoxide init zsh)" || eval "$(zoxide init bash)"
-
 # aliases
 alias ll="exa -l -g --icons --git"
 alias llt="exa -1 --icons --tree --git-ignore"
@@ -140,4 +137,9 @@ alias llt="exa -1 --icons --tree --git-ignore"
 
 if which atuin > /dev/null; then
    [[ ! -z "$ZSH_VERSION" ]] && eval "$(atuin init zsh)" || eval "$(atuin init bash)"
+fi
+
+# configure zoxide
+if [[ -z $CLAUDECODE ]]; then
+  [[ ! -z "$ZSH_VERSION" ]] && eval "$(zoxide init zsh)" || eval "$(zoxide init bash)"
 fi

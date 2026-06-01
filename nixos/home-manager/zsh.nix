@@ -41,8 +41,10 @@
       fi
 
       eval "$(keychain --eval --quiet)"
-
-      eval "$(zoxide init --cmd cd zsh)"
+     
+      if [[ -z $CLAUDECODE ]]; then
+        eval "$(zoxide init --cmd cd zsh)"
+      fi
 
       # init luarocks
       eval "$(luarocks path --bin)"
