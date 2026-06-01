@@ -37,6 +37,7 @@ local languages = {
   "gleam",
   "toml",
   "commonlisp",
+  "javascript",
 }
 require("nvim-treesitter").install(languages)
 
