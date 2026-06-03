@@ -150,7 +150,6 @@ in
         basedpyright
         uv
         poetry
-        pipx
         unstable.pyrefly
         unstable.ty
         # pkgs.basedpyright
