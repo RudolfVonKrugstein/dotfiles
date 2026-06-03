@@ -233,7 +233,7 @@ in
           d2
           gnuplot
           graphviz
-          nodePackages.mermaid-cli
+          mermaid-cli
           manim
           # needed for manim
           pkg-config
@@ -280,8 +280,8 @@ in
       ])
       ++ (lib.optionals (config.installBundles.webdev) [
         # webdev
-        nodePackages.browser-sync
-        nodePackages.tailwindcss
+        browser-sync
+        tailwindcss
       ])
       ++ (lib.optionals config.installBundles.qmk [
         qmk
