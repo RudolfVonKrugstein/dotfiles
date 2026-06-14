@@ -49,8 +49,6 @@ local mode_icons = {
   S = { text = " S-L ", hl = config.select_line_hl },
 }
 
-
-
 local colors = require("tokyonight.colors").setup()
 vim.api.nvim_set_hl(0, config.git_add_hl, { fg = colors.green }) -- create if missing
 vim.api.nvim_set_hl(0, config.git_change_hl, { fg = colors.yellow }) -- create if missing

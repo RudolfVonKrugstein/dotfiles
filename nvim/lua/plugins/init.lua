@@ -34,5 +34,5 @@ require("plugins.codedocs")
 require("plugins.markdown-table-mode")
 require("plugins.statusline")
 require("plugins.window-close")
-require("plugins.whisper")
+require("plugins.speech-to-text")
 
