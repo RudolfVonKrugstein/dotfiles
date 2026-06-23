@@ -35,6 +35,7 @@ local languages = {
   "gosum",
   "rust",
   "gleam",
+  "erlang",
   "toml",
   "commonlisp",
   "javascript",
