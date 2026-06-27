@@ -41,6 +41,7 @@ in
       audio = lib.mkOption { default = true; };
       agenix = lib.mkOption { default = false; };
       vscode = lib.mkOption { default = false; };
+      ledger = lib.mkOption { default = true; };
     };
   };
 
@@ -335,6 +336,10 @@ in
       ])
       ++ (lib.optionals config.installBundles.vscode [
         vscode
+      ])
+      ++ (lib.optionals config.installBundles.ledger [
+        ledger
+        hledger
       ]);
   };
 }
