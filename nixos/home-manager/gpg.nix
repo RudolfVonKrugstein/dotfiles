@@ -19,7 +19,9 @@
     maxCacheTtl = 36000;
     defaultCacheTtlSsh = 36000;
     maxCacheTtlSsh = 36000;
-    enableSshSupport = true;
+    # On GNOME hosts the desktop's gcr-ssh-agent is the ssh-agent; let it win.
+    # Everywhere else (e.g. WSL) gpg-agent provides the ssh-agent.
+    enableSshSupport = !config.installBundles.gnome;
     pinentry.package = pkgs.pinentry-gtk2;
 
   };

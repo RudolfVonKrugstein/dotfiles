@@ -40,11 +40,15 @@ mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
 # keychain/ssh-agent
-keychain --eval --quiet
-    | lines
-    | where not ($it | is-empty)
-    | parse "{k}={v}; export {k2};"
-    | select k v
-    | transpose --header-row
-    | into record
-    | load-env
+# Skip when an ssh-agent socket is already provided (e.g. GNOME's gcr-ssh-agent).
+# On hosts without one (e.g. WSL) let keychain start/attach gpg-agent.
+if ($env.SSH_AUTH_SOCK? | default "" | is-empty) {
+    keychain --eval --quiet
+        | lines
+        | where not ($it | is-empty)
+        | parse "{k}={v}; export {k2};"
+        | select k v
+        | transpose --header-row
+        | into record
+        | load-env
+}

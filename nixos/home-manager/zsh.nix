@@ -40,8 +40,8 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
-      eval "$(keychain --eval --quiet)"
-     
+      ${lib.optionalString (!config.installBundles.gnome) ''eval "$(keychain --eval --quiet)"''}
+
       if [[ -z $CLAUDECODE ]]; then
         eval "$(zoxide init --cmd cd zsh)"
       fi
