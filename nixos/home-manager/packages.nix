@@ -230,7 +230,6 @@ in
         [
           marksman
           plantuml-headless
-          d2
           gnuplot
           graphviz
           mermaid-cli
@@ -319,6 +318,7 @@ in
         cairo
         gimp
         inkscape
+        libreoffice
       ])
       ++ (lib.optionals config.installBundles.audio [
         sox
@@ -326,6 +326,7 @@ in
         pamix
         openai-whisper
         whisper-cpp
+        audacity
       ])
       ++ (lib.optionals config.installBundles.gnome [
         gnome-tweaks
