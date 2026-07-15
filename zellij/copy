@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pick the right clipboard command depending on the environment.
+# Text to copy is piped in on stdin by zellij.
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    # WSL: use the Windows clipboard
+    exec clip.exe
+elif [ -n "$WAYLAND_DISPLAY" ]; then
+    exec wl-copy
+else
+    exec xclip -selection clipboard
+fi

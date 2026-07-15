@@ -320,6 +320,8 @@ default_shell "zsh"
 // copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
+// Wrapper picks clip.exe (WSL), wl-copy (wayland), or xclip (x11) at runtime.
+copy_command "/home/nathan/.config/zellij/copy"
 
 // Choose the destination for copied text
 // Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.
