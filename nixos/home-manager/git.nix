@@ -1,9 +1,22 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
+let
+  # Windows GnuPG, present only on WSL where the C: drive is mounted.
+  # Detection has to happen at runtime: with flakes, Nix evaluates in pure
+  # mode where `builtins.pathExists` on paths outside the flake is always
+  # false, so an eval-time check would never see the Windows binary.
+  winGpg = "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe";
+  gpgWrapper = pkgs.writeShellScript "gpg-wrapper" ''
+    if [ -x "${winGpg}" ]; then
+      exec "${winGpg}" "$@"
+    else
+      exec "${pkgs.gnupg}/bin/gpg" "$@"
+    fi
+  '';
+in
 {
   programs.git = {
     enable = true;
@@ -31,6 +44,7 @@
         br = "branch";
         rf = "reflog";
       };
+      gpg.program = "${gpgWrapper}";
     };
   };
 
