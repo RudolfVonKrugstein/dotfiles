@@ -144,6 +144,7 @@ in
           ppkgs.requests
           ppkgs.pip
           ppkgs.python-dateutil
+          ppkgs.beautifulsoup4
         ]))
         virtualenv
         unstable.ruff
