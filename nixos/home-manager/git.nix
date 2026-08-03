@@ -8,12 +8,17 @@ let
   # Detection has to happen at runtime: with flakes, Nix evaluates in pure
   # mode where `builtins.pathExists` on paths outside the flake is always
   # false, so an eval-time check would never see the Windows binary.
-  winGpg = "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe";
+  winGpg1 = "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe";
+  winGpg2 = "/mnt/c/Program Files/GnuPG/bin/gpg.exe";
   gpgWrapper = pkgs.writeShellScript "gpg-wrapper" ''
-    if [ -x "${winGpg}" ]; then
-      exec "${winGpg}" "$@"
+    if [ -x "${winGpg1}" ]; then
+      exec "${winGpg1}" "$@"
     else
-      exec "${pkgs.gnupg}/bin/gpg" "$@"
+      if [ -x "${winGpg2}" ]; then
+        exec "${winGpg2}" "$@"
+      else
+        exec "${pkgs.gnupg}/bin/gpg" "$@"
+      fi
     fi
   '';
 in
