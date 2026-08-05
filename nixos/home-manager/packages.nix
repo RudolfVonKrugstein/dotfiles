@@ -190,6 +190,7 @@ in
         quarto
         svgo
         xmlstarlet
+        minisign
       ])
       ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.quarto) [
         pandocBinary
@@ -300,6 +301,7 @@ in
       ++ (lib.optionals config.installBundles.ai [
         aider-chat
         claude-code
+        codex
         gemini-cli
         unstable.opencode
         lsof
