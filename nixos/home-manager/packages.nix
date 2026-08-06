@@ -330,6 +330,7 @@ in
         openai-whisper
         whisper-cpp
         audacity
+        ffmpeg
       ])
       ++ (lib.optionals config.installBundles.gnome [
         gnome-tweaks
