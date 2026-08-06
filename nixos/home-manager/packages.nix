@@ -145,6 +145,8 @@ in
           ppkgs.pip
           ppkgs.python-dateutil
           ppkgs.beautifulsoup4
+          ppkgs.openai
+          ppkgs.ipython
         ]))
         virtualenv
         unstable.ruff
