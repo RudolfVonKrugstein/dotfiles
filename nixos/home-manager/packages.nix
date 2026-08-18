@@ -218,6 +218,10 @@ in
             fmtcount
             wallpaper
             numprint
+            framed
+            fvextra
+            upquote
+            xurl
           ]
         ))
       ])
