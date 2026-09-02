@@ -222,6 +222,8 @@ in
             fvextra
             upquote
             xurl
+            tcolorbox
+            newunicodechar
           ]
         ))
       ])
