@@ -193,6 +193,7 @@ in
         svgo
         xmlstarlet
         minisign
+        librsvg
       ])
       ++ (lib.optionals (config.installBundles.pandoc || config.installBundles.quarto) [
         pandocBinary
@@ -224,6 +225,8 @@ in
             xurl
             tcolorbox
             newunicodechar
+            tikzfill
+            opensans
           ]
         ))
       ])
