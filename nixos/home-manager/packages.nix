@@ -227,6 +227,7 @@ in
             newunicodechar
             tikzfill
             opensans
+            pdfcol
           ]
         ))
       ])
