@@ -73,6 +73,7 @@ in
         helix
         # git
         git
+        git-filter-repo
         jujutsu
         unstable.lazygit
         # neovim and tools around that
