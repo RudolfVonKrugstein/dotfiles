@@ -31,18 +31,39 @@ vim.o.showmode = true
 vim.schedule(function()
   vim.o.clipboard = "unnamedplus"
 
-  if vim.fn.executable("win32yank.exe") == 1 then
+  -- On WSL, use the Windows clipboard, the same way zellij does (see
+  -- `zellij/copy`). WSL sets WAYLAND_DISPLAY even when no WSLg compositor is
+  -- running, so nvim's autodetection picks wl-copy and every yank silently
+  -- fails. Everywhere else nvim's own detection is fine.
+  local version = io.open("/proc/version")
+  local is_wsl = false
+  if version then
+    is_wsl = version:read("*a"):lower():find("microsoft") ~= nil
+    version:close()
+  end
+
+  if is_wsl and vim.fn.executable("clip.exe") == 1 then
+    -- powershell appends CRLF; strip the CR and the one trailing newline so a
+    -- charwise copy does not come back linewise.
+    -- list form, so nvim execs it directly instead of splitting on whitespace
+    local paste = {
+      "sh",
+      "-c",
+      [[powershell.exe -NoProfile -NoLogo -Command "Get-Clipboard -Raw" | tr -d '\r' | head -c -1]],
+    }
     vim.g.clipboard = {
-      name = "win32yank",
+      name = "wsl-clipboard",
       copy = {
-        ["+"] = "win32yank.exe -i --crlf",
-        ["*"] = "win32yank.exe -i --crlf",
+        ["+"] = "clip.exe",
+        ["*"] = "clip.exe",
       },
       paste = {
-        ["+"] = "win32yank.exe -o --lf",
-        ["*"] = "win32yank.exe -o --lf",
+        ["+"] = paste,
+        ["*"] = paste,
       },
-      cache_enabled = 0,
+      -- serve yanks made inside nvim from cache: exact register type, and no
+      -- ~350ms powershell round trip on every `p`.
+      cache_enabled = 1,
     }
   end
 end)
