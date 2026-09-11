@@ -260,6 +260,7 @@ in
         # golang
         unstable.go
         unstable.gopls
+        unstable.gofumpt
         unstable.goreleaser
         unstable.revive
         unstable.golangci-lint
