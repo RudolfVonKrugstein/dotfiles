@@ -2,8 +2,9 @@
 # Pick the right clipboard command depending on the environment.
 # Text to copy is piped in on stdin by zellij.
 if grep -qi microsoft /proc/version 2>/dev/null; then
-    # WSL: use the Windows clipboard
-    exec clip.exe
+    # WSL: use the Windows clipboard. clip.exe reads the OEM codepage unless
+    # given UTF-16LE (without BOM, or the BOM lands in the clipboard).
+    iconv -f UTF-8 -t UTF-16LE | clip.exe
 elif [ -n "$WAYLAND_DISPLAY" ]; then
     exec wl-copy
 else
