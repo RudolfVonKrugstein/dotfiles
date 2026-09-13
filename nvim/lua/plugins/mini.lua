@@ -28,8 +28,27 @@ require("mini.pairs").setup({
   markdown = true,
 })
 
-
 require("mini.tabline").setup()
 
--- ... and there is more!
---  Check out: https://github.com/echasnovski/mini.nvim
+require("mini.move").setup({
+  -- Module mappings. Use `''` (empty string) to disable one.
+  mappings = {
+    -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+    left = "<C-left>",
+    right = "<C-right>",
+    down = "<C-down>",
+    up = "<C-up>",
+
+    -- Move current line in Normal mode
+    line_left = "<C-left>",
+    line_right = "<C-right>",
+    line_down = "<C-down>",
+    line_up = "<C-up>",
+  },
+
+  -- Options which control moving behavior
+  options = {
+    -- Automatically reindent selection during linewise vertical move
+    reindent_linewise = true,
+  },
+})
