@@ -23,6 +23,7 @@ in
       pandoc = lib.mkOption { default = true; };
       asciidoc = lib.mkOption { default = true; };
       latex = lib.mkOption { default = true; };
+      typst = lib.mkOption { default = true; };
       astro = lib.mkOption { default = true; };
       rust = lib.mkOption { default = true; };
       golang = lib.mkOption { default = true; };
@@ -231,6 +232,11 @@ in
             pdfcol
           ]
         ))
+      ])
+      ++ (lib.optionals config.installBundles.typst [
+        typst
+        typstyle
+        typst-live
       ])
       ++ (lib.optionals config.installBundles.astro [
         astro-language-server

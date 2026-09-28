@@ -1,15 +1,11 @@
 { stdenv
 , lib
-, pandocBinary
-, typst
-, esbuild
-, deno
 , fetchurl
-, dart-sass
 , rWrapper
 , rPackages
 , extraRPackages ? []
 , makeWrapper
+, autoPatchelfHook
 , runCommand
 , python3
 , quarto
@@ -27,24 +23,17 @@ stdenv.mkDerivation (final: {
 
   nativeBuildInputs = [
     makeWrapper
-    pandocBinary
+    autoPatchelfHook
   ];
 
-  postPatch = ''
-    # Compat for Deno >=1.26
-    substituteInPlace bin/quarto.js \
-      --replace-fail ']))?.trim();' ']))?.trim().split(" ")[0];'
-  '';
+  buildInputs = [
+    stdenv.cc.cc.lib
+  ];
 
   dontStrip = true;
 
   preFixup = ''
     wrapProgram $out/bin/quarto \
-      --prefix QUARTO_DENO : ${lib.getExe deno} \
-      --prefix QUARTO_PANDOC : ${lib.getExe pandocBinary} \
-      --prefix QUARTO_ESBUILD : ${lib.getExe esbuild} \
-      --prefix QUARTO_DART_SASS : ${lib.getExe dart-sass} \
-      --prefix QUARTO_TYPST : ${lib.getExe typst} \
       ${lib.optionalString (rWrapper != null) "--prefix QUARTO_R : ${rWrapper.override { packages = [ rPackages.rmarkdown rPackages.reticulate ] ++ extraRPackages; }}/bin/R"} \
       ${lib.optionalString (python3 != null) "--prefix QUARTO_PYTHON : ${python3.withPackages (ps: with ps; [ jupyter ipython ] ++ (extraPythonPackages ps))}/bin/python3"}
   '';
@@ -53,8 +42,6 @@ stdenv.mkDerivation (final: {
       runHook preInstall
 
       mkdir -p $out/bin $out/share
-
-      rm -r bin/tools
 
       mv bin/* $out/bin
       mv share/* $out/share

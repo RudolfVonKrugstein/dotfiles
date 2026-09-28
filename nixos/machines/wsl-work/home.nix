@@ -47,6 +47,7 @@
     pandoc = true;
     asciidoc = true;
     latex = false;
+    typst = false;
     rust = true;
     golang = true;
     aws = true;
