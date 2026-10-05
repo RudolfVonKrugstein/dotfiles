@@ -40,7 +40,7 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
-      ${lib.optionalString (!config.installBundles.gnome) ''eval "$(keychain --eval --quiet)"''}
+      ${lib.optionalString (!config.installBundles.gnome) ''eval "$(keychain --eval --quiet)" && ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/agent/current"''}
 
       if [[ -z $CLAUDECODE ]]; then
         eval "$(zoxide init --cmd cd zsh)"
