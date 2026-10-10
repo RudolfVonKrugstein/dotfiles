@@ -57,6 +57,7 @@
     gleam = true;
     qmk = false;
     ai = true;
+    wsl = true;
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -42,28 +42,34 @@ vim.schedule(function()
     version:close()
   end
 
-  if is_wsl and vim.fn.executable("clip.exe") == 1 then
+  if is_wsl and vim.fn.executable("win32yank.exe") == 1 then
+    -- fast (no powershell startup) and handles UTF-8 and line endings itself
+    local copy = { "win32yank.exe", "-i", "--crlf" }
+    local paste = { "win32yank.exe", "-o", "--lf" }
+    vim.g.clipboard = {
+      name = "win32yank-wsl",
+      copy = { ["+"] = copy, ["*"] = copy },
+      paste = { ["+"] = paste, ["*"] = paste },
+      cache_enabled = 0,
+    }
+  elseif is_wsl and vim.fn.executable("clip.exe") == 1 then
+    -- Fallback, slower: every paste starts powershell.
+    -- clip.exe reads the OEM codepage unless given UTF-16LE, and powershell
+    -- writes the OEM codepage unless told otherwise; both mangle umlauts.
+    -- list form, so nvim execs it directly instead of splitting on whitespace
+    local copy = { "sh", "-c", "iconv -f UTF-8 -t UTF-16LE | clip.exe" }
     -- powershell appends CRLF; strip the CR and the one trailing newline so a
     -- charwise copy does not come back linewise.
-    -- list form, so nvim execs it directly instead of splitting on whitespace
     local paste = {
       "sh",
       "-c",
-      [[powershell.exe -NoProfile -NoLogo -Command "Get-Clipboard -Raw" | tr -d '\r' | head -c -1]],
+      [[powershell.exe -NoProfile -NoLogo -Command "[Console]::OutputEncoding = [Text.Encoding]::UTF8; Get-Clipboard -Raw" | tr -d '\r' | head -c -1]],
     }
     vim.g.clipboard = {
       name = "wsl-clipboard",
-      copy = {
-        ["+"] = "clip.exe",
-        ["*"] = "clip.exe",
-      },
-      paste = {
-        ["+"] = paste,
-        ["*"] = paste,
-      },
-      -- serve yanks made inside nvim from cache: exact register type, and no
-      -- ~350ms powershell round trip on every `p`.
-      cache_enabled = 1,
+      copy = { ["+"] = copy, ["*"] = copy },
+      paste = { ["+"] = paste, ["*"] = paste },
+      cache_enabled = 0,
     }
   end
 end)

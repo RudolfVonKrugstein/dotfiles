@@ -43,6 +43,7 @@ in
       agenix = lib.mkOption { default = false; };
       vscode = lib.mkOption { default = false; };
       ledger = lib.mkOption { default = true; };
+      wsl = lib.mkOption { default = false; };
     };
   };
 
@@ -365,6 +366,9 @@ in
       ++ (lib.optionals config.installBundles.ledger [
         ledger
         hledger
+      ])
+      ++ (lib.optionals config.installBundles.wsl [
+        win32yank
       ]);
   };
 }

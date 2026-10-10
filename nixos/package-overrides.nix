@@ -5,5 +5,6 @@
     pandocBinary = pkgs.callPackage ./packages/pandocBinary {};
     quarto = pkgs.callPackage ./packages/quarto {};
     d2 = pkgs.callPackage ./packages/d2 {};
+    win32yank = pkgs.callPackage ./packages/win32yank {};
   };
 }
