@@ -141,6 +141,7 @@ in
         # bash programming
         shellspec
         shellcheck
+        bash-language-server
         # python
         (unstable.python3.withPackages (ppkgs: [
           ppkgs.ansible

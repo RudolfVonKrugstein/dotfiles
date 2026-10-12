@@ -63,6 +63,7 @@ vim.lsp.enable({
   "lsp_ai_gleam",
   "astro",
   "ansiblels",
+  "bashls",
 })
 
 -- configure auto reload of files
