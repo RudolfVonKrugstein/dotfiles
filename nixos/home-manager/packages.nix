@@ -142,7 +142,7 @@ in
         shellspec
         shellcheck
         # python
-        (python3.withPackages (ppkgs: [
+        (unstable.python3.withPackages (ppkgs: [
           ppkgs.ansible
           ppkgs.requests
           ppkgs.pip
