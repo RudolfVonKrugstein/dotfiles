@@ -141,6 +141,8 @@ in
         # bash programming
         shellspec
         shellcheck
+        shfmt
+        shellharden
         bash-language-server
         # python
         (unstable.python3.withPackages (ppkgs: [
