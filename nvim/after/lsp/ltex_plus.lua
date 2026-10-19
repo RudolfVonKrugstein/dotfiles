@@ -116,8 +116,8 @@ return {
         "xhtml",
         "quarto",
       },
-      language = "en-US",
-      additionalLanguages = { "de-DE" },
+      language = "auto",
+      additionalLanguages = { "de-DE", "en-US" },
     },
   },
 
