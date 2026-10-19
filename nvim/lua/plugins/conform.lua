@@ -20,6 +20,7 @@ require("conform").setup({
     lua = { "stylua" },
     nix = { "nixfmt" },
     go = { "goimports", "gofumpt" },
+    sh = { "shfmt" },
     -- Conform can also run multiple formatters sequentially
     -- python = { "isort", "black" },
     --

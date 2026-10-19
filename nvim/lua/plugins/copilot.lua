@@ -1,5 +1,6 @@
 vim.pack.add({ "https://github.com/zbirenbaum/copilot.lua" })
 require("copilot").setup({
+  auth_provider_url = "https://deutschebahn.ghe.com/",
   suggestion = {
     enabled = true,
   },

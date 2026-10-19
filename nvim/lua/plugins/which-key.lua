@@ -47,4 +47,11 @@ require("which-key").setup({
     { "<leader>t", group = "[T]oggle" },
     { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
   },
+
+  plugins = {
+    spelling = {
+      enable=true,
+      suggestions=20,
+    }
+  }
 })
