@@ -1,6 +1,6 @@
-vim.pack.add({"https://github.com/folke/sidekick.nvim"})
+vim.pack.add({ "https://github.com/folke/sidekick.nvim" })
 require("sidekick").setup({
-  nes = { enabled = false },
+  nes = { enabled = true },
   -- add any options here
   cli = {
     mux = {
@@ -9,6 +9,15 @@ require("sidekick").setup({
     },
   },
 })
+
+vim.keymap.set({ "i", "n" }, "<Tab>", function()
+  -- jump to the next suggestion, or apply it if you're already there
+  if require("sidekick").nes_jump_or_apply() then
+    return
+  end
+  -- otherwise behave like a normal <Tab>
+  return "<Tab>"
+end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
 
 vim.keymap.set({ "n", "t", "i", "x" }, "<c-.>", function()
   require("sidekick.cli").focus()

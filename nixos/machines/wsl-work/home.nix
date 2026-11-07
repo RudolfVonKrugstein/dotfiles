@@ -28,6 +28,7 @@
     sessionVariables = {
       noproxy = "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";
       NOPROXY = "*.github.com,*.ghe.com,ghe.com,*.githubusercontent.com,*.githubcopilot.com";
+      NVIM_CONFIG_VARIANT="db";
     };
   };
 
