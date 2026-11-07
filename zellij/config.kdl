@@ -188,7 +188,6 @@ keybinds clear-defaults=true {
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt Shift p" { ToggleGroupMarking; }
-        bind "Alt q" { Quit; }
         bind "Alt r" {
             SwitchToMode "normal"
             Run "z" {
