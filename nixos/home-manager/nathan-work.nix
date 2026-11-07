@@ -10,7 +10,7 @@
     ./packages.nix
     ./git-work.nix
     ./neovim-activate.nix
-    ./marksman-activate.nix
+    ./configs-activate.nix
     ./lazygit-activate.nix
     ./nushell-activate.nix
     ./fish-activate.nix

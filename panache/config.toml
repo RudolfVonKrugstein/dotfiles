@@ -1,0 +1,12 @@
+line-width = 80
+
+[formatters]
+r = "air"
+python = "ruff"
+javascript = "prettier"
+typescript = "prettier"
+go = "gofmt"
+
+# Formats both ```yaml blocks and the YAML frontmatter
+[formatters.yaml]
+preset = "yamlfmt"

@@ -92,6 +92,7 @@ in
         marksman
         mdformat
         markdownlint-cli2
+        panache
         taplo
         yaml-language-server
         yamlfmt

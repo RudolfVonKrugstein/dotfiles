@@ -12,7 +12,7 @@
     ../../home-manager/git.nix
     ../../home-manager/gpg.nix
     ../../home-manager/neovim-activate.nix
-    ../../home-manager/marksman-activate.nix
+    ../../home-manager/configs-activate.nix
     ../../home-manager/lazygit-activate.nix
     ../../home-manager/nushell-activate.nix
     ../../home-manager/fish-activate.nix

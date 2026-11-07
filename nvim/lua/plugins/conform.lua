@@ -21,6 +21,9 @@ require("conform").setup({
     nix = { "nixfmt" },
     go = { "goimports", "gofumpt" },
     sh = { "shfmt" },
+    markdown = { "panache-fix", "panache" },
+    quarto = { "panache-fix", "panache" },
+    rmarkdown = { "panache-fix", "panache" },
     -- Conform can also run multiple formatters sequentially
     -- python = { "isort", "black" },
     --

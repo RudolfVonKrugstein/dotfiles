@@ -64,6 +64,7 @@ vim.lsp.enable({
   "astro",
   "ansiblels",
   "bashls",
+  "panache",
 })
 
 -- configure auto reload of files

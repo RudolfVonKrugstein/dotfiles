@@ -11,7 +11,7 @@
     ./gpg.nix
     ./neovim-activate.nix
     ./emacs-activate.nix
-    ./marksman-activate.nix
+    ./configs-activate.nix
     ./lazygit-activate.nix
     ./nushell-activate.nix
     ./fish-activate.nix
