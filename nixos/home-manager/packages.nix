@@ -259,7 +259,7 @@ in
           gnuplot
           graphviz
           mermaid-cli
-          manim
+          unstable.manim
           # needed for manim
           pkg-config
           pango
