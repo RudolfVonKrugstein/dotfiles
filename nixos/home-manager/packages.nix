@@ -322,6 +322,8 @@ in
         unstable.awscli2
         aws-gate
         sops
+        s5cmd
+        s3cmd
       ])
       ++ (lib.optionals config.installBundles.ai [
         aider-chat
