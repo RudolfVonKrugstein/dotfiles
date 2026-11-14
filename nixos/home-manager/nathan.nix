@@ -18,6 +18,7 @@
     ./zellij-activate.nix
     ./uv-tools-activate.nix
     ./direnv-activate.nix
+    ./jev-mcp-activate.nix
     ./zsh.nix
   ];
   home = {

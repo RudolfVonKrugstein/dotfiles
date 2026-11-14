@@ -29,6 +29,7 @@ in
     ../../podman.nix
     ../../mlocate.nix
     ../../ollama.nix
+    ../../jev-mcp.nix
   ];
 
   wsl.enable = true;
