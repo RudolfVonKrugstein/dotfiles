@@ -46,6 +46,7 @@ require("which-key").setup({
     { "<leader>s", group = "[S]earch" },
     { "<leader>t", group = "[T]oggle" },
     { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+    { "<leader>j", group = "[J]ev", mode = { "n", "x" } },
   },
 
   plugins = {

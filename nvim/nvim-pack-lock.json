@@ -84,6 +84,10 @@
       "rev": "ddff8bd3eccedf043bd73f5bf89cf90d2d6d8105",
       "src": "https://github.com/smjonas/inc-rename.nvim"
     },
+    "jev.nvim": {
+      "rev": "04b836c959d115595cd6d34760f0337370aa0cc4",
+      "src": "https://github.com/valentynkit/jev.nvim"
+    },
     "lsp-toggle.nvim": {
       "rev": "6eb2811eea333c73754e57679c3736e803ff9f6e",
       "src": "https://github.com/adoyle-h/lsp-toggle.nvim"
