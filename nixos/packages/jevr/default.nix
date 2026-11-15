@@ -7,15 +7,19 @@
 , coreutils
 }:
 
-rustPlatform.buildRustPackage rec {
+# Built from the fork's main branch, which adds more searchable extensions
+# (nix, lua, ... and qmd docs) to upstream's hardcoded list in src/walk.rs.
+# To update: set `rev` to the new main commit, replace both hashes with
+# lib.fakeHash, rebuild and copy in the reported hashes.
+rustPlatform.buildRustPackage {
   pname = "jevr";
-  version = "0.2.2";
+  version = "0.2.2-unstable-2026-11-15";
 
   src = fetchFromGitHub {
-    owner = "romeromarcelo";
+    owner = "RudolfVonKrugstein";
     repo = "jev-retrieval";
-    rev = "refs/tags/v${version}";
-    hash = "sha256-C1EZK/p1YdgY3VO/f8V6Qa41Vt5wHS2DZS7ltwA7m0Y=";
+    rev = "631b7bf3047fbef82e385ef37cfcefe3e9fceed8";
+    hash = "sha256-6XEtKZSAsbzzAdcP11AClLYJkfKV2sr1Nk9t0VvuNSA=";
   };
 
   cargoHash = "sha256-O7X4o1B17Dg3Ex5owlcmXCMA+dMHFJNmp7UMJ8zLoV8=";

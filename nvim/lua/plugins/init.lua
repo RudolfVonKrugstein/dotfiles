@@ -36,4 +36,4 @@ require("plugins.statusline")
 require("plugins.window-close")
 require("plugins.speech-to-text")
 require("plugins.jev")
-
+require("plugins.jevr")
