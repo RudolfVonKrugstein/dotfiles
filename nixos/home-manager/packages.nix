@@ -36,6 +36,7 @@ in
       zig = lib.mkOption { default = true; };
       qmk = lib.mkOption { default = true; };
       ai = lib.mkOption { default = true; };
+      jev = lib.mkOption { default = true; };
       webdev = lib.mkOption { default = true; };
       gnome = lib.mkOption { default = false; };
       kde = lib.mkOption { default = false; };
@@ -332,6 +333,9 @@ in
         gemini-cli
         unstable.opencode
         lsof
+      ])
+      ++ (lib.optionals config.installBundles.jev [
+        jevr
       ])
       ++ (lib.optionals (config.installBundles.gnome || config.installBundles.kde) [
         kitty

@@ -58,6 +58,7 @@
     gleam = true;
     qmk = false;
     ai = true;
+    jev = false;
     wsl = true;
   };
 
