@@ -6,6 +6,19 @@
   ...
 }:
 let
+  # Link only the usual profile directories of a package. Some packages put
+  # other files at the top of their output (lua rocks, node_modules, ...),
+  # which home-manager would otherwise link into the root of ~/.nix-profile.
+  # Wrappers and scripts in bin/ use absolute store paths, so nothing breaks.
+  standardDirsOnly =
+    pkg:
+    pkgs.runCommand "${pkg.name}-profile" { inherit (pkg) meta; } ''
+      mkdir $out
+      for d in bin sbin lib libexec include share etc; do
+        if [ -e ${pkg}/$d ]; then ln -s ${pkg}/$d $out/$d; fi
+      done
+    '';
+
   # Chromium for Playwright. Not `browsers-chromium`: that one lacks
   # chromium-headless-shell, which headless `launch()` uses by default.
   # From unstable, so it matches the unstable python playwright package.
@@ -110,11 +123,12 @@ in
         jujutsu
         unstable.lazygit
         # neovim and tools around that
-        unstable.neovim
-        unstable.tree-sitter
+        (standardDirsOnly unstable.neovim) # rplugin.vim
+        (standardDirsOnly unstable.tree-sitter) # config.schema.json
         # neovim-nightly-overlay.packages.${pkgs.system}.default
         # neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
         zellij
+        tmux
         yazi
         superfile
         ripgrep
@@ -166,7 +180,7 @@ in
         # programming languages
         gnumake
         patch
-        clang
+        (standardDirsOnly clang) # resource-root
         nodejs
         direnv
         nix-direnv
@@ -202,12 +216,13 @@ in
         # other language servers
         lua-language-server
         stylua
-        spectral-language-server
-        # lua
-        lua
-        luarocks
-        luaPackages.lpeg
-        luaPackages.busted
+        (standardDirsOnly spectral-language-server) # dist, node_modules
+        # lua: one env, so lua actually finds lpeg/busted (rocks dirs hidden)
+        (standardDirsOnly (lua.withPackages (ps: [
+          ps.luarocks
+          ps.lpeg
+          ps.busted
+        ])))
         # podman
         podman
         podman-tui
