@@ -7,5 +7,6 @@
     d2 = pkgs.callPackage ./packages/d2 {};
     win32yank = pkgs.callPackage ./packages/win32yank {};
     jevr = pkgs.callPackage ./packages/jevr {};
+    jevgrep = pkgs.callPackage ./packages/jevgrep {};
   };
 }

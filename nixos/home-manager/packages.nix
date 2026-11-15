@@ -58,6 +58,22 @@ in
 
   config = {
 
+    # jevgrep ignores environment variables and only reads its own saved
+    # credentials. Save the shared TypeSafe key there, again whenever the key
+    # file is newer than the credentials (so a rotated key is picked up, but
+    # a provider chosen by hand with `jg auth` is otherwise left alone).
+    home.activation.jevgrepAuth = lib.mkIf config.installBundles.jev (
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        keyFile="$HOME/.config/typesafe/key"
+        credFile="''${XDG_CONFIG_HOME:-$HOME/.config}/jevgrep/credentials.json"
+        if [ -s "$keyFile" ] && { [ ! -e "$credFile" ] || [ "$keyFile" -nt "$credFile" ]; }; then
+          $DRY_RUN_CMD ${pkgs.jevgrep}/bin/jg auth --provider typesafe --stdin \
+            < <(${pkgs.coreutils}/bin/tr -d '[:space:]' < "$keyFile") >/dev/null
+          echo "jevgrep: saved TypeSafe key from $keyFile"
+        fi
+      ''
+    );
+
     home.sessionVariables = lib.mkIf config.installBundles.playwright {
       PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
       # the host-dependency check looks in FHS paths and fails on NixOS
@@ -353,7 +369,8 @@ in
         lsof
       ])
       ++ (lib.optionals config.installBundles.jev [
-        jevr
+        jevr # reads the key file itself (wrapper)
+        jevgrep # `jg`; authenticated by home.activation.jevgrepAuth
       ])
       ++ (lib.optionals (config.installBundles.gnome || config.installBundles.kde) [
         kitty
