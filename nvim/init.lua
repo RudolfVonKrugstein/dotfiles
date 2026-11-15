@@ -48,6 +48,7 @@ vim.lsp.enable({
   -- "zuban",
   "ruff",
   "gopls",
+  "rust_analyzer",
   "harper_ls",
   "ltex_plus",
   "yamlls",

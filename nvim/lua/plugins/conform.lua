@@ -20,6 +20,7 @@ require("conform").setup({
     lua = { "stylua" },
     nix = { "nixfmt" },
     go = { "goimports", "gofumpt" },
+    rust = { "rustfmt" },
     sh = { "shfmt" },
     markdown = { "panache-fix", "panache" },
     quarto = { "panache-fix", "panache" },
