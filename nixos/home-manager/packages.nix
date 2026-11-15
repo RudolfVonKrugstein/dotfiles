@@ -321,6 +321,9 @@ in
       ++ (lib.optionals config.installBundles.rust [
         cargo
         rustc
+        rustfmt
+        clippy
+        rust-analyzer
       ])
       ++ (lib.optionals config.installBundles.ocaml [
         unstable.opam
