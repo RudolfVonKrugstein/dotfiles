@@ -412,9 +412,10 @@ in
         vscode
       ])
       ++ (lib.optionals config.installBundles.playwright [
-        # unstable, to match the python playwright package above
-        unstable.playwright
-        playwrightBrowsers
+        # The `playwright` CLI comes with the python package. The browsers are
+        # deliberately not listed: their store path is referenced by
+        # PLAYWRIGHT_BROWSERS_PATH, which keeps them installed without linking
+        # chromium-*/ffmpeg-* into the root of ~/.nix-profile.
         imagemagick
         oxipng
       ])
