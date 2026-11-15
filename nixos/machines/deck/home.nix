@@ -27,6 +27,8 @@
     stateVersion = "25.11";
   };
 
+  installBundles.playwright = false;
+
   programs.home-manager.enable = true;
   programs = {
     direnv = {

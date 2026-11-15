@@ -6,6 +6,13 @@
   ...
 }:
 let
+  # Chromium for Playwright. Not `browsers-chromium`: that one lacks
+  # chromium-headless-shell, which headless `launch()` uses by default.
+  # From unstable, so it matches the unstable python playwright package.
+  playwrightBrowsers = pkgs.unstable.playwright-driver.selectBrowsers {
+    withFirefox = false;
+    withWebkit = false;
+  };
   gotoolsWithoutModernizeAndPlay = pkgs.symlinkJoin {
     name = "gotools-without-modernize";
     paths = [ pkgs.unstable.gotools ];
@@ -43,12 +50,19 @@ in
       audio = lib.mkOption { default = true; };
       agenix = lib.mkOption { default = false; };
       vscode = lib.mkOption { default = false; };
+      playwright = lib.mkOption { default = true; };
       ledger = lib.mkOption { default = true; };
       wsl = lib.mkOption { default = false; };
     };
   };
 
   config = {
+
+    home.sessionVariables = lib.mkIf config.installBundles.playwright {
+      PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
+      # the host-dependency check looks in FHS paths and fails on NixOS
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+    };
 
     home.packages =
       with pkgs;
@@ -155,6 +169,10 @@ in
           ppkgs.beautifulsoup4
           ppkgs.openai
           ppkgs.ipython
+        ]
+        # must come from the same nixpkgs as the browsers below (versions must match)
+        ++ lib.optionals config.installBundles.playwright [
+          ppkgs.playwright
         ]))
         virtualenv
         unstable.ruff
@@ -372,6 +390,13 @@ in
       ])
       ++ (lib.optionals config.installBundles.vscode [
         vscode
+      ])
+      ++ (lib.optionals config.installBundles.playwright [
+        # unstable, to match the python playwright package above
+        unstable.playwright
+        playwrightBrowsers
+        imagemagick
+        oxipng
       ])
       ++ (lib.optionals config.installBundles.ledger [
         ledger

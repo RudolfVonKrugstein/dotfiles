@@ -60,6 +60,7 @@
     ai = true;
     jev = false;
     wsl = true;
+    playwright = false;
   };
 
   nixpkgs.config.allowUnfree = true;

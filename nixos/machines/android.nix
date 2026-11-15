@@ -21,7 +21,10 @@ in {
   # user settings
   user.shell = "${pkgs.zsh}/bin/zsh";
   home-manager.useGlobalPkgs = true;
-  home-manager.config = ../home-manager/nathan.nix;
+  home-manager.config = {
+    imports = [ ../home-manager/nathan.nix ];
+    installBundles.playwright = false;
+  };
 
   # font
   terminal.font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
