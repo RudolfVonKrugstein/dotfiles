@@ -176,6 +176,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "quarto-neovim-jump-to-slide": {
+      "rev": "2debfe0d515f0fe5ba1498a001213da90934711b",
+      "src": "https://github.com/huesken-org/quarto-neovim-jump-to-slide"
+    },
     "quarto-nvim": {
       "rev": "17f1e5d664bc615478230dc0240666329efacf9b",
       "src": "https://github.com/quarto-dev/quarto-nvim"
