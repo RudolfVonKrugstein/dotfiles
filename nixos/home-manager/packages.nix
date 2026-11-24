@@ -87,11 +87,19 @@ in
       ''
     );
 
-    home.sessionVariables = lib.mkIf config.installBundles.playwright {
-      PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
-      # the host-dependency check looks in FHS paths and fails on NixOS
-      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
-    };
+    home.sessionVariables = lib.mkMerge [
+      (lib.mkIf config.installBundles.playwright {
+        PLAYWRIGHT_BROWSERS_PATH = "${playwrightBrowsers}";
+        # the host-dependency check looks in FHS paths and fails on NixOS
+        PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+      })
+      (lib.mkIf config.installBundles.golang {
+        # go defaults to gcc, which is not installed; without it cgo is
+        # silently disabled. Use the clang from the base packages instead.
+        CC = "clang";
+        CGO_ENABLED = "1";
+      })
+    ];
 
     home.packages =
       with pkgs;
