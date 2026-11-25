@@ -42,6 +42,7 @@ require("which-key").setup({
 
   -- Document existing key chains
   spec = {
+    { "<leader>b", group = "[B]buffer" },
     { "<leader>c", group = "[C]ode" },
     { "<leader>s", group = "[S]earch" },
     { "<leader>t", group = "[T]oggle" },
