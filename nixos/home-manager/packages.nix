@@ -392,6 +392,7 @@ in
         codex
         gemini-cli
         unstable.opencode
+        github-copilot-cli
         lsof
       ])
       ++ (lib.optionals config.installBundles.jev [
